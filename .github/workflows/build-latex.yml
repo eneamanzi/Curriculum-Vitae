@@ -29,16 +29,19 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
+
+    - name: Ensure English Babel Order (Pre-Compile)
+      run: |
+        # Sostituisce [english,italian] con [italian,english] se presente.
+        # Questo garantisce che il file sia in stato 'inglese primario' PRIMA della compilazione.
+        sed -i 's/\\usepackage\[english,italian\]{babel}/\\usepackage[italian,english]{babel}/' cv.tex
     
     - name: Compile LaTeX (Both versions)
       uses: xu-cheng/latex-action@v3
       with:
         root_file: cv.tex
         args: -pdf -interaction=nonstopmode -file-line-error
-        pre_action: |
-            # Sostituisce [english,italian] con [italian,english] se presente.
-            # Questo garantisce che la prima compilazione (gestita dall'azione) sia in inglese.
-            sed -i 's/\\usepackage\[english,italian\]{babel}/\\usepackage[italian,english]{babel}/' cv.tex
+
         post_compile: |
           # Rinomina versione inglese
           mv cv.pdf cv_english.pdf
@@ -71,4 +74,3 @@ jobs:
           cv_english.pdf
           cv_italian.pdf
 
-          
