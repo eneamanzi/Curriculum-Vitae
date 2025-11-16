@@ -1,0 +1,102 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% DOCUMENT SETTINGS                   %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt,a4paper,sans]{moderncv}        
+% font size ('10pt', '11pt' and '12pt'), 
+% paper size ('a4paper', 'letterpaper', 'a5paper', 'legalpaper', 'executivepaper', 'landscape')
+% font family ('sans' and 'roman')
+
+\moderncvcolor{cerulean}                           
+% color options 'black', 'blue' (default), 'burgundy', 'green', 'grey', 'orange', 'purple' and 'red'; for contemporary style use 'cerulean'
+
+% moderncv themes
+\moderncvstyle[]{contemporary}                     
+% style options: 'casual' (default), 'classic', 'banking', 'oldstyle', 'fancy', 'contemporary'
+% the 'contemporary' style optionally takes the `qr` (default) or `noqr` options+
+
+%\renewcommand{\familydefault}{\sfdefault}         % to set the default font; use '\sfdefault' for the default sans serif font, '\rmdefault' for the default roman one, or any tex font name
+
+%\nopagenumbers{}                                  
+% uncomment to suppress automatic page numbering for CVs longer than one page
+
+% adjust the page margins
+\usepackage[hmargin=0.5in,vmargin=10pt]{geometry}                  
+% the 'contemporary' style looks better with reduced margins; uncomment the line below for increased margin
+%\usepackage[scale=0.75]{geometry}
+
+%dates's column width
+\setlength{\hintscolumnwidth}{2.8cm}
+
+%\setlength{\listitemsymbolspace}{10pt}            % set custom spacing between list symbol and text item (influences \cvlistitem and \cvlistdoubleitem)
+
+% the 'contemporary' style allows to append additional elements to the head background; uncomment and customize if needed
+%\def\@moderncvheadBackground{
+%}
+
+% font loading
+% for luatex and xetex, do not use inputenc and fontenc
+\ifxetexorluatex
+  \usepackage{fontspec}
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Ligatures=TeX}
+  \setmainfont{Latin Modern Roman}
+  \setsansfont{Latin Modern Sans}
+  \setmonofont{Latin Modern Mono}
+  \setmathfont{Latin Modern Math}
+\else
+  \usepackage[utf8]{inputenc}
+  \usepackage[T1]{fontenc}
+  \usepackage{lmodern}
+\fi
+
+
+%%%%%%%%%%%%%%%%%%%%%
+%% Italian Version %%
+%%%%%%%%%%%%%%%%%%%%%
+% last argument is the language to load; eg: [english, italian] -> main language is italian
+\usepackage[english,italian]{babel}
+%\usepackage[english,italian]{babel}
+
+%define commands to print only in a specific language; in text sections use \en{english text} or \it{italian text} to put different language version of same text
+\newcommand{\en}[1]{\iflanguage{english}{#1}{}}   
+\newcommand{\it}[1]{\iflanguage{italian}{#1}{}}
+
+\input{sections/1-personal-data}
+   
+\begin{document}
+%\selectlanguage{italian} per cambio lingua manuale
+\makecvtitle
+
+\input{sections/2-education}
+%otherwise pase here the content of sections/education.tex
+
+\input{sections/3-work-experience}
+%otherwise pase here the content of sections/work-experience.tex
+
+\input{sections/4-languages}
+%otherwise pase here the content of sections/languages.tex
+
+\input{sections/5-skills}
+%otherwise pase here the content of sections/skills.tex
+
+%OPTIONAL: comment if not needed
+\input{sections/5.1-soft-skills}
+%otherwise pase here the content of sections/soft-skills.tex
+
+\input{sections/6-project}
+%otherwise pase here the content of sections/project.tex  
+
+
+%\input{sections/TODO-interests}
+%otherwise pase here the content of sections/TODO-interests.tex
+
+
+%\input{sections/TODO-references}
+%otherwise pase here the content of sections/TODO-references.tex  
+
+%used include instead of input to go directly to a new page
+\include{sections/99-extra-cover-letter}
+%\clearpage
+
+\end{document}
