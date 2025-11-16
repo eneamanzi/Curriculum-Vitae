@@ -1,0 +1,66 @@
+name: Build LaTeX Documents
+
+on:
+  push:
+    branches: [ main, master ]
+    paths:
+      # Ripetere la stessa lista per le Pull Request
+      - 'cv.tex'
+      - 'sections/**'
+  pull_request:
+    branches: [ main, master ]
+    paths:
+      # Ripetere la stessa lista per le Pull Request
+      - 'cv.tex'
+      - 'sections/**'
+  workflow_dispatch:
+
+# Evita esecuzioni multiple simultanee
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Compile LaTeX (Both versions)
+      uses: xu-cheng/latex-action@v3
+      with:
+        root_file: cv.tex
+        args: -pdf -interaction=nonstopmode -file-line-error
+        post_compile: |
+          # Rinomina versione inglese
+          mv cv.pdf cv_english.pdf
+          
+          # Modifica per versione italiana
+          sed -i 's/\\usepackage\[italian,english\]{babel}/\\usepackage[english,italian]{babel}/' cv.tex
+          
+          # Compila versione italiana (2 passate per references)
+          pdflatex -interaction=nonstopmode -file-line-error cv.tex
+          pdflatex -interaction=nonstopmode -file-line-error cv.tex
+          
+          # Rinomina versione italiana
+          mv cv.pdf cv_italian.pdf
+    
+    # Commit e push dei PDF generati
+    - name: Commit and push PDFs
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add cv_english.pdf cv_italian.pdf
+        git diff --staged --quiet || git commit -m "Auto-update compiled PDFs [skip ci]"
+        git push
+    
+    # Upload come backup (opzionale)
+    - name: Upload PDFs as artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: CV-Both-Languages
+        path: |
+          cv_english.pdf
+          cv_italian.pdf
