@@ -7,12 +7,14 @@ on:
       # Ripetere la stessa lista per le Pull Request
       - 'cv.tex'
       - 'sections/**'
+      - '.github'
   pull_request:
     branches: [ main, master ]
     paths:
       # Ripetere la stessa lista per le Pull Request
       - 'cv.tex'
       - 'sections/**'
+      - '.github'
   workflow_dispatch:
 
 # Evita esecuzioni multiple simultanee
