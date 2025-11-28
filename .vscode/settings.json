@@ -1,0 +1,58 @@
+{
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "Compila TUTTO (ITA + ENG)",
+            "tools": [
+                "build_english",
+                "build_italian"
+            ]
+        },
+        {
+            "name": "Solo Inglese",
+            "tools": [
+                "build_english"
+            ]
+        },
+        {
+            "name": "Solo Italiano",
+            "tools": [
+                "build_italian"
+            ]
+        }
+    ],
+
+    "latex-workshop.latex.tools": [
+        {
+            "name": "build_english",
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-pdflatex",
+                "-jobname=cv_english",
+                "-outdir=%OUTDIR%",
+                "-c",                   // <--- AGGIUNTO: Pulisce i file temporanei alla fine
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "build_italian",
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-pdflatex",
+                "-jobname=cv_italian",
+                "-e",
+                "$pdflatex='pdflatex %O \\def\\makeitalian{1} \\input{%S}'",
+                "-outdir=%OUTDIR%",
+                "-c",                   // <--- AGGIUNTO: Pulisce i file temporanei alla fine
+                "%DOC%"
+            ],
+            "env": {}
+        }
+    ]
+}
