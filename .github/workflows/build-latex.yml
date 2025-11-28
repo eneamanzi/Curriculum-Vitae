@@ -4,20 +4,17 @@ on:
   push:
     branches: [ main, master ]
     paths:
-      # Ripetere la stessa lista per le Pull Request
       - 'cv.tex'
       - 'sections/**'
-      - '.github'
+      - '.github/**'
   pull_request:
     branches: [ main, master ]
     paths:
-      # Ripetere la stessa lista per le Pull Request
       - 'cv.tex'
       - 'sections/**'
-      - '.github'
+      - '.github/**'
   workflow_dispatch:
 
-# Evita esecuzioni multiple simultanee
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -30,42 +27,43 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Ensure English Babel Order (Pre-Compile)
-      run: |
-        # Sostituisce [english,italian] con [italian,english] se presente.
-        # Questo garantisce che il file sia in stato 'inglese primario' PRIMA della compilazione.
-        sed -i 's/\\usepackage\[english,italian\]{babel}/\\usepackage[italian,english]{babel}/' cv.tex
-    
-    - name: Compile LaTeX (Both versions)
+    # --- 1. COMPILAZIONE INGLESE ---
+    # Il file cv.tex di default va nell'ELSE e carica l'inglese.
+    # Usiamo -jobname per creare subito il file "cv_english.pdf"
+    - name: Compile English Version
       uses: xu-cheng/latex-action@v3
       with:
         root_file: cv.tex
-        args: -pdf -interaction=nonstopmode -file-line-error
+        args: -pdf -interaction=nonstopmode -file-line-error -jobname=cv_english
 
-        post_compile: |
-          # Rinomina versione inglese
-          mv cv.pdf cv_english.pdf
-          
-          # Modifica per versione italiana
-          sed -i 's/\\usepackage\[italian,english\]{babel}/\\usepackage[english,italian]{babel}/' cv.tex
-          
-          # Compila versione italiana (2 passate per references)
-          pdflatex -interaction=nonstopmode -file-line-error cv.tex
-          pdflatex -interaction=nonstopmode -file-line-error cv.tex
-          
-          # Rinomina versione italiana
-          mv cv.pdf cv_italian.pdf
-    
-    # Commit e push dei PDF generati
+    # --- 2. PREPARAZIONE ITALIANO ---
+    # Invece di usare il comando complesso locale (-e $pdflatex...), qui è più sicuro
+    # inserire fisicamente la definizione alla riga 1 del file usando sed.
+    - name: Activate Italian Flag
+      run: |
+        sed -i '1s/^/\\def\\makeitalian{1}\n/' cv.tex
+
+    # --- 3. COMPILAZIONE ITALIANO ---
+    # Ora che la definizione è nel file, compiliamo.
+    # Usiamo -jobname per creare subito il file "cv_italian.pdf"
+    - name: Compile Italian Version
+      uses: xu-cheng/latex-action@v3
+      with:
+        root_file: cv.tex
+        args: -pdf -interaction=nonstopmode -file-line-error -jobname=cv_italian
+
+    # --- 4. COMMIT E PUSH ---
     - name: Commit and push PDFs
       run: |
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
+        # Aggiungiamo i due file creati dai passaggi precedenti
         git add cv_english.pdf cv_italian.pdf
+        # Committa solo se ci sono cambiamenti
         git diff --staged --quiet || git commit -m "Auto-update compiled PDFs [skip ci]"
         git push
     
-    # Upload come backup (opzionale)
+    # --- 5. UPLOAD ARTIFACTS (Backup) ---
     - name: Upload PDFs as artifacts
       uses: actions/upload-artifact@v4
       with:
@@ -73,4 +71,3 @@ jobs:
         path: |
           cv_english.pdf
           cv_italian.pdf
-
