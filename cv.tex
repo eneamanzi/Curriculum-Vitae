@@ -54,9 +54,17 @@
 %%%%%%%%%%%%%%%%%%%%%
 %% Italian Version %%
 %%%%%%%%%%%%%%%%%%%%%
-% last argument is the language to load; eg: [english, italian] -> main language is italian
-\usepackage[english,italian]{babel}
-%\usepackage[english,italian]{babel}
+
+% --- GESTIONE LINGUA (Step 1) ---
+\ifdefined\makeitalian
+  % Se è definita la variabile 'makeitalian', l'italiano è l'ultima lingua (Principale)
+  \usepackage[english,italian]{babel}
+\else
+  % Altrimenti (Default), l'inglese è l'ultima lingua (Principale)
+  \usepackage[italian,english]{babel}
+\fi
+% --------------------------------
+
 
 %define commands to print only in a specific language; in text sections use \en{english text} or \it{italian text} to put different language version of same text
 \newcommand{\en}[1]{\iflanguage{english}{#1}{}}   
