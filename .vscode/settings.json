@@ -31,8 +31,7 @@
                 "-file-line-error",
                 "-pdflatex",
                 "-jobname=cv_english",
-                "-outdir=%OUTDIR%",
-                "-c",                   
+                "-outdir=%OUTDIR%",                
                 "%DOC%"
             ],
             "env": {}
@@ -48,8 +47,7 @@
                 "-jobname=cv_italian",
                 "-e",
                 "$pdflatex='pdflatex %O \\def\\makeitalian{1} \\input{%S}'",
-                "-outdir=%OUTDIR%",
-                "-c",                   
+                "-outdir=%OUTDIR%",            
                 "%DOC%"
             ],
             "env": {}
