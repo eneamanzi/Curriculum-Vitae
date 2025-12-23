@@ -186,6 +186,44 @@
   ],
   "projects": [
     {
+      "name": {
+        "it": "Architettura Microservizi IoT Event-Driven (Kafka + Kong)",
+        "en": "Event-Driven IoT Microservices Architecture (Kafka + Kong)"
+      },
+      "course": {
+        "it": "Cloud Computing Technologies (A.A. 2025/2026)",
+        "en": "Cloud Computing Technologies (A.Y. 2025/2026)"
+      },
+      "description": {
+        "it": "Sviluppo di un’infrastruttura cloud-native su Kubernetes per l’ingestione e il monitoraggio IoT, con particolare attenzione a \\textbf{proprietà non funzionali} quali scalabilità, tolleranza ai guasti e sicurezza edge-to-core.",
+        "en": "Development of a cloud-native Kubernetes infrastructure for IoT ingestion and monitoring, with a particular focus on \\textbf{non-functional properties} such as scalability, fault tolerance, and edge-to-core security."
+      },
+      "highlights": {
+        "it": [
+          "Architettura a microservizi basata su \\textbf{Apache Kafka} in modalità KRaft (senza ZooKeeper) per il disaccoppiamento asincrono e la gestione affidabile dei messaggi (\\textit{Zero Data Loss}).",
+          "Integrazione di \\textbf{Kong API Gateway} per implementare il pattern \\textit{Gateway Offloading}, centralizzando all'edge autenticazione (API Key), Rate Limiting e Load Balancing.",
+          "Storage layer ottimizzato su \\textbf{MongoDB} tramite \\textbf{Time Series Collections} e compressione ibrida (LZ4/Zstd) per massimizzare l'efficienza dello storage e le performance analitiche.",
+          "Orchestrazione \\textbf{Kubernetes} completa gestita via \\textbf{Helm}, con scalabilità automatica (HPA) e sicurezza avanzata (Secrets, TLS/SASL) per soddisfare i requisiti non funzionali."
+        ],
+        "en": [
+          "Microservices architecture based on \\textbf{Apache Kafka} in KRaft mode (ZooKeeper-less) for asynchronous decoupling and reliable message handling (\\textit{Zero Data Loss}).",
+          "Integration of \\textbf{Kong API Gateway} to implement the \\textit{Gateway Offloading} pattern, centralizing Authentication (API Key), Rate Limiting, and Load Balancing at the edge.",
+          "Storage layer optimized on \\textbf{MongoDB} using \\textbf{Time Series Collections} and hybrid compression (LZ4/Zstd) to maximize storage efficiency and analytical performance.",
+          "Full \\textbf{Kubernetes} orchestration managed via \\textbf{Helm}, featuring automatic scalability (HPA) and advanced security (Secrets, TLS/SASL) to meet non-functional requirements."
+        ]
+      },
+      "keywords": [
+        "Kubernetes",
+        "Kafka (Strimzi)",
+        "Kong Gateway",
+        "MongoDB",
+        "Helm",
+        "Python",
+        "Docker"
+      ],
+      "url": "https://github.com/eneamanzi/k8s-kafka-kong"
+    },
+    {
       "name": { "en": "FTP Client and Server", "it": "Client e Server FTP" },
       "course": { "en": "Computer Networks Course Project (A.Y. 2022-2023)", "it": "Progetto del corso di Reti di Calcolatori (A.A. 2022-2023)" },
       "description": {
