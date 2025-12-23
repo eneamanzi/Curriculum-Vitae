@@ -1,0 +1,239 @@
+{
+  "basics": {
+    "name": "Enea",
+    "surname": "Manzi",
+    "label": "Curriculum Vitae",
+    "email": "enea.manzi@gmail.com",
+    "phone": "(+39) 333 132 6901",
+    "url": "eneamanzi.github.io",
+    "born": "07/07/2002",
+    "location": {
+      "address": "Bellano, 23822, Italy",
+      "city": "Bellano",
+      "region": "LC",
+      "countryCode": "IT"
+    },
+    "profiles": [
+      { "network": "LinkedIn", "username": "eneamanzi", "url": "https://linkedin.com/in/eneamanzi" },
+      { "network": "GitHub", "username": "eneamanzi", "url": "https://github.com/eneamanzi" },
+      { "network": "WhatsApp", "username": "3331326901", "url": "" }
+    ],
+    "image": "img/cv_pic_resized"
+  },
+  "work": [
+    {
+      "name": {
+        "en": "SESAR Lab, University of Milan",
+        "it": "SESAR Lab, Università degli Studi di Milano"
+      },
+      "location": { "en": "Milan, IT", "it": "Milano, IT" },
+      "startDate": "03/2024",
+      "endDate": "09/2024",
+      "position": {
+        "en": "Curricular Internship for Bachelor’s Thesis",
+        "it": "Tirocinio Curricolare Interno per Tesi Triennale"
+      },
+      "summary": {
+        "en": "Secure Service-oriented Architectures Research Lab (SESAR Lab)",
+        "it": "Secure Service-oriented Architectures Research Lab (SESAR Lab)"
+      },
+      "highlights": {
+        "en": [
+          "Analyzed existing verification and monitoring solutions in distributed environments and contributed to the design and implementation of the Assurance Engine (a \\textbf{Rust}-based assurance framework for distributed systems deployed on \\textbf{Kubernetes})",
+          "Extended the existing framework to enable integration with \\textbf{Elasticsearch}, used as the backend for data collection and querying.",
+          "Developed and tested \\textbf{formal} contracts, based on metrics, for the automated verification of \\textbf{non-functional properties (NFP)} — including the \\textbf{CIA triad}, \\textbf{reliability}, \\textbf{scalability}, and \\textbf{performance} in distributed and microservices architectures.",
+          "Implemented \\textbf{REST APIs} to expose the engine's functionalities."
+        ],
+        "it": [
+          "Analizzato le soluzioni esistenti di verifica e monitoraggio in ambienti distribuiti e contribuito alla progettazione e all'implementazione dell'Assurance Engine (un framework di \\textit{Assurance} basato su \\textbf{Rust} per sistemi distribuiti e deployati su \\textbf{Kubernetes})",
+          "Esteso il framework esistente per consentire l'integrazione con \\textbf{Elasticsearch}, utilizzato come backend per la raccolta e la interrogazione dei dati.",
+          "Sviluppato e testato \\textbf{contratti formali}, basati su metriche, per la verifica automatizzata di \\textbf{proprietà non funzionali (PNF)} — inclusi la \\textbf{triade CIA}, l'\\textbf{affidabilità} (\\textbf{reliability}), la \\textbf{scalabilità} (\\textbf{scalability}) e le \\textbf{prestazioni} (\\textbf{performance}) in architetture distribuite e a microservizi.",
+          "Implementato \\textbf{API REST} per esporre le funzionalità dell'engine."
+        ]
+      }
+    },
+    {
+      "name": "DaTrik Solutions",
+      "location": { "en": "Casargo, IT", "it": "Casargo, LC" },
+      "startDate": "01/2020",
+      "endDate": "02/2020",
+      "position": {
+        "en": "WBL: web developer",
+        "it": "PCTO scolastico: programmatore web"
+      },
+      "summary": {
+        "en": "High school work-based-learning",
+        "it": "Percorsi per le Competenze Trasversali e per l'Orientamento (PCTO) durante la scuola superiore"
+      },
+      "highlights": {
+        "en": [
+          "Work Based Learning (WBL): development of a web application.",
+          "Technologies used: \\textbf{HTML}, \\textbf{JavaScript}, \\textbf{jQuery}"
+        ],
+        "it": [
+          "Sviluppo di un applicativo web",
+          "Tecnologie usate: \\textbf{HTML}, \\textbf{JavaScript}, \\textbf{jQuery}"
+        ]
+      }
+    }
+  ],
+  "education": [
+    {
+      "institution": {
+        "en": "University of Milan",
+        "it": "Università degli Studi di Milano"
+      },
+      "location": { "en": "Milan, IT", "it": "Milano, IT" },
+      "startDate": "09/2024",
+      "endDate": "10/2026",
+      "studyType": { "en": "Master's Degree", "it": "Laurea Magistrale" },
+      "area": { "en": "Cyber Security", "it": "Sicurezza Informatica" },
+      "thesis": {
+        "title": {
+            "en": "Designed and implemented an API Security Assurance framework aligned with CIS Safeguards.",
+            "it": "Progettazione e implementazione di un sistema di assurance per API basato su CIS Safeguards."
+        },
+        "supervisors": "Marco Anisetti, Claudio Agostino Ardagna"
+      },
+      "score": {
+        "en": "Expected Graduation: 10/2026",
+        "it": "Voto: in-corso"
+      }
+    },
+    {
+      "institution": {
+        "en": "University of Milan",
+        "it": "Università degli Studi di Milano"
+      },
+      "location": { "en": "Milan, IT", "it": "Milano, IT" },
+      "startDate": "09/2021",
+      "endDate": "10/2024",
+      "studyType": { "en": "Bachelor's Degree", "it": "Laurea Triennale" },
+      "area": { "en": "System and Network Security", "it": "Sicurezza dei Sistemi e delle Reti" },
+      "thesis": {
+        "title": {
+            "en": "Design and Implementation of a Framework for Evaluating Distributed System",
+            "it": "Design e sviluppo di una soluzione per la valutazione di sistemi distribuiti"
+        },
+        "supervisors": "Marco Anisetti, Filippo Berto"
+      },
+      "score": {
+        "en": "Final Grade: 110/110 cum laude",
+        "it": "Voto: 110/110 cum laude"
+      }
+    },
+    {
+      "institution": "IIS Badoni",
+      "location": { "en": "Lecco, IT", "it": "Lecco, LC" },
+      "startDate": "09/2016",
+      "endDate": "06/2021",
+      "studyType": { "en": "High School Diploma", "it": "Diploma Superiore" },
+      "area": { "en": "Computer Science", "it": "Informatica e Telecomunicazioni" },
+      "score": {
+        "en": "Final Grade: 93/100",
+        "it": "Voto: 93/100"
+      }
+    }
+  ],
+  "skills": [
+    {
+      "name": { "en": "Programming Languages", "it": "Linguaggi di Programmazione" },
+      "keywords": [ "\\textsl{C}", "\\textsl{Java}", "\\textsl{Python}", "\\textsl{SQL}", "Web (\\textsl{HTML}, \\textsl{JavaScript/Node.js})", "OOP Concepts", "low-level programming" ]
+    },
+    {
+      "name": { "en": "Database", "it": "Database" },
+      "keywords": [ "\\textsl{MySQL}", { "en": "Database Design, Implementation and Adminsitration", "it": "Progettazione, Implementazione e Amministrazione di Database" } ]
+    },
+    {
+      "name": { "en": "Architectures \\& Software", "it": "Architetture e Software" },
+      "keywords": [ "\\textsl{Docker}", "\\textsl{Kubernetes}", { "en": "microservices architectures", "it": "architetture a microservizi" }, "REST API", "Git", "Kafka", "Kong API Gateway" ]
+    },
+    {
+      "name": { "en": "Operating Systems", "it": "Sistemi Operativi" },
+      "keywords": [ { "en": "Fresh OS installation", "it": "Installazione OS (nuova)" }, { "en": "Linux Administration and Shell", "it": "Amministrazione Linux e Shell" }, "Windows" ]
+    },
+    {
+      "name": { "en": "Networking \\& Security", "it": "Networking e Sicurezza" },
+      "keywords": [ { "en": "Network Protocols", "it": "Protocolli di Rete" }, { "en": "ICT Network Security Risk", "it": "Rischio di Sicurezza delle Reti ICT" }, { "en": "Secure Coding Practices", "it": "Pratiche di Codifica Sicura" } ]
+    },
+    {
+      "name": { "en": "Tools", "it": "Strumenti" },
+      "keywords": [ "Visual Studio Code", "GitHub" ]
+    },
+    {
+      "name": { "en": "Soft Skills", "it": "Competenze Trasversali" },
+      "keywords": [
+        { "en": "\\textbf{Thinking}: analytically, critically, proactively", "it": "\\textbf{Pensiero}: analitico, critico, proattivo" },
+        { "en": "\\textbf{Problems}: address problems critically, solve problems/create solutions", "it": "\\textbf{Problemi}: affrontare i problemi in modo critico, risolvere problemi/creare soluzioni" },
+        { "en": "\\textbf{Communication}: cooperate with colleagues, work in teams, manage teamwork", "it": "\\textbf{Comunicazione}: collaborare con i colleghi, lavorare in team, gestire il lavoro di squadra" },
+        { "en": "\\textbf{Others}: demonstrate curiosity, cope with stress, prioritise tasks", "it": "\\textbf{Altro}: dimostrare curiosità, affrontare lo stress, dare priorità ai compiti" }
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "language": { "en": "Italian", "it": "Italiano" },
+      "fluency": { "en": "Mother tongue", "it": "Lingua madre" }
+    },
+    {
+      "language": { "en": "English", "it": "Inglese" },
+      "fluency": { "en": "Intermediate", "it": "Intermedio" },
+      "details": {
+        "en": "Listening B2 - Reading B2 - Writing B2 - Spoken Production B2 - Spoken Interaction B2",
+        "it": "Ascolto B2 - Lettura B2 - Scrittura B2 - Produzione orale B2 - Interazione orale B2"
+      }
+    }
+  ],
+  "projects": [
+    {
+      "name": { "en": "FTP Client and Server", "it": "Client e Server FTP" },
+      "course": { "en": "Computer Networks Course Project (A.Y. 2022-2023)", "it": "Progetto del corso di Reti di Calcolatori (A.A. 2022-2023)" },
+      "description": {
+        "en": "Developed a multi-threaded \\textbf{FTP-compliant} client-server application in \\textbf{C} for file transfer, fully interoperable with \\textbf{FileZilla}.",
+        "it": "Sviluppo di un'applicazione client-server \\textbf{FTP-compliant} multi-thread in \\textbf{C} per il trasferimento di file, completamente interoperabile con \\textbf{FileZilla}."
+      },
+      "highlights": {
+        "en": [
+          "Architecture: Multi-threaded server based on \\textbf{Socket Programming} for concurrent session management.",
+          "Data Modes: Native support for both Active (PORT) and Passive (PASV) data transfer modes.",
+          "Protocol Management: Implemented essential \\textit{FTP commands} (e.g., USER, PASS, LIST,RETR, STOR, CWD...)",
+          "\\textbf{Key skills:} \\textbf{C}, \\textbf{socket programming}, \\textbf{multithreading}, \\textbf{network protocols}, \\textbf{FTP}, \\textbf{Git}."
+        ],
+        "it": [
+          "Architettura: Server multi-threaded basato su \\textbf{Socket Programming} per la gestione concorrente delle sessioni.",
+          "Modalità di Trasferimento: Supporto nativo per entrambe le modalità di trasferimento dati Attiva (PORT) e Passiva (PASV).",
+          "Gestione del Protocollo: Implementazione dei comandi \\textit{FTP} essenziali (es. USER, PASS, LIST, RETR, STOR, CWD...).",
+          "\\textbf{Competenze chiave:} \\textbf{C}, \\textbf{socket programming}, \\textbf{multithreading}, \\textbf{protocolli di rete}, \\textbf{FTP}, \\textbf{Git}."
+        ]
+      }
+    },
+    {
+      "name": { "en": "Exhibition Web App", "it": "Web App per Esposizioni" },
+      "course": { "en": "Web and Mobile Programming Course Project (A.Y. 2021-2022)", "it": "Progetto del corso di Programmazione Web e Mobile (A.A. 2021-2022)" },
+      "description": {
+        "en": "Built a dynamic web application serving as a digital portfolio for displaying multimedia content.",
+        "it": "Sviluppo di un'applicazione web dinamica che funge da portfolio digitale per la visualizzazione di contenuti multimediali."
+      },
+      "highlights": {
+        "en": [
+          "Developed the backend with \\textit{Node.js/Express} and the frontend with \\textit{HTML5}, \\textit{CSS3}, \\textit{JavaScript/jQuery}.",
+          "Integrated \\textit{MongoDB} for document-oriented storage and \\textit{AJAX} for asynchronous client-server communication (GET, POST, DELETE).",
+          "Managed source code and collaboration using \\textbf{Git} and \\textbf{GitHub}.",
+          "\\textbf{Key skills:} \\textit{Node.js}, \\textit{Express}, \\textit{MongoDB}, \\textit{AJAX}, \\textit{REST APIs}, \\textit{jQuery}, \\textbf{Git}."
+        ],
+        "it": [
+          "Sviluppo del backend con \\textit{Node.js/Express} e del frontend con \\textit{HTML5}, \\textit{CSS3}, \\textit{JavaScript/jQuery}.",
+          "Integrazione di \\textit{MongoDB} per l'archiviazione orientata ai documenti e di \\textit{AJAX} per la comunicazione asincrona client-server (GET, POST, DELETE).",
+          "Gestione del codice sorgente e della collaborazione utilizzando \\textbf{Git} e \\textbf{GitHub}.",
+          "\\textbf{Competenze chiave:} \\textit{Node.js}, \\textit{Express}, \\textit{MongoDB}, \\textit{AJAX}, \\textit{REST APIs}, \\textit{jQuery}, \\textbf{Git}."
+        ]
+      }
+    }
+  ],
+  "meta": {
+    "gdpr": {
+      "en": "I hereby authorize the use of my personal data in accordance with the GDPR (EU Regulation 2016/679) and the Italian Legislative Decree n. 101/2018.",
+      "it": "Autorizzo il trattamento dei dati personali presenti nel CV ai sensi del D.Lgs. 2018/101 e del GDPR (Regolamento UE 2016/679)."
+    }
+  }
+}

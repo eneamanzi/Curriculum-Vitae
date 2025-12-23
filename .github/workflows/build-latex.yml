@@ -1,0 +1,101 @@
+name: Build LaTeX Documents
+
+on:
+  push:
+    branches: [ main, master ]
+    paths:
+      - 'cv.tex'
+      - 'cover_letter.tex'
+      - 'data.json'
+      - 'sections/**'
+      - '.github/**'
+  pull_request:
+    branches: [ main, master ]
+    paths:
+      - 'cv.tex'
+      - 'cover_letter.tex'
+      - 'data.json'
+      - 'sections/**'
+      - '.github/**'
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    # --- 1. COMPILAZIONE INGLESE ---
+    - name: Compile CV English
+      uses: xu-cheng/latex-action@v3
+      with:
+        root_file: cv.tex
+        args: -lualatex -interaction=nonstopmode -file-line-error -jobname=cv_english
+
+    - name: Compile Cover Letter English
+      uses: xu-cheng/latex-action@v3
+      with:
+        root_file: cover_letter.tex
+        args: -lualatex -interaction=nonstopmode -file-line-error -jobname=cover_letter_english
+
+    # --- 2. PREPARAZIONE ITALIANO ---
+    - name: Activate Italian Flag
+      run: |
+        sed -i '1s/^/\\def\\makeitalian{1}\n/' cv.tex
+        sed -i '1s/^/\\def\\makeitalian{1}\n/' cover_letter.tex
+
+    # --- 3. COMPILAZIONE ITALIANO ---
+    - name: Compile CV Italian
+      uses: xu-cheng/latex-action@v3
+      with:
+        root_file: cv.tex
+        args: -lualatex -interaction=nonstopmode -file-line-error -jobname=cv_italian
+
+    - name: Compile Cover Letter Italian
+      uses: xu-cheng/latex-action@v3
+      with:
+        root_file: cover_letter.tex
+        args: -lualatex -interaction=nonstopmode -file-line-error -jobname=cover_letter_italian
+
+    # ========================================================
+    # AZIONE 1: AGGIORNA IL BRANCH 'pdf-release' (TUTTI I FILE)
+    # ========================================================
+    - name: Prepare files for PDF-Release
+      run: |
+        mkdir -p public_release
+        # Copia TUTTI i PDF (CV + Cover Letters)
+        cp cv_english.pdf cv_italian.pdf cover_letter_english.pdf cover_letter_italian.pdf public_release/
+
+    - name: Deploy to Local Branch (pdf-release)
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        folder: public_release
+        branch: pdf-release
+        clean: true
+
+    # ========================================================
+    # AZIONE 2: INVIA AL SITO WEB (SOLO I CV)
+    # ========================================================
+    - name: Prepare CVs for Website
+      run: |
+        mkdir -p website_upload
+        # Copia SOLO i CV (Niente Cover Letters)
+        cp cv_english.pdf cv_italian.pdf website_upload/
+
+    - name: Push CVs to Website Repository
+      uses: cpina/github-action-push-to-another-repository@main
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }} # Richiede il Token Segreto
+      with:
+        source-directory: 'website_upload'
+        destination-github-username: 'eneamanzi'
+        destination-repository-name: 'eneamanzi.github.io'
+        user-email: 'enea.manzi@gmail.com'
+        target-branch: 'main'          # Il branch principale del tuo sito
+        target-directory: 'assets/pdf' 

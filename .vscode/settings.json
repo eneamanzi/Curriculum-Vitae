@@ -1,0 +1,56 @@
+{
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "Compila TUTTO (ITA + ENG)",
+            "tools": [
+                "build_english",
+                "build_italian"
+            ]
+        },
+        {
+            "name": "Solo Inglese",
+            "tools": [
+                "build_english"
+            ]
+        },
+        {
+            "name": "Solo Italiano",
+            "tools": [
+                "build_italian"
+            ]
+        }
+    ],
+
+    "latex-workshop.latex.tools": [
+        {
+            "name": "build_english",
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-lualatex",
+                "-jobname=%DOCFILE%_english", 
+                "-outdir=%OUTDIR%",                
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "build_italian",
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-lualatex",
+                "-jobname=%DOCFILE%_italian",
+                "-e",
+                "$lualatex='lualatex %O \\def\\makeitalian{1} \\input{%S}'",
+                "-outdir=%OUTDIR%",            
+                "%DOC%"
+            ],
+            "env": {}
+        }
+    ]
+}

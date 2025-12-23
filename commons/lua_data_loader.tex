@@ -1,0 +1,248 @@
+\usepackage{luacode}
+\usepackage{calligra}
+
+\begin{luacode*}
+  require("lualibs")
+  
+  -- 1. Caricamento JSON (Fix per lualibs su Windows: usa tolua)
+  local f = io.open("data.json", "r")
+  local content = "{}"
+  if f then
+      content = f:read("*all")
+      f:close()
+  else
+      tex.print("\\textbf{WARNING: data.json not found!}")
+  end
+  
+  local data = utilities.json.tolua(content) or {}
+
+  -- 2. Helper per la lingua
+  function get_text(node)
+      if not node then return "" end
+      if type(node) == "string" then return node end
+      
+      -- Controlla se la macro \makeitalian è definita
+      local is_italian = token.get_macro("makeitalian") ~= nil
+      
+      if is_italian and node.it then
+          return node.it
+      else
+          return node.en or ""
+      end
+  end
+
+  -- Helper per stampare liste puntate (itemize)
+  function print_list(list_node)
+      local items = get_text(list_node)
+      if type(items) == "table" then
+          tex.print("\\begin{itemize}")
+          for _, item in ipairs(items) do
+              tex.print("\\item " .. get_text(item))
+          end
+          tex.print("\\end{itemize}")
+      else
+          tex.print(items)
+      end
+  end
+
+  -- 3. DATI PERSONALI
+  function load_personal_data()
+      local b = data.basics
+      if not b then return end
+      
+      tex.print("\\name{" .. b.name .. "}{" .. b.surname .. "}")
+      tex.print("\\title{" .. b.label .. "}")
+      tex.print("\\born{" .. b.born .. "}")
+      
+      if b.location then
+         tex.print("\\address{" .. b.location.address .. "}{}{}")
+      end
+      
+      tex.print("\\phone[mobile]{" .. b.phone .. "}")
+      tex.print("\\email{" .. b.email .. "}")
+      tex.print("\\homepage{" .. b.url .. "}")
+      
+      if b.profiles then
+         for _, p in ipairs(b.profiles) do
+             if p.network:lower() == "linkedin" then tex.print("\\social[linkedin]{" .. p.username .. "}") end
+             if p.network:lower() == "github"   then tex.print("\\social[github]{" .. p.username .. "}") end
+             if p.network:lower() == "whatsapp" then tex.print("\\social[whatsapp]{" .. p.username .. "}") end
+         end
+      end
+      
+      if b.image then
+         tex.print("\\photo[64pt][2pt]{" .. b.image .. "}")
+      end
+  end
+
+  -- 4. ESPERIENZA LAVORATIVA (Work)
+  function print_work()
+      if not data.work then return end
+      for _, w in ipairs(data.work) do
+          
+          tex.print("\\cventry{" .. w.startDate .. " - " .. w.endDate .. "}")
+          tex.print("{" .. get_text(w.position) .. "}")
+          tex.print("{" .. get_text(w.name) .. "}")      
+          
+          -- MODIFICA: Aggiunte parentesi tonde ( ) intorno alla location
+          tex.print("{(" .. get_text(w.location) .. ")}")  
+          
+          tex.print("{}") 
+          
+          tex.print("{") 
+          local summary = get_text(w.summary)
+          if summary ~= "" then
+              tex.print("\\textit{" .. summary .. "}")
+          end
+          print_list(w.highlights)
+          tex.print("}")
+      end
+  end
+
+  -- 5. ISTRUZIONE (Education)
+  function print_education()
+      if not data.education then return end
+      for _, edu in ipairs(data.education) do
+          
+          tex.print("\\cventry{" .. edu.startDate .. " - " .. edu.endDate .. "}")
+          tex.print("{" .. get_text(edu.studyType) .. " in " .. get_text(edu.area) .. "}")
+          tex.print("{" .. get_text(edu.institution) .. "}") 
+          
+          -- MODIFICA: Aggiunte parentesi tonde ( ) intorno alla location
+          tex.print("{(" .. get_text(edu.location) .. ")}")    
+          
+          tex.print("{}") 
+          
+          tex.print("{")
+          if edu.thesis then
+             local t_label = (token.get_macro("makeitalian") ~= nil) and "Tesi:" or "Thesis:"
+             tex.print("\\textit{\\textbf{" .. t_label .. "}} \"" .. get_text(edu.thesis.title) .. "\"")
+             
+             if edu.thesis.supervisors then
+                 local s_label = (token.get_macro("makeitalian") ~= nil) and "Supervisori:" or "Supervisors:"
+                 tex.print("\\newline \\textit{\\textbf{" .. s_label .. "}} " .. edu.thesis.supervisors)
+             end
+             tex.print("\\\\") -- A capo
+          end
+          
+          local score_txt = get_text(edu.score)
+          if score_txt ~= "" then
+             tex.print("\\textit{\\textbf{" .. score_txt .. "}}")
+          end
+          tex.print("}")
+      end
+  end
+
+  -- 6. SKILLS & SOFT SKILLS
+  function print_skills()
+      if not data.skills then return end
+      
+      for _, s in ipairs(data.skills) do
+          local name = get_text(s.name)
+          
+          if name == "Soft Skills" or name == "Competenze Trasversali" then
+              tex.print("\\section[\\faHandsHelping]{" .. name .. "}")
+              
+              local keys = s.keywords
+              for _, k in ipairs(keys) do
+                  local text = get_text(k)
+                  local label, content = text:match("^(.-):%s*(.*)")
+                  
+                  if label and content then
+                      label = label:gsub("\\textbf{", ""):gsub("}", "")
+                      tex.print("\\cvitem{" .. label .. "}{" .. content .. "}")
+                  else
+                      tex.print("\\cvitem{}{" .. text .. "}")
+                  end
+              end
+          else
+              local keyword_str = ""
+              local keys = s.keywords
+              for i, k in ipairs(keys) do
+                  keyword_str = keyword_str .. get_text(k)
+                  if i < #keys then keyword_str = keyword_str .. ", " end
+              end
+              tex.print("\\cvitem{" .. name .. "}{" .. keyword_str .. "}")
+          end
+      end
+  end
+
+  -- 7. LINGUE
+  function print_languages()
+      if not data.languages then return end
+      for _, l in ipairs(data.languages) do
+          local comment = ""
+          if l.details then
+              comment = get_text(l.details)
+          end
+          tex.print("\\cvitemwithcomment{" .. get_text(l.language) .. "}{" .. get_text(l.fluency) .. "}{" .. comment .. "}")
+      end
+  end
+
+  -- 8. PROGETTI
+  function print_projects()
+      if not data.projects then return end
+      for _, p in ipairs(data.projects) do
+          tex.print("\\cvitem{\\textbf{" .. get_text(p.name) .. "}}")
+          tex.print("{")
+          tex.print("\\textit{" .. get_text(p.course) .. "} \\newline ")
+          tex.print(get_text(p.description))
+          print_list(p.highlights)
+          tex.print("}")
+      end
+  end
+
+  -- 9. GDPR / FOOTER
+  function print_gdpr()
+      -- Controlla se esiste il campo meta.gdpr
+      if data.meta and data.meta.gdpr then
+          local text = get_text(data.meta.gdpr)
+          
+          -- Spinge il testo in fondo alla pagina se c'è spazio
+          tex.print("\\vfill") 
+          
+          -- Crea un piccolo paragrafo centrato
+          tex.print("\\begin{center}")
+          tex.print("\\footnotesize") -- Testo piccolo
+          tex.print("\\textcolor{color2}{" .. text .. "}") -- Usa il colore secondario (grigio) del tema
+          tex.print("\\end{center}")
+      end
+  end
+
+  -- 10. FIRMA E DATA (Generata con font CALLIGRA)
+  function print_signature()
+      if data.basics.name and data.basics.surname then
+          tex.print("\\vspace{1.5cm}") 
+          
+          tex.print("\\noindent")
+          tex.print("\\begin{flushright}")
+          
+          -- Luogo e Data
+          local city = ""
+          if data.basics.location and data.basics.location.city then
+             city = get_text(data.basics.location.city) .. ", "
+          end
+          tex.print("\\textit{" .. city .. "\\today} \\\\[0.5em]") 
+          
+          -- FIRMA CALLIGRAFICA
+          -- Usiamo \huge perché il font Calligra è molto piccolo di base
+          tex.print("{\\huge\\calligra " .. data.basics.name .. " " .. data.basics.surname .. "}")
+          
+          tex.print("\\end{flushright}")
+      end
+  end
+
+
+\end{luacode*}
+
+% ============================================================
+% === DEFINIZIONE COMANDI LATEX ===
+% ============================================================
+\newcommand{\loadPersonalData}{\directlua{load_personal_data()}}
+\newcommand{\printWorkExperience}{\directlua{print_work()}}
+\newcommand{\printEducation}{\directlua{print_education()}}
+\newcommand{\printSkills}{\directlua{print_skills()}}
+\newcommand{\printLanguages}{\directlua{print_languages()}}
+\newcommand{\printProjects}{\directlua{print_projects()}}
+\newcommand{\printGDPR}{\directlua{print_gdpr()}}
+\newcommand{\printSignature}{\directlua{print_signature()}}
