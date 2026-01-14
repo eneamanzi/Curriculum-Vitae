@@ -191,8 +191,8 @@
         "en": "Event-Driven IoT Microservices Architecture (Kafka + Kong)"
       },
       "course": {
-        "it": "Cloud Computing Technologies (A.A. 2025/2026)",
-        "en": "Cloud Computing Technologies (A.Y. 2025/2026)"
+        "it": "Progetto del corso di Cloud Computing Technologies (A.A. 2025/2026)",
+        "en": "Cloud Computing Technologies Course Project (A.Y. 2025/2026)"
       },
       "description": {
         "it": "Sviluppo di un’infrastruttura cloud-native su Kubernetes per l’ingestione e il monitoraggio IoT, con particolare attenzione a \\textbf{proprietà non funzionali} quali scalabilità, tolleranza ai guasti e sicurezza edge-to-core.",
