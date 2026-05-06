@@ -1,3 +1,5 @@
+**English version** | [Versione italiana](README.it.md)
+
 # [IT / EN] Curriculum Vitae - Enea Manzi
 
 This repository contains the source code for my Curriculum Vitae and Cover Letter.
