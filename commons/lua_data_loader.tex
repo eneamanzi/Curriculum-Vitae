@@ -133,6 +133,19 @@
       end
   end
 
+  -- 5.1 PUBLICATIONS
+  function print_publications()
+      if not data.publications then return end
+      for _, p in ipairs(data.publications) do
+          tex.print("\\cvitem{\\textbf{" .. get_text(p.title) .. "}}")
+          tex.print("{")
+          tex.print(p.authors .. " \\newline ")
+          tex.print("\\textit{" .. get_text(p.venue) .. " (" .. get_text(p.status) .. ")} \\newline ")
+          tex.print(get_text(p.abstract))
+          tex.print("}")
+      end
+  end
+
   -- 6. SKILLS & SOFT SKILLS
   function print_skills()
       if not data.skills then return end
@@ -241,6 +254,7 @@
 \newcommand{\loadPersonalData}{\directlua{load_personal_data()}}
 \newcommand{\printWorkExperience}{\directlua{print_work()}}
 \newcommand{\printEducation}{\directlua{print_education()}}
+\newcommand{\printPublications}{\directlua{print_publications()}}
 \newcommand{\printSkills}{\directlua{print_skills()}}
 \newcommand{\printLanguages}{\directlua{print_languages()}}
 \newcommand{\printProjects}{\directlua{print_projects()}}

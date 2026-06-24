@@ -70,6 +70,9 @@ rubber.cache
 # latexrun
 latex.out/
 
+# latexmk (aux_dir set in .latexmkrc)
+.temp/
+
 ## Auxiliary and intermediate files from other packages:
 # algorithms
 *.alg

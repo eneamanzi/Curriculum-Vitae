@@ -14,19 +14,155 @@
       "countryCode": "IT"
     },
     "profiles": [
-      { "network": "LinkedIn", "username": "eneamanzi", "url": "https://linkedin.com/in/eneamanzi" },
-      { "network": "GitHub", "username": "eneamanzi", "url": "https://github.com/eneamanzi" },
-      { "network": "WhatsApp", "username": "3331326901", "url": "" }
+      {
+        "network": "LinkedIn",
+        "username": "eneamanzi",
+        "url": "https://linkedin.com/in/eneamanzi"
+      },
+      {
+        "network": "GitHub",
+        "username": "eneamanzi",
+        "url": "https://github.com/eneamanzi"
+      },
+      {
+        "network": "WhatsApp",
+        "username": "3331326901",
+        "url": ""
+      }
     ],
     "image": "img/cv_pic_resized"
   },
+  "education": [
+    {
+      "institution": {
+        "en": "University of Milan",
+        "it": "Università degli Studi di Milano"
+      },
+      "location": {
+        "en": "Milan, IT",
+        "it": "Milano, IT"
+      },
+      "startDate": "09/2024",
+      "endDate": "07/2026",
+      "studyType": {
+        "en": "Master's Degree",
+        "it": "Laurea Magistrale"
+      },
+      "area": {
+        "en": "Cyber Security",
+        "it": "Sicurezza Informatica"
+      },
+      "thesis": {
+        "title": {
+          "en": "Design and Implementation of an API-Agnostic Tool for REST API Security Assurance",
+          "it": "Progettazione e Implementazione di un Tool API-Agnostico per la Security Assurance di API REST."
+        },
+        "supervisors": "Marco Anisetti, Claudio Agostino Ardagna"
+      },
+      "score": {
+        "en": "Expected Graduation: 07/2026",
+        "it": "Laurea prevista: 07/2026"
+      }
+    },
+    {
+      "institution": {
+        "en": "University of Milan",
+        "it": "Università degli Studi di Milano"
+      },
+      "location": {
+        "en": "Milan, IT",
+        "it": "Milano, IT"
+      },
+      "startDate": "09/2021",
+      "endDate": "10/2024",
+      "studyType": {
+        "en": "Bachelor's Degree",
+        "it": "Laurea Triennale"
+      },
+      "area": {
+        "en": "System and Network Security",
+        "it": "Sicurezza dei Sistemi e delle Reti"
+      },
+      "thesis": {
+        "title": {
+          "en": "Design and Implementation of a Framework for Evaluating Distributed System",
+          "it": "Design e sviluppo di una soluzione per la valutazione di sistemi distribuiti"
+        },
+        "supervisors": "Marco Anisetti, Filippo Berto"
+      },
+      "score": {
+        "en": "Final Grade: 110/110 cum laude",
+        "it": "Voto: 110/110 cum laude"
+      }
+    },
+    {
+      "institution": "IIS Badoni",
+      "location": {
+        "en": "Lecco, IT",
+        "it": "Lecco, LC"
+      },
+      "startDate": "09/2016",
+      "endDate": "06/2021",
+      "studyType": {
+        "en": "High School Diploma",
+        "it": "Diploma Superiore"
+      },
+      "area": {
+        "en": "Computer Science",
+        "it": "Informatica e Telecomunicazioni"
+      },
+      "score": {
+        "en": "Final Grade: 93/100",
+        "it": "Voto: 93/100"
+      }
+    }
+  ],
   "work": [
     {
       "name": {
         "en": "SESAR Lab, University of Milan",
         "it": "SESAR Lab, Università degli Studi di Milano"
       },
-      "location": { "en": "Milan, IT", "it": "Milano, IT" },
+      "location": {
+        "en": "Milan, IT",
+        "it": "Milano, IT"
+      },
+      "startDate": "12/2025",
+      "endDate": "07/2026",
+      "position": {
+        "en": "Curricular Internship for Master's Thesis",
+        "it": "Tirocinio Curricolare Interno per Tesi Magistrale"
+      },
+      "summary": {
+        "en": "Secure Service-oriented Architectures Research Lab (SESAR Lab)",
+        "it": "Secure Service-oriented Architectures Research Lab (SESAR Lab)"
+      },
+      "highlights": {
+        "en": [
+          "Designed and implemented \\textbf{APIGuard Assurance}, an \\textbf{API-agnostic, contract-driven} tool for REST API security assurance, deriving target knowledge from the \\textbf{OpenAPI Specification (OAS)} and a deployment configuration, with no hardcoded references to any system.",
+          "Organized security checks into a taxonomy of eight domains, aligned with the NIST SP 800-228 guidelines for API security, structuring assessment coverage by risk category.",
+          "Designed \\textit{specified oracles}, evaluation criteria derived from the domain-specific knowledge of each security control, to automatically assess violations, traceable to \\textbf{OWASP} categories and \\textbf{CWE} codes.",
+          "Implemented a \\textbf{deterministic assessment engine} based on a \\textbf{DAG scheduler} to resolve dependencies between checks, exposing \\textbf{semantic exit codes} for \\textbf{CI/CD} integration.",
+          "Validated the tool against a real-world target, \\textbf{Forgejo} exposed through the \\textbf{Kong} API gateway, confirming correct detection of security violations and deterministic, reproducible results."
+        ],
+        "it": [
+          "Progettato e implementato \\textbf{APIGuard Assurance}, un tool \\textbf{API-agnostico e contract-driven} per la security assurance di API REST, derivando la conoscenza del target da \\textbf{OpenAPI Specification (OAS)} e configurazione di deployment, senza riferimenti hardcoded a sistemi specifici.",
+          "Organizzate le verifiche di sicurezza in una tassonomia di otto domini, allineata alle linee guida NIST SP 800-228 per la sicurezza delle API, strutturando la copertura dell'assessment per categoria di rischio.",
+          "Progettati \\textit{specified oracles}, criteri di valutazione derivati dalla conoscenza del dominio di ciascun controllo di sicurezza, per valutare automaticamente le violazioni, tracciabili a categorie \\textbf{OWASP} e codici \\textbf{CWE}.",
+          "Implementato un \\textbf{assessment engine deterministico} basato su uno \\textbf{scheduler a DAG} per la risoluzione delle dipendenze tra le verifiche, esponendo \\textbf{exit code semantici} per l'integrazione \\textbf{CI/CD}.",
+          "Validato il tool contro un target reale, \\textbf{Forgejo} esposto tramite il gateway \\textbf{Kong}, confermando la corretta rilevazione di violazioni di sicurezza e risultati deterministici e riproducibili."
+        ]
+      }
+    },
+    {
+      "name": {
+        "en": "SESAR Lab, University of Milan",
+        "it": "SESAR Lab, Università degli Studi di Milano"
+      },
+      "location": {
+        "en": "Milan, IT",
+        "it": "Milano, IT"
+      },
       "startDate": "03/2024",
       "endDate": "09/2024",
       "position": {
@@ -41,20 +177,23 @@
         "en": [
           "Analyzed existing verification and monitoring solutions in distributed environments and contributed to the design and implementation of the Assurance Engine (a \\textbf{Rust}-based assurance framework for distributed systems deployed on \\textbf{Kubernetes})",
           "Extended the existing framework to enable integration with \\textbf{Elasticsearch}, used as the backend for data collection and querying.",
-          "Developed and tested \\textbf{formal} contracts, based on metrics, for the automated verification of \\textbf{non-functional properties (NFP)} — including the \\textbf{CIA triad}, \\textbf{reliability}, \\textbf{scalability}, and \\textbf{performance} in distributed and microservices architectures.",
+          "Developed and tested \\textbf{formal} contracts, based on metrics, for the automated verification of \\textbf{non-functional properties (NFP)} -- including the \\textbf{CIA triad}, \\textbf{reliability}, \\textbf{scalability}, and \\textbf{performance} in distributed and microservices architectures.",
           "Implemented \\textbf{REST APIs} to expose the engine's functionalities."
         ],
         "it": [
           "Analizzato le soluzioni esistenti di verifica e monitoraggio in ambienti distribuiti e contribuito alla progettazione e all'implementazione dell'Assurance Engine (un framework di \\textit{Assurance} basato su \\textbf{Rust} per sistemi distribuiti e deployati su \\textbf{Kubernetes})",
           "Esteso il framework esistente per consentire l'integrazione con \\textbf{Elasticsearch}, utilizzato come backend per la raccolta e la interrogazione dei dati.",
-          "Sviluppato e testato \\textbf{contratti formali}, basati su metriche, per la verifica automatizzata di \\textbf{proprietà non funzionali (PNF)} — inclusi la \\textbf{triade CIA}, l'\\textbf{affidabilità} (\\textbf{reliability}), la \\textbf{scalabilità} (\\textbf{scalability}) e le \\textbf{prestazioni} (\\textbf{performance}) in architetture distribuite e a microservizi.",
+          "Sviluppato e testato \\textbf{contratti formali}, basati su metriche, per la verifica automatizzata di \\textbf{proprietà non funzionali (PNF)} -- inclusi la \\textbf{triade CIA}, l'\\textbf{affidabilità} (\\textbf{reliability}), la \\textbf{scalabilità} (\\textbf{scalability}) e le \\textbf{prestazioni} (\\textbf{performance}) in architetture distribuite e a microservizi.",
           "Implementato \\textbf{API REST} per esporre le funzionalità dell'engine."
         ]
       }
     },
     {
       "name": "DaTrik Solutions",
-      "location": { "en": "Casargo, IT", "it": "Casargo, LC" },
+      "location": {
+        "en": "Casargo, IT",
+        "it": "Casargo, LC"
+      },
       "startDate": "01/2020",
       "endDate": "02/2020",
       "position": {
@@ -77,114 +216,45 @@
       }
     }
   ],
-  "education": [
-    {
-      "institution": {
-        "en": "University of Milan",
-        "it": "Università degli Studi di Milano"
-      },
-      "location": { "en": "Milan, IT", "it": "Milano, IT" },
-      "startDate": "09/2024",
-      "endDate": "10/2026",
-      "studyType": { "en": "Master's Degree", "it": "Laurea Magistrale" },
-      "area": { "en": "Cyber Security", "it": "Sicurezza Informatica" },
-      "thesis": {
-        "title": {
-            "en": "Designed and implemented an API Security Assurance framework aligned with CIS Safeguards.",
-            "it": "Progettazione e implementazione di un sistema di assurance per API basato su CIS Safeguards."
-        },
-        "supervisors": "Marco Anisetti, Claudio Agostino Ardagna"
-      },
-      "score": {
-        "en": "Expected Graduation: 10/2026",
-        "it": "Voto: in-corso"
-      }
-    },
-    {
-      "institution": {
-        "en": "University of Milan",
-        "it": "Università degli Studi di Milano"
-      },
-      "location": { "en": "Milan, IT", "it": "Milano, IT" },
-      "startDate": "09/2021",
-      "endDate": "10/2024",
-      "studyType": { "en": "Bachelor's Degree", "it": "Laurea Triennale" },
-      "area": { "en": "System and Network Security", "it": "Sicurezza dei Sistemi e delle Reti" },
-      "thesis": {
-        "title": {
-            "en": "Design and Implementation of a Framework for Evaluating Distributed System",
-            "it": "Design e sviluppo di una soluzione per la valutazione di sistemi distribuiti"
-        },
-        "supervisors": "Marco Anisetti, Filippo Berto"
-      },
-      "score": {
-        "en": "Final Grade: 110/110 cum laude",
-        "it": "Voto: 110/110 cum laude"
-      }
-    },
-    {
-      "institution": "IIS Badoni",
-      "location": { "en": "Lecco, IT", "it": "Lecco, LC" },
-      "startDate": "09/2016",
-      "endDate": "06/2021",
-      "studyType": { "en": "High School Diploma", "it": "Diploma Superiore" },
-      "area": { "en": "Computer Science", "it": "Informatica e Telecomunicazioni" },
-      "score": {
-        "en": "Final Grade: 93/100",
-        "it": "Voto: 93/100"
-      }
-    }
-  ],
-  "skills": [
-    {
-      "name": { "en": "Programming Languages", "it": "Linguaggi di Programmazione" },
-      "keywords": [ "\\textsl{C}", "\\textsl{Java}", "\\textsl{Python}", "\\textsl{SQL}", "Web (\\textsl{HTML}, \\textsl{JavaScript/Node.js})", "OOP Concepts", "low-level programming" ]
-    },
-    {
-      "name": { "en": "Database", "it": "Database" },
-      "keywords": [ "\\textsl{MySQL}", { "en": "Database Design, Implementation and Adminsitration", "it": "Progettazione, Implementazione e Amministrazione di Database" } ]
-    },
-    {
-      "name": { "en": "Architectures \\& Software", "it": "Architetture e Software" },
-      "keywords": [ "\\textsl{Docker}", "\\textsl{Kubernetes}", { "en": "microservices architectures", "it": "architetture a microservizi" }, "REST API", "Git", "Kafka", "Kong API Gateway" ]
-    },
-    {
-      "name": { "en": "Operating Systems", "it": "Sistemi Operativi" },
-      "keywords": [ { "en": "Fresh OS installation", "it": "Installazione OS (nuova)" }, { "en": "Linux Administration and Shell", "it": "Amministrazione Linux e Shell" }, "Windows" ]
-    },
-    {
-      "name": { "en": "Networking \\& Security", "it": "Networking e Sicurezza" },
-      "keywords": [ { "en": "Network Protocols", "it": "Protocolli di Rete" }, { "en": "ICT Network Security Risk", "it": "Rischio di Sicurezza delle Reti ICT" }, { "en": "Secure Coding Practices", "it": "Pratiche di Codifica Sicura" } ]
-    },
-    {
-      "name": { "en": "Tools", "it": "Strumenti" },
-      "keywords": [ "Visual Studio Code", "GitHub" ]
-    },
-    {
-      "name": { "en": "Soft Skills", "it": "Competenze Trasversali" },
-      "keywords": [
-        { "en": "\\textbf{Thinking}: analytically, critically, proactively", "it": "\\textbf{Pensiero}: analitico, critico, proattivo" },
-        { "en": "\\textbf{Problems}: address problems critically, solve problems/create solutions", "it": "\\textbf{Problemi}: affrontare i problemi in modo critico, risolvere problemi/creare soluzioni" },
-        { "en": "\\textbf{Communication}: cooperate with colleagues, work in teams, manage teamwork", "it": "\\textbf{Comunicazione}: collaborare con i colleghi, lavorare in team, gestire il lavoro di squadra" },
-        { "en": "\\textbf{Others}: demonstrate curiosity, cope with stress, prioritise tasks", "it": "\\textbf{Altro}: dimostrare curiosità, affrontare lo stress, dare priorità ai compiti" }
-      ]
-    }
-  ],
-  "languages": [
-    {
-      "language": { "en": "Italian", "it": "Italiano" },
-      "fluency": { "en": "Mother tongue", "it": "Lingua madre" }
-    },
-    {
-      "language": { "en": "English", "it": "Inglese" },
-      "fluency": { "en": "Intermediate", "it": "Intermedio" },
-      "details": {
-        "en": "Listening B2 - Reading B2 - Writing B2 - Spoken Production B2 - Spoken Interaction B2",
-        "it": "Ascolto B2 - Lettura B2 - Scrittura B2 - Produzione orale B2 - Interazione orale B2"
-      }
-    }
-  ],
   "projects": [
+    {
+      "name": {
+        "en": "APIGuard Assurance -- An API-Agnostic Tool for REST API Security Assurance",
+        "it": "APIGuard Assurance -- Un Tool API-Agnostico per la Security Assurance di API REST"
+      },
+      "course": {
+        "en": "Master's Thesis Project (A.Y. 2025/2026)",
+        "it": "Progetto della Tesi Magistrale (A.A. 2025/2026)"
+      },
+      "description": {
+        "en": "A security assessment tool for REST APIs exposed through API gateways, designed to detect semantic vulnerabilities that traditional syntax-based scanners miss, by deriving all target knowledge directly from the OpenAPI Specification.",
+        "it": "Un tool di security assessment per API REST esposte tramite gateway, progettato per rilevare vulnerabilità semantiche che gli scanner tradizionali basati sulla sintassi non individuano, derivando la conoscenza del target direttamente dalla specifica OpenAPI."
+      },
+      "highlights": {
+        "en": [
+          "Built in \\textbf{Python 3.12} with \\textbf{Pydantic} models for runtime data validation and a plugin-style test-discovery mechanism, allowing new security checks to be added without modifying the core engine.",
+          "Verified the engine's own reliability before trusting its security verdicts, enforcing strict static typing (\\textbf{mypy}) and automated quality scanning (\\textbf{ruff}, \\textbf{bandit}, \\textbf{vulture}, \\textbf{pip-audit}) to achieve full docstring coverage on the public API.",
+          "Packaged with \\textbf{Hatch}, verifying byte-reproducible builds (identical SHA-256 wheel hash across runs) and isolating an \\textbf{AGPL-licensed} dependency behind an optional install extra to keep the core package free of copyleft propagation.",
+          "Integrated external security scanners (\\textbf{nuclei}, \\textbf{testssl.sh}, \\textbf{sslyze}) through a hierarchical connector architecture, keeping the core test logic decoupled from how each external tool's output is parsed."
+        ],
+        "it": [
+          "Sviluppato in \\textbf{Python 3.12} con modelli \\textbf{Pydantic} per la validazione dei dati a runtime e un meccanismo di discovery dei test in stile plugin, che consente di aggiungere nuove verifiche senza modificare il core dell'engine.",
+          "Verificata l'affidabilità dell'engine stesso prima di fidarsi dei suoi verdetti di sicurezza, applicando type-checking statico rigoroso (\\textbf{mypy}) e scansione automatizzata di qualità (\\textbf{ruff}, \\textbf{bandit}, \\textbf{vulture}, \\textbf{pip-audit}), raggiungendo una coverage completa delle docstring sull'API pubblica.",
+          "Pacchettizzato con \\textbf{Hatch}, verificando build byte-riproducibili (hash SHA-256 del wheel identico su esecuzioni ripetute) e isolando una dipendenza con licenza \\textbf{AGPL} dietro un extra opzionale, per mantenere il core del package privo di obblighi copyleft.",
+          "Integrati scanner di sicurezza esterni (\\textbf{nuclei}, \\textbf{testssl.sh}, \\textbf{sslyze}) tramite un'architettura di connector gerarchici, mantenendo la logica core dei test disaccoppiata da come viene interpretato l'output di ciascun tool esterno."
+        ]
+      },
+      "keywords": [
+        "Python",
+        "Pydantic",
+        "mypy",
+        "OpenAPI",
+        "Kong",
+        "Docker",
+        "Static Analysis",
+        "Hatch/pyproject.toml"
+      ]
+    },
     {
       "name": {
         "it": "Architettura Microservizi IoT Event-Driven (Kafka + Kong)",
@@ -220,12 +290,17 @@
         "Helm",
         "Python",
         "Docker"
-      ],
-      "url": "https://github.com/eneamanzi/k8s-kafka-kong"
+      ]
     },
     {
-      "name": { "en": "FTP Client and Server", "it": "Client e Server FTP" },
-      "course": { "en": "Computer Networks Course Project (A.Y. 2022-2023)", "it": "Progetto del corso di Reti di Calcolatori (A.A. 2022-2023)" },
+      "name": {
+        "en": "FTP Client and Server",
+        "it": "Client e Server FTP"
+      },
+      "course": {
+        "en": "Computer Networks Course Project (A.Y. 2022-2023)",
+        "it": "Progetto del corso di Reti di Calcolatori (A.A. 2022-2023)"
+      },
       "description": {
         "en": "Developed a multi-threaded \\textbf{FTP-compliant} client-server application in \\textbf{C} for file transfer, fully interoperable with \\textbf{FileZilla}.",
         "it": "Sviluppo di un'applicazione client-server \\textbf{FTP-compliant} multi-thread in \\textbf{C} per il trasferimento di file, completamente interoperabile con \\textbf{FileZilla}."
@@ -246,8 +321,14 @@
       }
     },
     {
-      "name": { "en": "Exhibition Web App", "it": "Web App per Esposizioni" },
-      "course": { "en": "Web and Mobile Programming Course Project (A.Y. 2021-2022)", "it": "Progetto del corso di Programmazione Web e Mobile (A.A. 2021-2022)" },
+      "name": {
+        "en": "Exhibition Web App",
+        "it": "Web App per Esposizioni"
+      },
+      "course": {
+        "en": "Web and Mobile Programming Course Project (A.Y. 2021-2022)",
+        "it": "Progetto del corso di Programmazione Web e Mobile (A.A. 2021-2022)"
+      },
       "description": {
         "en": "Built a dynamic web application serving as a digital portfolio for displaying multimedia content.",
         "it": "Sviluppo di un'applicazione web dinamica che funge da portfolio digitale per la visualizzazione di contenuti multimediali."
@@ -266,6 +347,171 @@
           "\\textbf{Competenze chiave:} \\textit{Node.js}, \\textit{Express}, \\textit{MongoDB}, \\textit{AJAX}, \\textit{REST APIs}, \\textit{jQuery}, \\textbf{Git}."
         ]
       }
+    }
+  ],
+  "publications": [
+    {
+      "type": "article",
+      "status": {
+        "en": "submitted",
+        "it": "sottomesso"
+      },
+      "venue": "ITADATA 2026",
+      "year": "2026",
+      "authors": "Enea Manzi, Marco Anisetti, Claudio A. Ardagna",
+      "title": {
+        "en": "TODO: exact title",
+        "it": "TODO: titolo esatto"
+      },
+      "abstract": {
+        "en": "TODO: draft below, to refine",
+        "it": "TODO: bozza sotto, da rifinire"
+      }
+    }
+  ],
+  "languages": [
+    {
+      "language": {
+        "en": "Italian",
+        "it": "Italiano"
+      },
+      "fluency": {
+        "en": "Mother tongue",
+        "it": "Lingua madre"
+      }
+    },
+    {
+      "language": {
+        "en": "English",
+        "it": "Inglese"
+      },
+      "fluency": {
+        "en": "Intermediate",
+        "it": "Intermedio"
+      },
+      "details": {
+        "en": "Listening B2 - Reading B2 - Writing B2 - Spoken Production B2 - Spoken Interaction B2",
+        "it": "Ascolto B2 - Lettura B2 - Scrittura B2 - Produzione orale B2 - Interazione orale B2"
+      }
+    }
+  ],
+  "skills": [
+    {
+      "name": {
+        "en": "Programming Languages",
+        "it": "Linguaggi di Programmazione"
+      },
+      "keywords": [
+        "\\textsl{C}",
+        "\\textsl{Java}",
+        "\\textsl{Python}",
+        "\\textsl{SQL}",
+        "Web (\\textsl{HTML}, \\textsl{JavaScript/Node.js})",
+        "OOP Concepts",
+        "low-level programming"
+      ]
+    },
+    {
+      "name": {
+        "en": "Database",
+        "it": "Database"
+      },
+      "keywords": [
+        "\\textsl{MySQL}",
+        {
+          "en": "Database Design, Implementation and Adminsitration",
+          "it": "Progettazione, Implementazione e Amministrazione di Database"
+        }
+      ]
+    },
+    {
+      "name": {
+        "en": "Architectures \\& Software",
+        "it": "Architetture e Software"
+      },
+      "keywords": [
+        "\\textsl{Docker}",
+        "\\textsl{Kubernetes}",
+        {
+          "en": "microservices architectures",
+          "it": "architetture a microservizi"
+        },
+        "REST API",
+        "Git",
+        "Kafka",
+        "Kong API Gateway"
+      ]
+    },
+    {
+      "name": {
+        "en": "Operating Systems",
+        "it": "Sistemi Operativi"
+      },
+      "keywords": [
+        {
+          "en": "Fresh OS installation",
+          "it": "Installazione OS (nuova)"
+        },
+        {
+          "en": "Linux Administration and Shell",
+          "it": "Amministrazione Linux e Shell"
+        },
+        "Windows"
+      ]
+    },
+    {
+      "name": {
+        "en": "Networking \\& Security",
+        "it": "Networking e Sicurezza"
+      },
+      "keywords": [
+        {
+          "en": "Network Protocols",
+          "it": "Protocolli di Rete"
+        },
+        {
+          "en": "ICT Network Security Risk",
+          "it": "Rischio di Sicurezza delle Reti ICT"
+        },
+        {
+          "en": "Secure Coding Practices",
+          "it": "Pratiche di Codifica Sicura"
+        }
+      ]
+    },
+    {
+      "name": {
+        "en": "Tools",
+        "it": "Strumenti"
+      },
+      "keywords": [
+        "Visual Studio Code",
+        "GitHub"
+      ]
+    },
+    {
+      "name": {
+        "en": "Soft Skills",
+        "it": "Competenze Trasversali"
+      },
+      "keywords": [
+        {
+          "en": "\\textbf{Thinking}: analytically, critically, proactively",
+          "it": "\\textbf{Pensiero}: analitico, critico, proattivo"
+        },
+        {
+          "en": "\\textbf{Problems}: address problems critically, solve problems/create solutions",
+          "it": "\\textbf{Problemi}: affrontare i problemi in modo critico, risolvere problemi/creare soluzioni"
+        },
+        {
+          "en": "\\textbf{Communication}: cooperate with colleagues, work in teams, manage teamwork",
+          "it": "\\textbf{Comunicazione}: collaborare con i colleghi, lavorare in team, gestire il lavoro di squadra"
+        },
+        {
+          "en": "\\textbf{Others}: demonstrate curiosity, cope with stress, prioritise tasks",
+          "it": "\\textbf{Altro}: dimostrare curiosità, affrontare lo stress, dare priorità ai compiti"
+        }
+      ]
     }
   ],
   "meta": {
