@@ -21,7 +21,9 @@
 % uncomment to suppress automatic page numbering for CVs longer than one page
 
 % adjust the page margins
-\usepackage[hmargin=0.5in,vmargin=10pt]{geometry}                  
+% top margin reduced vs bottom: the contemporary style header band is drawn from the page's
+% top edge down to the photo/name row, so a smaller top margin avoids a large empty colored area
+\usepackage[hmargin=1.5cm,top=1.2cm,bottom=2.5cm]{geometry}
 % the 'contemporary' style looks better with reduced margins; uncomment the line below for increased margin
 %\usepackage[scale=0.75]{geometry}
 
@@ -29,6 +31,22 @@
 \setlength{\hintscolumnwidth}{2.8cm}
 
 %\setlength{\listitemsymbolspace}{10pt}            % set custom spacing between list symbol and text item (influences \cvlistitem and \cvlistdoubleitem)
+
+% increase line spacing slightly (moderncv default has no extra leading)
+\linespread{1.07}\selectfont
+
+% moderncv.cls zeroes itemsep/parsep/topsep for all itemize/enumerate/description lists
+% (\itemhook, "reduced list spacing"); add a bit of breathing room between bullet points
+\makeatletter
+\renewcommand*{\itemhook}{%
+  \@minipagetrue%
+  \@noparlisttrue%
+  \setlength{\topsep}{0pt}%
+  \setlength{\partopsep}{0pt}%
+  \setlength{\parsep}{0pt}%
+  \setlength{\parskip}{0pt}%
+  \setlength{\itemsep}{0.1em}}
+\makeatother
 
 % the 'contemporary' style allows to append additional elements to the head background; uncomment and customize if needed
 %\def\@moderncvheadBackground{
@@ -79,6 +97,102 @@
 % --- CARICA I DATI PERSONALI ---
 \loadPersonalData       % <--- LEGGE DAL JSON
 
+% --- FIX SPAZIATURA INTESTAZIONE ---
+% moderncvheadvii.sty (stile "contemporary") incolla il blocco contatti e il QR code senza
+% nessuno spazio tra loro (\llap{...}\usebox{\makecvheadqrbox}); qui si ridefinisce \makecvhead
+% (copia della definizione originale del package) aggiungendo un \hspace tra i due blocchi.
+\makeatletter
+\renewcommand*{\makecvhead}{%
+  \recomputecvlengths%
+  \@initializebox{\makecvheaddetailsbox}%
+  \if@details%
+    \def\phonesdetails{}%
+    \collectionloop{phones}{%
+      \protected@edef\phonesdetails{\phonesdetails\protect\makenewline\csname\collectionloopkey phonesymbol\endcsname\collectionloopitem}}%
+    \def\socialsdetails{}%
+    \collectionloop{socials}{%
+      \protected@edef\socialsdetails{\socialsdetails\protect\makenewline\csname\collectionloopkey socialsymbol\endcsname\collectionloopitem}}%
+    \savebox{\makecvheaddetailsbox}{%
+      \addressfont\color{headtext}%
+      \if@left\begin{tabular}[b]{@{}r@{}}\fi%
+      \if@right\begin{tabular}[b]{@{}l@{}}\fi%
+        \ifthenelse{\isundefined{\@addressstreet}}{}{\makenewline\addresssymbol\@addressstreet%
+          \ifthenelse{\equal{\@addresscity}{}}{}{\makenewline\@addresscity}%
+          \ifthenelse{\equal{\@addresscountry}{}}{}{\makenewline\@addresscountry}}%
+        \phonesdetails%
+        \ifthenelse{\isundefined{\@email}}{}{\makenewline\emailsymbol\emaillink{\@email}}%
+        \ifthenelse{\isundefined{\@homepage}}{}{\makenewline\homepagesymbol\httplink{\@homepage}}%
+        \socialsdetails%
+        \ifthenelse{\isundefined{\@extrainfo}}{}{\makenewline\@extrainfo}%
+      \end{tabular}
+    }\fi%
+  \@initializebox{\makecvheadpicturebox}%
+  \savebox{\makecvheadpicturebox}{%
+    \ifthenelse{\isundefined{\@photo}}%
+      {}%
+      {%
+        \if@right%
+          \hspace*{\separatorcolumnwidth}\fi%
+        \begin{tikzpicture}
+          \path[top color=headBR,bottom color=headTL,shading angle=45] (0,0) circle (\dimexpr\@photowidth/2+\@photoframewidth*2);
+          \path[fill=white] (0,0) circle (\dimexpr\@photowidth/2+\@photoframewidth);
+          \begin{scope}
+            \clip (0,0) circle (\dimexpr\@photowidth/2);
+            \node[inner sep=0pt] at (0,0) {\includegraphics[width=\@photowidth]{\@photo}};
+          \end{scope}
+        \end{tikzpicture}%
+      }%
+      \if@left%
+        \hspace*{\separatorcolumnwidth}\fi}%
+  \@initializebox{\makecvheadqrbox}%
+  \if@headqr%
+    \savebox{\makecvheadqrbox}{%
+      \ifthenelse{\isundefined{\@homepage}}{}{\tikz\node[inner sep=1ex,fill=white]{\qrcode[height=1.5cm]{\@homepage}};}%
+    }\fi%
+  \@initializelength{\makecvheaddetailswidth}\settowidth{\makecvheaddetailswidth}{\usebox{\makecvheaddetailsbox}}%
+  \@initializelength{\makecvheadpicturewidth}\settowidth{\makecvheadpicturewidth}{\usebox{\makecvheadpicturebox}}%
+  \ifthenelse{\lengthtest{\makecvheadnamewidth=0pt}}%
+    {\setlength{\makecvheadnamewidth}{\textwidth-\makecvheaddetailswidth-\makecvheadpicturewidth}}%
+    {}%
+  \@initializebox{\makecvheadnamebox}%
+  \savebox{\makecvheadnamebox}{%
+    \begin{minipage}[b]{\makecvheadnamewidth}%
+      \if@left\raggedright\fi%
+      \if@right\raggedleft\fi%
+      \namestyle{\@firstname\ {\scshape\@lastname}}%
+      \ifthenelse{\equal{\@title}{}}{}{\\[1.25em]\titlestyle{\@title}}%
+    \end{minipage}}%
+  \begin{tikzpicture}[remember picture,overlay]
+    \node(head-bg) [top color=headTL,bottom color=headBR,shading angle=45,inner sep=0pt,
+      fit={(current page.north west)(current page.north east)(pic cs:head-end)}] {};
+    \ifthenelse{\isundefined{\@moderncvheadBackground}}{}{\@moderncvheadBackground}
+    \path[draw,line width=\@photoframewidth]
+        (head-bg.south west) edge[color=headhr!85!black] ([xshift=8em]head-bg.south west)
+        ([xshift=8em]head-bg.south west) edge[color=headhr] ([xshift=-8em]head-bg.south east)
+        ([xshift=-8em]head-bg.south east) edge[color=headhr!85!black] (head-bg.south east);
+  \end{tikzpicture}%
+  \if@left%
+    \usebox{\makecvheadpicturebox}%
+    \usebox{\makecvheadnamebox}%
+    \hfill%
+    \llap{\usebox{\makecvheaddetailsbox}}%
+    \hspace{1.2em}%
+    \usebox{\makecvheadqrbox}\fi%
+  \if@right%
+    \usebox{\makecvheadqrbox}%
+    \hspace{1.2em}%
+    \rlap{\usebox{\makecvheaddetailsbox}}%
+    \hfill%
+    \usebox{\makecvheadnamebox}%
+    \usebox{\makecvheadpicturebox}\fi%
+  \\[.15em]%
+  \tikzmark{head-end}\\[.15em]%
+  \ifthenelse{\isundefined{\@quote}}%
+    {}%
+    {{\centering\begin{minipage}{\quotewidth}\centering\quotestyle{\@quote}\end{minipage}\\[.15em]}}%
+  \par}%
+\makeatother
+
 \begin{document}
 \makecvtitle
 
@@ -88,9 +202,14 @@
 \printEducation
 
 % --- ESPERIENZA ---
-\en{\section[\faBriefcase]{Work \& Research Experience}}
-\it{\section[\faBriefcase]{Esperienza Lavorativa e di Ricerca}}
+\en{\section[\faBriefcase]{Work Experience}}
+\it{\section[\faBriefcase]{Esperienza Lavorativa}}
 \printWorkExperience
+
+% --- ATTIVITA' DI RICERCA ---
+\en{\section[\faFlask]{Research Activities}}
+\it{\section[\faFlask]{Attività di Ricerca}}
+\printResearchActivities
 
 % --- PROGETTI ---
 \en{\section[\faFolderOpen]{Projects}}

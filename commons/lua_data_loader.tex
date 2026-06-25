@@ -31,15 +31,19 @@
       end
   end
 
-  -- Helper per stampare liste puntate (itemize)
+  -- Helper per stampare liste puntate (itemize), o testo continuo se c'è un solo elemento
   function print_list(list_node)
       local items = get_text(list_node)
       if type(items) == "table" then
-          tex.print("\\begin{itemize}")
-          for _, item in ipairs(items) do
-              tex.print("\\item " .. get_text(item))
+          if #items == 1 then
+              tex.print("\\newline " .. get_text(items[1]))
+          else
+              tex.print("\\begin{itemize}")
+              for _, item in ipairs(items) do
+                  tex.print("\\item " .. get_text(item))
+              end
+              tex.print("\\end{itemize}")
           end
-          tex.print("\\end{itemize}")
       else
           tex.print(items)
       end
@@ -80,7 +84,7 @@
       if not data.work then return end
       for _, w in ipairs(data.work) do
           
-          tex.print("\\cventry{" .. w.startDate .. " - " .. w.endDate .. "}")
+          tex.print("\\cventry[0.6em]{" .. w.startDate .. " - " .. w.endDate .. "}")
           tex.print("{" .. get_text(w.position) .. "}")
           tex.print("{" .. get_text(w.name) .. "}")      
           
@@ -99,12 +103,33 @@
       end
   end
 
+  -- 4.1 ATTIVITA' DI RICERCA (Research)
+  function print_research()
+      if not data.research then return end
+      for _, r in ipairs(data.research) do
+
+          tex.print("\\cventry[0.6em]{" .. r.startDate .. " - " .. r.endDate .. "}")
+          tex.print("{" .. get_text(r.name) .. "}")
+          tex.print("{}")
+          tex.print("{(" .. get_text(r.location) .. ")}")
+          tex.print("{}")
+
+          tex.print("{")
+          local summary = get_text(r.summary)
+          if summary ~= "" then
+              tex.print("\\textit{" .. summary .. "}")
+          end
+          print_list(r.highlights)
+          tex.print("}")
+      end
+  end
+
   -- 5. ISTRUZIONE (Education)
   function print_education()
       if not data.education then return end
       for _, edu in ipairs(data.education) do
           
-          tex.print("\\cventry{" .. edu.startDate .. " - " .. edu.endDate .. "}")
+          tex.print("\\cventry[0.6em]{" .. edu.startDate .. " - " .. edu.endDate .. "}")
           tex.print("{" .. get_text(edu.studyType) .. " in " .. get_text(edu.area) .. "}")
           tex.print("{" .. get_text(edu.institution) .. "}") 
           
@@ -137,7 +162,7 @@
   function print_publications()
       if not data.publications then return end
       for _, p in ipairs(data.publications) do
-          tex.print("\\cvitem{\\textbf{" .. get_text(p.title) .. "}}")
+          tex.print("\\cvitem[0.6em]{\\textbf{" .. get_text(p.title) .. "}}")
           tex.print("{")
           tex.print(p.authors .. " \\newline ")
           tex.print("\\textit{" .. get_text(p.venue) .. " (" .. get_text(p.status) .. ")} \\newline ")
@@ -163,9 +188,9 @@
                   
                   if label and content then
                       label = label:gsub("\\textbf{", ""):gsub("}", "")
-                      tex.print("\\cvitem{" .. label .. "}{" .. content .. "}")
+                      tex.print("\\cvitem[0.25em]{" .. label .. "}{" .. content .. "}")
                   else
-                      tex.print("\\cvitem{}{" .. text .. "}")
+                      tex.print("\\cvitem[0.25em]{}{" .. text .. "}")
                   end
               end
           else
@@ -175,7 +200,7 @@
                   keyword_str = keyword_str .. get_text(k)
                   if i < #keys then keyword_str = keyword_str .. ", " end
               end
-              tex.print("\\cvitem{" .. name .. "}{" .. keyword_str .. "}")
+              tex.print("\\cvitem[0.25em]{" .. name .. "}{" .. keyword_str .. "}")
           end
       end
   end
@@ -188,7 +213,7 @@
           if l.details then
               comment = get_text(l.details)
           end
-          tex.print("\\cvitemwithcomment{" .. get_text(l.language) .. "}{" .. get_text(l.fluency) .. "}{" .. comment .. "}")
+          tex.print("\\cvitemwithcomment[0.6em]{" .. get_text(l.language) .. "}{" .. get_text(l.fluency) .. "}{" .. comment .. "}")
       end
   end
 
@@ -196,7 +221,7 @@
   function print_projects()
       if not data.projects then return end
       for _, p in ipairs(data.projects) do
-          tex.print("\\cvitem{\\textbf{" .. get_text(p.name) .. "}}")
+          tex.print("\\cvitem[0.6em]{\\textbf{" .. get_text(p.name) .. "}}")
           tex.print("{")
           tex.print("\\textit{" .. get_text(p.course) .. "} \\newline ")
           tex.print(get_text(p.description))
@@ -253,6 +278,7 @@
 % ============================================================
 \newcommand{\loadPersonalData}{\directlua{load_personal_data()}}
 \newcommand{\printWorkExperience}{\directlua{print_work()}}
+\newcommand{\printResearchActivities}{\directlua{print_research()}}
 \newcommand{\printEducation}{\directlua{print_education()}}
 \newcommand{\printPublications}{\directlua{print_publications()}}
 \newcommand{\printSkills}{\directlua{print_skills()}}

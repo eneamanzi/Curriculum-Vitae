@@ -138,20 +138,8 @@
         "it": "Secure Service-oriented Architectures Research Lab (SESAR Lab)"
       },
       "highlights": {
-        "en": [
-          "Designed and implemented \\textbf{APIGuard Assurance}, an \\textbf{API-agnostic, contract-driven} tool for REST API security assurance, deriving target knowledge from the \\textbf{OpenAPI Specification (OAS)} and a deployment configuration, with no hardcoded references to any system.",
-          "Organized security checks into a taxonomy of eight domains, aligned with the NIST SP 800-228 guidelines for API security, structuring assessment coverage by risk category.",
-          "Designed \\textit{specified oracles}, evaluation criteria derived from the domain-specific knowledge of each security control, to automatically assess violations, traceable to \\textbf{OWASP} categories and \\textbf{CWE} codes.",
-          "Implemented a \\textbf{deterministic assessment engine} based on a \\textbf{DAG scheduler} to resolve dependencies between checks, exposing \\textbf{semantic exit codes} for \\textbf{CI/CD} integration.",
-          "Validated the tool against a real-world target, \\textbf{Forgejo} exposed through the \\textbf{Kong} API gateway, confirming correct detection of security violations and deterministic, reproducible results."
-        ],
-        "it": [
-          "Progettato e implementato \\textbf{APIGuard Assurance}, un tool \\textbf{API-agnostico e contract-driven} per la security assurance di API REST, derivando la conoscenza del target da \\textbf{OpenAPI Specification (OAS)} e configurazione di deployment, senza riferimenti hardcoded a sistemi specifici.",
-          "Organizzate le verifiche di sicurezza in una tassonomia di otto domini, allineata alle linee guida NIST SP 800-228 per la sicurezza delle API, strutturando la copertura dell'assessment per categoria di rischio.",
-          "Progettati \\textit{specified oracles}, criteri di valutazione derivati dalla conoscenza del dominio di ciascun controllo di sicurezza, per valutare automaticamente le violazioni, tracciabili a categorie \\textbf{OWASP} e codici \\textbf{CWE}.",
-          "Implementato un \\textbf{assessment engine deterministico} basato su uno \\textbf{scheduler a DAG} per la risoluzione delle dipendenze tra le verifiche, esponendo \\textbf{exit code semantici} per l'integrazione \\textbf{CI/CD}.",
-          "Validato il tool contro un target reale, \\textbf{Forgejo} esposto tramite il gateway \\textbf{Kong}, confermando la corretta rilevazione di violazioni di sicurezza e risultati deterministici e riproducibili."
-        ]
+        "en": ["Designed and implemented APIGuard Assurance, an API-agnostic, contract-driven tool for automated REST API security assessment based on a taxonomy of eight domains and specified oracles, validated against a real-world target."],
+        "it": ["Progettato e implementato APIGuard Assurance, un tool API-agnostico e contract-driven per l'assessment automatizzato della sicurezza di API REST basato su una tassonomia di otto domini e su \\textit{specified oracles}, validato contro un target reale."]
       }
     },
     {
@@ -174,18 +162,8 @@
         "it": "Secure Service-oriented Architectures Research Lab (SESAR Lab)"
       },
       "highlights": {
-        "en": [
-          "Analyzed existing verification and monitoring solutions in distributed environments and contributed to the design and implementation of the Assurance Engine (a \\textbf{Rust}-based assurance framework for distributed systems deployed on \\textbf{Kubernetes})",
-          "Extended the existing framework to enable integration with \\textbf{Elasticsearch}, used as the backend for data collection and querying.",
-          "Developed and tested \\textbf{formal} contracts, based on metrics, for the automated verification of \\textbf{non-functional properties (NFP)} -- including the \\textbf{CIA triad}, \\textbf{reliability}, \\textbf{scalability}, and \\textbf{performance} in distributed and microservices architectures.",
-          "Implemented \\textbf{REST APIs} to expose the engine's functionalities."
-        ],
-        "it": [
-          "Analizzato le soluzioni esistenti di verifica e monitoraggio in ambienti distribuiti e contribuito alla progettazione e all'implementazione dell'Assurance Engine (un framework di \\textit{Assurance} basato su \\textbf{Rust} per sistemi distribuiti e deployati su \\textbf{Kubernetes})",
-          "Esteso il framework esistente per consentire l'integrazione con \\textbf{Elasticsearch}, utilizzato come backend per la raccolta e la interrogazione dei dati.",
-          "Sviluppato e testato \\textbf{contratti formali}, basati su metriche, per la verifica automatizzata di \\textbf{proprietà non funzionali (PNF)} -- inclusi la \\textbf{triade CIA}, l'\\textbf{affidabilità} (\\textbf{reliability}), la \\textbf{scalabilità} (\\textbf{scalability}) e le \\textbf{prestazioni} (\\textbf{performance}) in architetture distribuite e a microservizi.",
-          "Implementato \\textbf{API REST} per esporre le funzionalità dell'engine."
-        ]
+        "en": ["Contributed to the design and implementation of an Assurance Engine for the verification of non-functional properties (NFP) in distributed systems, built in Rust and deployed on Kubernetes, extending it with Elasticsearch integration."],
+        "it": ["Contribuito alla progettazione e implementazione di un Assurance Engine per la verifica di proprietà non funzionali (PNF) in sistemi distribuiti, sviluppato in Rust e deployato su Kubernetes, estendendolo con l'integrazione di Elasticsearch."]
       }
     },
     {
@@ -205,13 +183,61 @@
         "it": "Percorsi per le Competenze Trasversali e per l'Orientamento (PCTO) durante la scuola superiore"
       },
       "highlights": {
+        "en": ["Developed a web application using HTML, JavaScript, and jQuery as part of a high school work-based learning program (PCTO)."],
+        "it": ["Sviluppata un'applicazione web con HTML, JavaScript e jQuery nell'ambito di un percorso PCTO durante la scuola superiore."]
+      }
+    }
+  ],
+  "research": [
+    {
+      "name": {
+        "en": "SESAR Lab, University of Milan",
+        "it": "SESAR Lab, Università degli Studi di Milano"
+      },
+      "location": { "en": "Milan, IT", "it": "Milano, IT" },
+      "startDate": "12/2025",
+      "endDate": "07/2026",
+      "summary": {
+        "en": "Secure Service-oriented Architectures Research Lab (SESAR Lab)",
+        "it": "Secure Service-oriented Architectures Research Lab (SESAR Lab)"
+      },
+      "highlights": {
         "en": [
-          "Work Based Learning (WBL): development of a web application.",
-          "Technologies used: \\textbf{HTML}, \\textbf{JavaScript}, \\textbf{jQuery}"
+          "Investigated the limitations of existing REST API testing approaches in detecting semantic security violations, motivating an API-agnostic, contract-driven methodology that derives target knowledge exclusively from the OpenAPI Specification (OAS).",
+          "Defined a taxonomy of eight security domains, aligned with the NIST SP 800-228 guidelines for API security, to structure systematic assessment coverage.",
+          "Studied the \"oracle problem\" in automated security testing and proposed \\textit{specified oracles}, evaluation criteria derived from the domain-specific knowledge of each security control, traceable to OWASP categories and CWE codes.",
+          "Investigated reproducibility requirements for security assessment in continuous development, designing a deterministic, DAG-based scheduling approach exposing semantic exit codes for CI/CD integration.",
+          "Validated the methodology against a real-world target, Forgejo exposed through the Kong API gateway, confirming correct detection of security violations and deterministic, reproducible results."
         ],
         "it": [
-          "Sviluppo di un applicativo web",
-          "Tecnologie usate: \\textbf{HTML}, \\textbf{JavaScript}, \\textbf{jQuery}"
+          "Studiati i limiti degli approcci esistenti per il testing di API REST nella rilevazione di violazioni di sicurezza semantiche, motivando una metodologia API-agnostica e contract-driven che deriva la conoscenza del target esclusivamente dalla OpenAPI Specification (OAS).",
+          "Definita una tassonomia di otto domini di sicurezza, allineata alle linee guida NIST SP 800-228 per la sicurezza delle API, per strutturare una copertura sistematica dell'assessment.",
+          "Studiato il \"problema dell'oracolo\" nel testing automatico di sicurezza e proposti \\textit{specified oracles}, criteri di valutazione derivati dalla conoscenza del dominio di ciascun controllo di sicurezza, tracciabili a categorie OWASP e codici CWE.",
+          "Studiati i requisiti di riproducibilità per l'assessment di sicurezza nello sviluppo continuativo, progettando un approccio di scheduling deterministico basato su DAG che esponde exit code semantici per l'integrazione CI/CD.",
+          "Validata la metodologia contro un target reale, Forgejo esposto tramite il gateway Kong, confermando la corretta rilevazione di violazioni di sicurezza e risultati deterministici e riproducibili."
+        ]
+      }
+    },
+    {
+      "name": {
+        "en": "SESAR Lab, University of Milan",
+        "it": "SESAR Lab, Università degli Studi di Milano"
+      },
+      "location": { "en": "Milan, IT", "it": "Milano, IT" },
+      "startDate": "03/2024",
+      "endDate": "09/2024",
+      "summary": {
+        "en": "Secure Service-oriented Architectures Research Lab (SESAR Lab)",
+        "it": "Secure Service-oriented Architectures Research Lab (SESAR Lab)"
+      },
+      "highlights": {
+        "en": [
+          "Investigated existing verification and monitoring approaches for distributed systems, contributing to the extension of an Assurance Engine with Elasticsearch as a pluggable monitoring backend.",
+          "Studied and formalized contracts to jointly evaluate multiple non-functional properties (CIA triad, reliability, scalability, performance), validated experimentally on a Kubernetes testbed with minimal computational overhead."
+        ],
+        "it": [
+          "Studiati gli approcci esistenti di verifica e monitoraggio per sistemi distribuiti, contribuendo all'estensione di un Assurance Engine con Elasticsearch come backend di monitoring collegabile.",
+          "Studiati e formalizzati contratti per valutare congiuntamente molteplici proprietà non funzionali (triade CIA, affidabilità, scalabilità, performance), validati sperimentalmente su un testbed Kubernetes con overhead computazionale minimo."
         ]
       }
     }
@@ -439,7 +465,8 @@
         "REST API",
         "Git",
         "Kafka",
-        "Kong API Gateway"
+        "Kong API Gateway",
+        "CI/CD"
       ]
     },
     {
@@ -476,6 +503,14 @@
         {
           "en": "Secure Coding Practices",
           "it": "Pratiche di Codifica Sicura"
+        },
+        {
+          "en": "API Security",
+          "it": "Sicurezza delle API"
+        },
+        {
+          "en": "Continuous Security Assurance",
+          "it": "Continuous Security Assurance"
         }
       ]
     },
