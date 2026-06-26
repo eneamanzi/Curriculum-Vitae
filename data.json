@@ -55,7 +55,7 @@
       "thesis": {
         "title": {
           "en": "Design and Implementation of an API-Agnostic Tool for REST API Security Assurance",
-          "it": "Progettazione e Implementazione di un Tool API-Agnostico per la Security Assurance di API REST."
+          "it": "Progettazione e Implementazione di un Tool API-Agnostico per la Security Assurance di API REST"
         },
         "supervisors": "Marco Anisetti, Claudio Agostino Ardagna"
       },
@@ -85,7 +85,7 @@
       },
       "thesis": {
         "title": {
-          "en": "Design and Implementation of a Framework for Evaluating Distributed System",
+          "en": "Design and Implementation of a Framework for Evaluating Distributed Systems",
           "it": "Design e sviluppo di una soluzione per la valutazione di sistemi distribuiti"
         },
         "supervisors": "Marco Anisetti, Filippo Berto"
@@ -138,8 +138,8 @@
         "it": "Secure Service-oriented Architectures Research Lab (SESAR Lab)"
       },
       "highlights": {
-        "en": ["Designed and implemented APIGuard Assurance, an API-agnostic, contract-driven tool for automated REST API security assessment based on a taxonomy of eight domains and specified oracles, validated against a real-world target."],
-        "it": ["Progettato e implementato APIGuard Assurance, un tool API-agnostico e contract-driven per l'assessment automatizzato della sicurezza di API REST basato su una tassonomia di otto domini e su \\textit{specified oracles}, validato contro un target reale."]
+        "en": ["Designed and implemented \\textbf{APIGuard Assurance}, an \\textbf{API-agnostic}, \\textbf{contract-driven} tool for automated REST API \\textbf{security assurance} based on a taxonomy of eight domains and \\textit{specified oracles}, validated against a real-world target."],
+        "it": ["Progettato e implementato \\textbf{APIGuard Assurance}, un tool \\textbf{API-agnostico} e \\textbf{contract-driven} per la \\textbf{security assurance} automatizzata di API REST basato su una tassonomia di otto domini e su \\textit{specified oracles}, validato contro un target reale."]
       }
     },
     {
@@ -162,8 +162,8 @@
         "it": "Secure Service-oriented Architectures Research Lab (SESAR Lab)"
       },
       "highlights": {
-        "en": ["Contributed to the design and implementation of an Assurance Engine for the verification of non-functional properties (NFP) in distributed systems, built in Rust and deployed on Kubernetes, extending it with Elasticsearch integration."],
-        "it": ["Contribuito alla progettazione e implementazione di un Assurance Engine per la verifica di proprietà non funzionali (PNF) in sistemi distribuiti, sviluppato in Rust e deployato su Kubernetes, estendendolo con l'integrazione di Elasticsearch."]
+        "en": ["Contributed to the design and implementation of an \\textbf{Assurance Engine} for the verification of \\textbf{non-functional properties (NFP)} in distributed systems, built in \\textbf{Rust} and deployed on \\textbf{Kubernetes}, developing a new connector to integrate \\textbf{Elasticsearch} as a monitoring backend."],
+        "it": ["Contribuito alla progettazione e implementazione di un \\textbf{Assurance Engine} per la verifica di \\textbf{proprietà non funzionali (PNF)} in sistemi distribuiti, sviluppato in \\textbf{Rust} e deployato su \\textbf{Kubernetes}, sviluppando un nuovo connector per l'integrazione di \\textbf{Elasticsearch} come backend di monitoring."]
       }
     },
     {
@@ -203,18 +203,20 @@
       },
       "highlights": {
         "en": [
-          "Investigated the limitations of existing REST API testing approaches in detecting semantic security violations, motivating an API-agnostic, contract-driven methodology that derives target knowledge exclusively from the OpenAPI Specification (OAS).",
-          "Defined a taxonomy of eight security domains, aligned with the NIST SP 800-228 guidelines for API security, to structure systematic assessment coverage.",
-          "Studied the \"oracle problem\" in automated security testing and proposed \\textit{specified oracles}, evaluation criteria derived from the domain-specific knowledge of each security control, traceable to OWASP categories and CWE codes.",
-          "Investigated reproducibility requirements for security assessment in continuous development, designing a deterministic, DAG-based scheduling approach exposing semantic exit codes for CI/CD integration.",
-          "Validated the methodology against a real-world target, Forgejo exposed through the Kong API gateway, confirming correct detection of security violations and deterministic, reproducible results."
+          "Analyzed existing approaches to REST API testing, observing that most focus on \\textbf{functional} and \\textbf{syntactic} conformance, while \\textbf{security violations} remain comparatively unaddressed.",
+          "Defined a taxonomy of \\textbf{eight security domains} to structure systematic assessment coverage.",
+          "Proposed an \\textbf{API-agnostic}, \\textbf{contract-driven} methodology, based on \\textit{specified oracles}, that derives target knowledge exclusively from the \\textbf{OpenAPI Specification (OAS)} and a deployment configuration file.",
+          "Addressed the \\textit{oracle problem} in automated security testing by deriving, for each security control, an evaluation criterion from the specific knowledge and expectations of the test being performed, traceable to \\textbf{OWASP} categories and \\textbf{CWE} codes.",
+          "Achieved \\textbf{deterministic}, \\textbf{reproducible} results, a prerequisite for assurance integrated into continuous development, through a \\textbf{DAG}-based scheduling approach exposing \\textbf{semantic exit codes} for \\textbf{CI/CD} integration.",
+          "Validated the methodology against a real-world target, \\textbf{Forgejo} exposed through the \\textbf{Kong} API gateway, confirming correct detection of security violations and deterministic, reproducible results."
         ],
         "it": [
-          "Studiati i limiti degli approcci esistenti per il testing di API REST nella rilevazione di violazioni di sicurezza semantiche, motivando una metodologia API-agnostica e contract-driven che deriva la conoscenza del target esclusivamente dalla OpenAPI Specification (OAS).",
-          "Definita una tassonomia di otto domini di sicurezza, allineata alle linee guida NIST SP 800-228 per la sicurezza delle API, per strutturare una copertura sistematica dell'assessment.",
-          "Studiato il \"problema dell'oracolo\" nel testing automatico di sicurezza e proposti \\textit{specified oracles}, criteri di valutazione derivati dalla conoscenza del dominio di ciascun controllo di sicurezza, tracciabili a categorie OWASP e codici CWE.",
-          "Studiati i requisiti di riproducibilità per l'assessment di sicurezza nello sviluppo continuativo, progettando un approccio di scheduling deterministico basato su DAG che esponde exit code semantici per l'integrazione CI/CD.",
-          "Validata la metodologia contro un target reale, Forgejo esposto tramite il gateway Kong, confermando la corretta rilevazione di violazioni di sicurezza e risultati deterministici e riproducibili."
+          "Analizzati gli approcci esistenti per il testing di API REST, osservando che la maggior parte si concentra sulla conformità \\textbf{funzionale} e \\textbf{sintattica}, mentre le \\textbf{violazioni di sicurezza} restano comparativamente meno affrontate.",
+          "Definita una tassonomia di \\textbf{otto domini di sicurezza} per strutturare una copertura sistematica dell'assessment.",
+          "Proposta una metodologia \\textbf{API-agnostica} e \\textbf{contract-driven}, basata su \\textit{specified oracles}, che deriva la conoscenza del target esclusivamente dalla \\textbf{OpenAPI Specification (OAS)} e da un file di configurazione del deployment.",
+          "Affrontato il \\textit{problema dell'oracolo} nel testing automatico di sicurezza, ricavando per ciascun controllo un criterio di valutazione dalla conoscenza specifica e dalle aspettative del test da eseguire, tracciabile a categorie \\textbf{OWASP} e codici \\textbf{CWE}.",
+          "Ottenuti risultati \\textbf{deterministici} e \\textbf{riproducibili}, prerequisito per un'assurance integrata nello sviluppo continuativo, tramite un approccio di scheduling basato su \\textbf{DAG} ed \\textbf{exit code semantici} per l'integrazione \\textbf{CI/CD}.",
+          "Validata la metodologia contro un target reale, \\textbf{Forgejo} esposto tramite il gateway \\textbf{Kong}, confermando la corretta rilevazione di violazioni di sicurezza e risultati deterministici e riproducibili."
         ]
       }
     },
@@ -232,12 +234,14 @@
       },
       "highlights": {
         "en": [
-          "Investigated existing verification and monitoring approaches for distributed systems, contributing to the extension of an Assurance Engine with Elasticsearch as a pluggable monitoring backend.",
-          "Studied and formalized contracts to jointly evaluate multiple non-functional properties (CIA triad, reliability, scalability, performance), validated experimentally on a Kubernetes testbed with minimal computational overhead."
+          "Investigated existing approaches to verifying and monitoring \\textbf{non-functional properties (NFP)} in distributed systems.",
+          "Contributed to the development of an \\textbf{Assurance Engine} for distributed systems, building a new connector to integrate \\textbf{Elasticsearch} as a monitoring backend.",
+          "Formalized contracts to jointly evaluate multiple non-functional properties (\\textbf{CIA triad}, reliability, scalability, performance), validated experimentally on a \\textbf{Kubernetes} testbed with minimal computational overhead."
         ],
         "it": [
-          "Studiati gli approcci esistenti di verifica e monitoraggio per sistemi distribuiti, contribuendo all'estensione di un Assurance Engine con Elasticsearch come backend di monitoring collegabile.",
-          "Studiati e formalizzati contratti per valutare congiuntamente molteplici proprietà non funzionali (triade CIA, affidabilità, scalabilità, performance), validati sperimentalmente su un testbed Kubernetes con overhead computazionale minimo."
+          "Analizzati gli approcci esistenti per la verifica e il monitoraggio di \\textbf{proprietà non funzionali (PNF)} in sistemi distribuiti.",
+          "Contribuito allo sviluppo di un \\textbf{Assurance Engine} per sistemi distribuiti, realizzando un nuovo connector per l'integrazione di \\textbf{Elasticsearch} come backend di monitoring.",
+          "Formalizzati contratti per valutare congiuntamente molteplici proprietà non funzionali (\\textbf{triade CIA}, affidabilità, scalabilità, performance), validati sperimentalmente su un testbed \\textbf{Kubernetes} con overhead computazionale minimo."
         ]
       }
     }
@@ -245,29 +249,31 @@
   "projects": [
     {
       "name": {
-        "en": "APIGuard Assurance -- An API-Agnostic Tool for REST API Security Assurance",
-        "it": "APIGuard Assurance -- Un Tool API-Agnostico per la Security Assurance di API REST"
+        "en": "APIGuard Assurance",
+        "it": "APIGuard Assurance"
       },
       "course": {
         "en": "Master's Thesis Project (A.Y. 2025/2026)",
         "it": "Progetto della Tesi Magistrale (A.A. 2025/2026)"
       },
       "description": {
-        "en": "A security assessment tool for REST APIs exposed through API gateways, designed to detect semantic vulnerabilities that traditional syntax-based scanners miss, by deriving all target knowledge directly from the OpenAPI Specification.",
-        "it": "Un tool di security assessment per API REST esposte tramite gateway, progettato per rilevare vulnerabilità semantiche che gli scanner tradizionali basati sulla sintassi non individuano, derivando la conoscenza del target direttamente dalla specifica OpenAPI."
+        "en": "Development of an API-agnostic, contract-driven tool for REST API security assurance, with a particular focus on semantic security violations that traditional functional and syntactic testing does not capture.",
+        "it": "Sviluppo di un tool API-agnostico e contract-driven per la security assurance di API REST, con particolare attenzione alle violazioni di sicurezza semantiche che il testing funzionale e sintattico tradizionale non rileva."
       },
       "highlights": {
         "en": [
-          "Built in \\textbf{Python 3.12} with \\textbf{Pydantic} models for runtime data validation and a plugin-style test-discovery mechanism, allowing new security checks to be added without modifying the core engine.",
-          "Verified the engine's own reliability before trusting its security verdicts, enforcing strict static typing (\\textbf{mypy}) and automated quality scanning (\\textbf{ruff}, \\textbf{bandit}, \\textbf{vulture}, \\textbf{pip-audit}) to achieve full docstring coverage on the public API.",
-          "Packaged with \\textbf{Hatch}, verifying byte-reproducible builds (identical SHA-256 wheel hash across runs) and isolating an \\textbf{AGPL-licensed} dependency behind an optional install extra to keep the core package free of copyleft propagation.",
-          "Integrated external security scanners (\\textbf{nuclei}, \\textbf{testssl.sh}, \\textbf{sslyze}) through a hierarchical connector architecture, keeping the core test logic decoupled from how each external tool's output is parsed."
+          "Built in \\textbf{Python 3.12}, with a \\textbf{dynamic test-discovery mechanism} allowing new security checks to be added without modifying the core engine.",
+          "Implemented \\textit{specified oracles} directly in each test's code: every check encodes its own evaluation criterion, derived from the domain knowledge of the control under test.",
+          "Enforced \\textbf{strict static typing} (mypy) and \\textbf{runtime validation} (Pydantic), with full documentation coverage across the public API.",
+          "Built \\textbf{reproducible packages} with \\textbf{Hatch}, verifying identical SHA-256 hashes across repeated builds.",
+          "Designed an \\textbf{extensible} connector architecture to integrate external security scanners, decoupling test logic from tool-specific output parsing."
         ],
         "it": [
-          "Sviluppato in \\textbf{Python 3.12} con modelli \\textbf{Pydantic} per la validazione dei dati a runtime e un meccanismo di discovery dei test in stile plugin, che consente di aggiungere nuove verifiche senza modificare il core dell'engine.",
-          "Verificata l'affidabilità dell'engine stesso prima di fidarsi dei suoi verdetti di sicurezza, applicando type-checking statico rigoroso (\\textbf{mypy}) e scansione automatizzata di qualità (\\textbf{ruff}, \\textbf{bandit}, \\textbf{vulture}, \\textbf{pip-audit}), raggiungendo una coverage completa delle docstring sull'API pubblica.",
-          "Pacchettizzato con \\textbf{Hatch}, verificando build byte-riproducibili (hash SHA-256 del wheel identico su esecuzioni ripetute) e isolando una dipendenza con licenza \\textbf{AGPL} dietro un extra opzionale, per mantenere il core del package privo di obblighi copyleft.",
-          "Integrati scanner di sicurezza esterni (\\textbf{nuclei}, \\textbf{testssl.sh}, \\textbf{sslyze}) tramite un'architettura di connector gerarchici, mantenendo la logica core dei test disaccoppiata da come viene interpretato l'output di ciascun tool esterno."
+          "Sviluppato in \\textbf{Python 3.12}, con un \\textbf{meccanismo di discovery dinamica dei test} che consente di aggiungere nuove verifiche senza modificare il core dell'engine.",
+          "Implementati gli \\textit{specified oracles} direttamente nel codice di ogni test: ogni verifica codifica il proprio criterio di valutazione, derivato dalla conoscenza di dominio del controllo testato.",
+          "Applicati \\textbf{type-checking statico rigoroso} (mypy) e \\textbf{validazione a runtime} (Pydantic), con copertura completa della documentazione sull'API pubblica.",
+          "Realizzate \\textbf{build riproducibili} con \\textbf{Hatch}, verificando hash SHA-256 identici su esecuzioni ripetute.",
+          "Progettata un'architettura di connector \\textbf{estensibile} per l'integrazione di scanner di sicurezza esterni, disaccoppiando la logica dei test dal parsing specifico di ciascun tool."
         ]
       },
       "keywords": [
@@ -283,16 +289,16 @@
     },
     {
       "name": {
-        "it": "Architettura Microservizi IoT Event-Driven (Kafka + Kong)",
-        "en": "Event-Driven IoT Microservices Architecture (Kafka + Kong)"
+        "it": "Architettura IoT Event-Driven (Kafka + Kong)",
+        "en": "Event-Driven IoT Architecture (Kafka + Kong)"
       },
       "course": {
         "it": "Progetto del corso di Cloud Computing Technologies (A.A. 2025/2026)",
         "en": "Cloud Computing Technologies Course Project (A.Y. 2025/2026)"
       },
       "description": {
-        "it": "Sviluppo di un’infrastruttura cloud-native su Kubernetes per l’ingestione e il monitoraggio IoT, con particolare attenzione a \\textbf{proprietà non funzionali} quali scalabilità, tolleranza ai guasti e sicurezza edge-to-core.",
-        "en": "Development of a cloud-native Kubernetes infrastructure for IoT ingestion and monitoring, with a particular focus on \\textbf{non-functional properties} such as scalability, fault tolerance, and edge-to-core security."
+        "it": "Sviluppo di un'infrastruttura a microservizi cloud-native su Kubernetes per l'ingestione e il monitoraggio IoT, con particolare attenzione a \\textbf{proprietà non funzionali} quali scalabilità, tolleranza ai guasti e sicurezza edge-to-core.",
+        "en": "Development of a cloud-native microservices infrastructure on Kubernetes for IoT ingestion and monitoring, with a particular focus on \\textbf{non-functional properties} such as scalability, fault tolerance, and edge-to-core security."
       },
       "highlights": {
         "it": [
@@ -335,7 +341,7 @@
         "en": [
           "Architecture: Multi-threaded server based on \\textbf{Socket Programming} for concurrent session management.",
           "Data Modes: Native support for both Active (PORT) and Passive (PASV) data transfer modes.",
-          "Protocol Management: Implemented essential \\textit{FTP commands} (e.g., USER, PASS, LIST,RETR, STOR, CWD...)",
+          "Protocol Management: Implemented essential \\textit{FTP commands} (e.g., USER, PASS, LIST, RETR, STOR, CWD...)",
           "\\textbf{Key skills:} \\textbf{C}, \\textbf{socket programming}, \\textbf{multithreading}, \\textbf{network protocols}, \\textbf{FTP}, \\textbf{Git}."
         ],
         "it": [
@@ -384,14 +390,18 @@
       },
       "venue": "ITADATA 2026",
       "year": "2026",
+      "date": {
+        "en": "Jun 2026",
+        "it": "Giu 2026"
+      },
       "authors": "Enea Manzi, Marco Anisetti, Claudio A. Ardagna",
       "title": {
-        "en": "TODO: exact title",
-        "it": "TODO: titolo esatto"
+        "en": "An API-Agnostic, Contract-Driven Approach for REST API Security Assurance",
+        "it": "Un Approccio API-Agnostico e Contract-Driven per la Security Assurance di API REST"
       },
       "abstract": {
-        "en": "TODO: draft below, to refine",
-        "it": "TODO: bozza sotto, da rifinire"
+        "en": "Automated REST API testing has traditionally focused on functional compliance, leaving security assurance comparatively underexplored; existing tools operate at the syntactic level and cannot reliably detect the semantic violations behind most OWASP API Security Top 10 categories. This work proposes a contract-driven approach that derives all target knowledge from the OpenAPI specification and a configuration file, embedding evaluation criteria directly into test logic and organizing checks into an eight-domain taxonomy, executed through a deterministic DAG-based engine. Validated on Forgejo behind Kong, the approach produced reproducible results and detected a real discrepancy between the declared specification and actual system behavior, demonstrating an assessment process directly integrable into continuous development pipelines.",
+        "it": "Il testing automatico di API REST si è tradizionalmente concentrato sulla conformità funzionale, lasciando la security assurance relativamente inesplorata; gli strumenti esistenti operano a livello sintattico e non riescono a rilevare in modo affidabile le violazioni semantiche dietro la maggior parte delle categorie dell'OWASP API Security Top 10. Questo lavoro propone un approccio contract-driven che deriva tutta la conoscenza del target dalla specifica OpenAPI e da un file di configurazione, incorporando i criteri di valutazione direttamente nella logica dei test e organizzando le verifiche in una tassonomia a otto domini, eseguita tramite un engine deterministico basato su DAG. Validato su Forgejo dietro Kong, l'approccio ha prodotto risultati riproducibili e rilevato una discrepanza reale tra la specifica dichiarata e il comportamento effettivo del sistema, dimostrando un processo di assessment direttamente integrabile in pipeline di sviluppo continuativo."
       }
     }
   ],

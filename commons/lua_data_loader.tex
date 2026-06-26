@@ -162,10 +162,17 @@
   function print_publications()
       if not data.publications then return end
       for _, p in ipairs(data.publications) do
-          tex.print("\\cvitem[0.6em]{\\textbf{" .. get_text(p.title) .. "}}")
+          local status_label = (token.get_macro("makeitalian") ~= nil) and "Sottomesso a" or "Submitted to"
+
+          tex.print("\\cventry[0.6em]{" .. get_text(p.date) .. "}")
+          tex.print("{" .. get_text(p.title) .. "}")
+          tex.print("{}")
+          tex.print("{}")
+          tex.print("{}")
+
           tex.print("{")
-          tex.print(p.authors .. " \\newline ")
-          tex.print("\\textit{" .. get_text(p.venue) .. " (" .. get_text(p.status) .. ")} \\newline ")
+          tex.print("\\textit{" .. p.authors .. "} \\newline ")
+          tex.print("\\textit{[" .. status_label .. " " .. get_text(p.venue) .. "]} \\newline ")
           tex.print(get_text(p.abstract))
           tex.print("}")
       end
