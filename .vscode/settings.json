@@ -20,7 +20,6 @@
             ]
         }
     ],
-
     "latex-workshop.latex.tools": [
         {
             "name": "build_english",
@@ -30,8 +29,8 @@
                 "-interaction=nonstopmode",
                 "-file-line-error",
                 "-lualatex",
-                "-jobname=%DOCFILE%_english", 
-                "-outdir=%OUTDIR%",                
+                "-jobname=%DOCFILE%_english",
+                "-outdir=%OUTDIR%",
                 "%DOC%"
             ],
             "env": {}
@@ -47,7 +46,7 @@
                 "-jobname=%DOCFILE%_italian",
                 "-e",
                 "$lualatex='lualatex %O \\def\\makeitalian{1} \\input{%S}'",
-                "-outdir=%OUTDIR%",            
+                "-outdir=%OUTDIR%",
                 "%DOC%"
             ],
             "env": {}
