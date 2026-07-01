@@ -138,8 +138,12 @@
         "it": "Secure Service-oriented Architectures Research Lab (SESAR Lab)"
       },
       "highlights": {
-        "en": ["Designed and implemented \\textbf{APIGuard Assurance}, an \\textbf{API-agnostic}, \\textbf{contract-driven} tool for automated REST API \\textbf{security assurance} based on a taxonomy of eight domains and \\textit{specified oracles}, validated against a real-world target."],
-        "it": ["Progettato e implementato \\textbf{APIGuard Assurance}, un tool \\textbf{API-agnostico} e \\textbf{contract-driven} per la \\textbf{security assurance} automatizzata di API REST basato su una tassonomia di otto domini e su \\textit{specified oracles}, validato contro un target reale."]
+        "en": [
+          "Designed and implemented \\textbf{APIGuard Assurance}, an \\textbf{API-agnostic}, \\textbf{contract-driven} tool for automated REST API \\textbf{security assurance} based on a taxonomy of eight domains and \\textit{specified oracles}, validated against a real-world target."
+        ],
+        "it": [
+          "Progettato e implementato \\textbf{APIGuard Assurance}, un tool \\textbf{API-agnostico} e \\textbf{contract-driven} per la \\textbf{security assurance} automatizzata di API REST basato su una tassonomia di otto domini e su \\textit{specified oracles}, validato contro un target reale."
+        ]
       }
     },
     {
@@ -162,8 +166,12 @@
         "it": "Secure Service-oriented Architectures Research Lab (SESAR Lab)"
       },
       "highlights": {
-        "en": ["Contributed to the design and implementation of an \\textbf{Assurance Engine} for the verification of \\textbf{non-functional properties (NFP)} in distributed systems, built in \\textbf{Rust} and deployed on \\textbf{Kubernetes}, developing a new connector to integrate \\textbf{Elasticsearch} as a monitoring backend."],
-        "it": ["Contribuito alla progettazione e implementazione di un \\textbf{Assurance Engine} per la verifica di \\textbf{proprietà non funzionali (PNF)} in sistemi distribuiti, sviluppato in \\textbf{Rust} e deployato su \\textbf{Kubernetes}, sviluppando un nuovo connector per l'integrazione di \\textbf{Elasticsearch} come backend di monitoring."]
+        "en": [
+          "Contributed to the design and implementation of an \\textbf{Assurance Engine} for the verification of \\textbf{non-functional properties (NFP)} in distributed systems, built in \\textbf{Rust} and deployed on \\textbf{Kubernetes}, developing a new connector to integrate \\textbf{Elasticsearch} as a monitoring backend."
+        ],
+        "it": [
+          "Contribuito alla progettazione e implementazione di un \\textbf{Assurance Engine} per la verifica di \\textbf{proprietà non funzionali (PNF)} in sistemi distribuiti, sviluppato in \\textbf{Rust} e deployato su \\textbf{Kubernetes}, sviluppando un nuovo connector per l'integrazione di \\textbf{Elasticsearch} come backend di monitoring."
+        ]
       }
     },
     {
@@ -183,8 +191,12 @@
         "it": "Percorsi per le Competenze Trasversali e per l'Orientamento (PCTO) durante la scuola superiore"
       },
       "highlights": {
-        "en": ["Developed a web application using HTML, JavaScript, and jQuery as part of a high school work-based learning program (PCTO)."],
-        "it": ["Sviluppata un'applicazione web con HTML, JavaScript e jQuery nell'ambito di un percorso PCTO durante la scuola superiore."]
+        "en": [
+          "Developed a web application using HTML, JavaScript, and jQuery as part of a high school work-based learning program (PCTO)."
+        ],
+        "it": [
+          "Sviluppata un'applicazione web con HTML, JavaScript e jQuery nell'ambito di un percorso PCTO durante la scuola superiore."
+        ]
       }
     }
   ],
@@ -194,7 +206,10 @@
         "en": "SESAR Lab, University of Milan",
         "it": "SESAR Lab, Università degli Studi di Milano"
       },
-      "location": { "en": "Milan, IT", "it": "Milano, IT" },
+      "location": {
+        "en": "Milan, IT",
+        "it": "Milano, IT"
+      },
       "startDate": "12/2025",
       "endDate": "07/2026",
       "summary": {
@@ -225,7 +240,10 @@
         "en": "SESAR Lab, University of Milan",
         "it": "SESAR Lab, Università degli Studi di Milano"
       },
-      "location": { "en": "Milan, IT", "it": "Milano, IT" },
+      "location": {
+        "en": "Milan, IT",
+        "it": "Milano, IT"
+      },
       "startDate": "03/2024",
       "endDate": "09/2024",
       "summary": {
@@ -394,14 +412,13 @@
         "en": "Jun 2026",
         "it": "Giu 2026"
       },
-      "authors": "Enea Manzi, Marco Anisetti, Claudio A. Ardagna",
+      "authors": "Enea Manzi, Marco Anisetti",
       "title": {
-        "en": "An API-Agnostic, Contract-Driven Approach for REST API Security Assurance",
-        "it": "Un Approccio API-Agnostico e Contract-Driven per la Security Assurance di API REST"
+        "en": "Security Assurance for Modern Big Data APIs"
       },
       "abstract": {
-        "en": "Automated REST API testing has traditionally focused on functional compliance, leaving security assurance comparatively underexplored; existing tools operate at the syntactic level and cannot reliably detect the semantic violations behind most OWASP API Security Top 10 categories. This work proposes a contract-driven approach that derives all target knowledge from the OpenAPI specification and a configuration file, embedding evaluation criteria directly into test logic and organizing checks into an eight-domain taxonomy, executed through a deterministic DAG-based engine. Validated on Forgejo behind Kong, the approach produced reproducible results and detected a real discrepancy between the declared specification and actual system behavior, demonstrating an assessment process directly integrable into continuous development pipelines.",
-        "it": "Il testing automatico di API REST si è tradizionalmente concentrato sulla conformità funzionale, lasciando la security assurance relativamente inesplorata; gli strumenti esistenti operano a livello sintattico e non riescono a rilevare in modo affidabile le violazioni semantiche dietro la maggior parte delle categorie dell'OWASP API Security Top 10. Questo lavoro propone un approccio contract-driven che deriva tutta la conoscenza del target dalla specifica OpenAPI e da un file di configurazione, incorporando i criteri di valutazione direttamente nella logica dei test e organizzando le verifiche in una tassonomia a otto domini, eseguita tramite un engine deterministico basato su DAG. Validato su Forgejo dietro Kong, l'approccio ha prodotto risultati riproducibili e rilevato una discrepanza reale tra la specifica dichiarata e il comportamento effettivo del sistema, dimostrando un processo di assessment direttamente integrabile in pipeline di sviluppo continuativo."
+        "en": "Automated REST API testing has traditionally focused on functional compliance, leaving security assurance comparatively underexplored; existing tools operate at the syntactic level and cannot reliably detect the semantic vulnerabilities behind several top-ranked OWASP API Security categories. This work proposes a contract-driven approach that derives all target knowledge from the OpenAPI specification and a configuration file, embedding evaluation criteria directly into deterministic test oracles and organizing checks into an eight-domain taxonomy scaling with available privileges. Tested on a realistic setup, the approach correctly classified expected outcomes, revealed a real discrepancy between declared and actual API behavior, and produced reproducible results, contributing a systematic approach to the oracle problem and a process ready for integration into automated pipelines.",
+        "it": "Il testing automatico di API REST si è tradizionalmente concentrato sulla conformità funzionale, lasciando la security assurance relativamente inesplorata; gli strumenti esistenti operano a livello sintattico e non riescono a rilevare in modo affidabile le vulnerabilità semantiche dietro alcune delle categorie più rilevanti dell'OWASP API Security Top 10. Questo lavoro propone un approccio contract-driven che deriva tutta la conoscenza del target dalla specifica OpenAPI e da un file di configurazione, incorporando i criteri di valutazione direttamente in oracoli di test deterministici e organizzando le verifiche in una tassonomia a otto domini che scala in base ai privilegi disponibili. Testato su un setup realistico, l'approccio ha classificato correttamente gli esiti attesi, rilevato una discrepanza reale tra comportamento dichiarato ed effettivo dell'API, e prodotto risultati riproducibili, contribuendo un approccio sistematico al problema degli oracoli e un processo pronto per l'integrazione in pipeline automatizzate."
       }
     }
   ],
