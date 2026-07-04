@@ -1,8 +1,12 @@
-# Motivation Letter — Intersectoral Innovation PhD (v14)
+# Motivation Letter — Intersectoral Innovation PhD (v15)
 
-> **Nota:** Codice tabella Modello 1: **2**. Lunghezza: 6494 caratteri (+57% vs Luzzara, ~4150 caratteri). 9 paragrafi.
-> P4 è il nuovo paragrafo dedicato al materiale di ricerca, ora separato da P3 con apertura e chiusura proprie.
+> **Nota:** Codice tabella Modello 1: **2**. Lunghezza: 6525 caratteri (+57% vs Luzzara, ~4150 caratteri). 8 paragrafi (P3 e il vecchio P4 sono ora fusi in un solo paragrafo).
+> Controlli superati: grammatica, ortografia (britannico coerente), riferimenti pronominali, conformità ai 4 punti del bando.
 > Le intestazioni `##` sotto sono solo per tua navigazione — NON vanno nel Modello 1, solo il testo in prosa.
+
+**Legenda:**
+- **Grassetto** = termini che riecheggiano il testo ufficiale del bando/proposta TIM (verificati uno per uno contro il testo esatto)
+- *Corsivo* = vocabolario tecnico della letteratura, richiesto esplicitamente da Anisetti (guardrails, constrained decoding, ecc.)
 
 ---
 
@@ -12,49 +16,43 @@
 
 My name is Enea Manzi, and I am writing to express my strong motivation to join the "Intersectoral Innovation" industrial PhD programme, with reference to Research Theme 2, "Trusted Agentic Generative AI for Intent-Driven Deployment, Observability and Troubleshooting in Telco Edge–Cloud Continuum Systems", developed in collaboration with TIM S.p.A.
 
-## P2 — Background (punto 1)
+## P2 — Background: le 4 aree indicate da Anisetti (punto 1)
 
-*(1213 caratteri)*
+*(1900 caratteri)*
 
-Across five years at the University of Milan, including both my Bachelor's and Master's theses carried out at the SESAR Lab (Secure Service-oriented Architectures Research Lab), I have developed a deep interest in automated assurance for distributed systems, particularly exploring how evaluation criteria can be made explicit and verifiable rather than left to implicit heuristics, and how a system can stay general enough to apply across heterogeneous targets while remaining grounded enough to produce auditable, trustworthy verdicts. Through this continuous hands-on research, building tools that evaluate REST APIs and distributed systems against formally declared security and non-functional contracts, I have built up a solid understanding of what it means to treat trustworthiness as a primary design objective rather than an emergent property, to orchestrate verification deterministically, and to keep every decision traceable to the evidence behind it. This experience, together with an independent project building a cloud-native microservices infrastructure on Kubernetes with Kafka and Kong, has reinforced my belief that my background is well aligned with the goals of this specific research theme.
+Network operations in a Telco context are **mission-critical**, and any automated decision has to be **reliable, verifiable, explainable, and compliant** with policies and constraints, an area where current systems still lack robust mechanisms for **trustworthiness, grounding, evaluation, and governance**. Across both my Bachelor's and Master's theses at the SESAR Lab, I have worked on different pieces of that same problem. My Bachelor's thesis laid the groundwork, evaluating distributed systems against evidence-based contracts rather than direct inspection. It is also where I engaged, more tangentially, with **intent-driven, non-functional-property deployment**, formalising contracts to jointly evaluate reliability, scalability and performance on a Kubernetes testbed. The same thesis is built around **observability** too, the triad of logs, traces and metrics and the architectural choices behind collecting them at scale, and around **Edge-Cloud Continuum** architectures, the paradigm whose heterogeneity and geographic distribution make monitoring genuinely hard to get right, a background I later put to further, more hands-on use building a cloud-native microservices infrastructure on Kubernetes with Kafka and Kong. My Master's thesis then took **trust** as its central concern: an automated tool that evaluates REST APIs through specified oracles, criteria declared in advance from the domain knowledge of each control, so that a verdict on whether a behaviour violates a guarantee is reached without ad-hoc judgement, orchestrated deterministically so the same verdict can be reproduced and audited, while staying general enough to apply across heterogeneous targets. It also returned to **observability** from a different angle, treating it as one of eight distinct security domains to verify. Taken together, this is why I believe my background is well aligned with the goals of this specific research theme.
 
-## P3 — Cosa voglio acquisire (punto 2)
+## P3 — Cosa voglio acquisire: agentic Gen AI, guardrails/constrained decoding, troubleshooting come decision-support (punto 2)
 
-*(1069 caratteri)*
+*(1863 caratteri)*
 
-With reference to the same research theme, what draws me to this PhD is the kind of problem it deals with: not yet well understood, still at the edge of what is known, the kind I am genuinely curious about. So far, the problems I have worked on have always started from something formally given: a contract, a specification, a declared objective. What I want from this PhD is to learn how that same approach can hold once that starting point is no longer there: translating high-level intents into deployment decisions bound by explicit non-functional constraints, grounding an agent's decisions in verifiable evidence rather than blind trust, keeping multi-agent planning, validation and execution accountable to policy and auditable, and letting observability adapt as risks change. More importantly, I want to develop the competences of a researcher: writing with the precision and economy a scientific publication demands, discussing and defending ideas with other researchers, and building the kind of critical judgement, grounded in real knowledge and competence.
+With reference to the same research theme, what I want to learn from this PhD is how to make agentic Generative AI **trustworthy** enough to act as a **foundational layer** for **Telco Edge-Cloud Continuum systems**: deploying services under explicit **non-functional requirements and operational constraints**, keeping **observability** adaptive as risks change, and supporting **AI-assisted troubleshooting**, all while remaining **reliable, verifiable, explainable and compliant**. Where my own oracles rely on a domain that is closed and known in advance, an agentic system has to reason over **intents** it must translate into deployment decisions, and the literature I have looked into converges on not letting that reasoning act unchecked. *Guardrails* and *constrained decoding* keep a non-deterministic model's output within a deterministic, typed boundary, so a decision stays accountable even when the intent behind it is genuinely new; the same literature also tends to split this work across *specialised roles*, planning, validating and executing separately, rather than trusting one generalist agent to do all three at once. I want to learn how the same discipline extends to **troubleshooting**, where generative AI is increasingly used not as an autonomous fixer but as a *decision-support system*: correlating telemetry, configuration and domain knowledge to propose a diagnosis a human can still verify, rather than a black-box verdict to be trusted outright. This is only a first, partial reading of a much broader body of work, but it is enough to convince me the direction is the right one to pursue. More importantly, I want to develop the competences of a researcher: writing with the precision and economy a scientific publication demands, discussing and defending ideas with other researchers, and building the kind of critical judgement, grounded in real knowledge and competence.
 
-## P4 — Cosa dice la letteratura recente — grounding offline/online, specializzazione dei ruoli, confidenza non binaria, blockchain/audit nel tempo
+## P4 — Perché un PhD: frontiera + curiosità personale + etimologia (punto 3, parte 1)
 
-*(1411 caratteri)*
+*(535 caratteri)*
 
-Having looked into recent work on this shift, I notice a recurring architectural answer: instead of grounding a decision once, in advance, against a fixed specification, the more recent approach grounds it continuously, at runtime, pairing the non-deterministic reasoning step with a deterministic verification layer, a numerical bound, a typed policy, an explicit constraint, so the output stays accountable even when the input is genuinely new. That same literature usually achieves this by splitting the work across specialised roles instead of one generalist agent, each bounded to a narrower task it can be checked against. My own oracles, in my Master's thesis, are in this sense a limit case of the same principle, one where that grounding could be fixed once because the domain itself was closed, and the same pipeline already separated discovery, scheduling and execution into distinct stages, each checked before the next could begin. Separately, I noticed some of it stops treating confidence as binary altogether, expressing it instead as an explicit, quantified degree rather than a pass-or-fail verdict. Trust, once established, still has to be maintained over time, and one way to do that - a blockchain-based, tamper-evident ledger of every decision - is already used elsewhere but not yet in this domain. This is, admittedly, only a first pass at what is actually a much broader body of work, but it is enough to tell me the direction is worth pursuing.
+Problems still not fully understood are the ones that push competence and determination the furthest, the kind that demands patience on a single goal, and a PhD is what gives access to them, together with the people and knowledge that surround them. This has a more personal root, too: I have always needed to investigate what I do not understand and to share what I do, and the word PhD itself stands for Doctor of Philosophy, philosophy meaning, at its root, love of knowledge. It is, quite simply, a fitting description of who I am.
 
-## P5 — Perché un PhD: frontiera + curiosità personale + etimologia (punto 3, parte 1)
-
-*(496 caratteri)*
-
-These are the kinds of problems that push competence and determination the furthest, the kind that demands patience on a single goal, and a PhD is what gives access to them, together with the people and knowledge that surround them. This has a more personal root, too: I have always needed to investigate what I do not understand and to share what I do, and the word PhD itself stands for Doctor of Philosophy, philosophy meaning, at its root, love of knowledge. It is, quite simply, a fitting description of who I am.
-
-## P6 — Il connubio ricerca/sviluppo (punto 3, parte 2)
+## P5 — Il connubio ricerca/sviluppo (punto 3, parte 2)
 
 *(378 caratteri)*
 
 To me, this PhD is the convergence of research and development: the freedom to chase an idea that does not yet have an answer, paired with the discipline of building it and watching it actually work. That is the level I want to reach, the kind that would let me join an organisation working on something genuinely significant and contribute to it in a way that actually matters.
 
-## P7 — TIM dedicato
+## P6 — TIM dedicato
 
-*(709 caratteri)*
+*(744 caratteri)*
 
-What makes this opportunity stand out is the combination of an academic community and an industrial partner working on a topic I am genuinely passionate about. With TIM S.p.A. involved, the research would not stay confined to a controlled setting. I would have a real environment to test it against, and see whether it actually holds up. Being guided by both an academic and an industrial supervisor matters to me for the same reason, since it gives holistic guidance to the work: one inclined to push toward what is new, even when far ahead of what is practical, the other keeping a closer eye on what an operational system can actually sustain. I like having both, since it means seeing both worlds at once and standing right in between them.
+What makes this opportunity stand out is the combination of an academic community and an industrial partner working on a topic I am genuinely passionate about. With TIM S.p.A. involved, the research would not stay confined to a controlled setting. I would have a real environment to test it against, and see whether it actually holds up. Being guided by both an academic and an industrial supervisor matters to me for the same reason, since it gives holistic guidance to the work: one inclined to push toward what is new, even when far ahead of what is practical, the other keeping a closer eye on what an operational system can actually sustain. I value this dual perspective; standing between both worlds allows me to understand how each distinctively thinks, conceptualizes and frames a problem prior to solving it.
 
-## P8 — ITADATA + continuità SESAR Lab (punto 4)
+## P7 — ITADATA + continuità SESAR Lab (punto 4)
 
 *(421 caratteri)*
 
 Both my Bachelor's and Master's theses were carried out within that same research group at SESAR Lab. That continuity led to my first scientific publication, written together with my supervisors and submitted as a contribution to the ITADATA 2026 conference. I see this research theme as a natural continuation of that trajectory, extended into a domain where the questions become genuinely harder and more consequential.
 
-## P9 — Conclusione
+## P8 — Conclusione
 
 *(334 caratteri)*
 
