@@ -44,7 +44,7 @@ To me, this PhD is the convergence of research and development: the freedom to c
 
 *(744 caratteri)*
 
-What makes this opportunity stand out is the combination of an academic community and an industrial partner working on a topic I am genuinely passionate about. With TIM S.p.A. involved, the research would not stay confined to a controlled setting. I would have a real environment to test it against, and see whether it actually holds up. Being guided by both an academic and an industrial supervisor matters to me for the same reason, since it gives holistic guidance to the work: one inclined to push toward what is new, even when far ahead of what is practical, the other keeping a closer eye on what an operational system can actually sustain. I value this dual perspective; standing between both worlds allows me to understand how each distinctively thinks, conceptualizes and frames a problem prior to solving it.
+What makes this opportunity stand out is the combination of an academic community and an industrial partner working on a topic I am genuinely passionate about. With TIM S.p.A. involved, the research would not stay confined to a controlled setting. I would have a real environment to test it against, and see whether it actually holds up. Being guided by both an academic and an industrial supervisor matters to me for the same reason, since it gives holistic guidance to the work: one inclined to push toward what is new, even when far ahead of what is practical, the other keeping a closer eye on what an operational system can actually sustain. I value this dual perspective; standing between both worlds allows me to understand how each distinctively conceptualises and frames a problem prior to solving it.
 
 ## P7 — ITADATA + continuità SESAR Lab (punto 4)
 
@@ -73,15 +73,17 @@ In conclusion, I am convinced that this PhD aligns with both my background and m
 
 
 
-# Riferimenti P4 — da dove viene ciascun pezzo
+# Riferimenti P3 — da dove viene ciascun pezzo
 
 Promemoria rapido per sapere dove riprendere ciascun concetto in caso di domande al colloquio. Ogni voce spiegata in modo concreto, non solo con l'etichetta tecnica.
 
+> **Aggiornamento importante:** dopo il feedback di Anisetti, P3 è stato riscritto per includere vocabolario preciso (guardrails, constrained decoding) e il tema del troubleshooting come decision-support. In questo processo, **le sezioni 3 e 4 qui sotto (confidenza non binaria, blockchain) sono state tagliate dal testo della lettera**. Le lascio comunque nel documento, chiaramente marcate come "non più nella lettera", perché restano materiale utile se al colloquio ti viene chiesto di allargare il discorso oltre quello scritto.
+
 ---
 
-## 1. Grounding offline → online (frase di apertura di P4)
+## ✅ NELLA LETTERA — 1. Grounding offline → online
 
-**Concetto:** invece di ancorare una decisione una volta sola, in anticipo, contro una specifica fissa, l'approccio più recente ancora la decisione continuamente, a runtime, affiancando il ragionamento non deterministico a un livello di verifica deterministico.
+**Concetto:** invece di ancorare una decisione una volta sola, in anticipo, contro una specifica fissa, l'approccio più recente ancora la decisione continuamente, a runtime, affiancando il ragionamento non deterministico a un livello di verifica deterministico. *(Questo principio, con vocabolario "guardrails" e "constrained decoding", è nella prima parte di P3.)*
 
 **Paper di riferimento (tutti già in project knowledge):**
 
@@ -95,9 +97,9 @@ Promemoria rapido per sapere dove riprendere ciascun concetto in caso di domande
 
 ---
 
-## 2. Specializzazione dei ruoli (seconda frase di P4)
+## ✅ NELLA LETTERA — 2. Specializzazione dei ruoli
 
-**Concetto:** invece di un unico agente generalista, il lavoro viene diviso tra ruoli specializzati (uno pianifica, uno esegue, uno osserva, uno valida) — e questo rivela anche quali compiti restano più difficili da rendere affidabili di altri.
+**Concetto:** invece di un unico agente generalista, il lavoro viene diviso tra ruoli specializzati (uno pianifica, uno esegue, uno osserva, uno valida) — e questo rivela anche quali compiti restano più difficili da rendere affidabili di altri. *(Presente in P3 come "the same literature also tends to split this work across specialised roles, planning, validating and executing separately".)*
 
 **Paper di riferimento:**
 
@@ -109,14 +111,24 @@ Promemoria rapido per sapere dove riprendere ciascun concetto in caso di domande
 
 ---
 
-## 3. Confidenza non binaria (terza frase di P4)
+## ✅ NELLA LETTERA — Troubleshooting come decision-support
+
+**Concetto:** generative AI usata non come autonomous fixer ma come sistema di supporto alla decisione — correla telemetria, configurazione e conoscenza di dominio per proporre una diagnosi che un umano verifica, invece di un verdetto a scatola nera. *(È la terza parte di P3, quella che ha colmato il buco segnalato da Anisetti: "tutta la parte... troubleshooting con GenAI come decision support system".)*
+
+**Paper di riferimento principali:** ARM (RCA + remediation con GenAI come decisore, IEEE IoT Journal), TN-AutoRCA (ZTE + China Mobile).
+
+---
+
+## ⚠️ NON PIÙ NELLA LETTERA — 3. Confidenza non binaria
+
+**Tagliata da P3 durante la riscrittura per il feedback di Anisetti** — non compare più nel testo attuale. La lascio qui solo come possibile materiale da discutere se emerge in un colloquio più aperto sulla letteratura.
 
 **Concetto:** alcuni approcci non trattano un risultato come solo "corretto/sbagliato", ma esprimono la fiducia in modo quantificato/graduato.
 
 **Paper di riferimento (uso concreto, non teorico):**
 
 - **ARM** — inietta un guasto artificiale, poi valuta se l'agente riporta il sistema al comportamento che aveva prima del guasto: succede pienamente solo nel 55% dei casi, ma in media viene comunque recuperato l'80.4% del degrado — un giudizio binario avrebbe nascosto quel recupero parziale dietro un semplice "fallito".
-- **OSS-GPT** — per ogni richiesta calcolano il numero minimo di passaggi tecnici necessari per soddisfarla (il "percorso ideale"), poi misurano quanto il sistema si allontana da quel percorso ideale invece di dire solo se alla fine ha avuto successo o no — anche un successo "sporco", con passaggi in più del necessario, viene registrato come tale.
+- **OSS-GPT** — per ogni richiesta calcolano il numero minimo di passaggi tecnici necessari per soddisfarla (il "percorso ideale"), poi misurano quanto il sistema si allontana da quel percorso ideale invece di dire solo se alla fine ha avuto successo o no.
 - **MX-AI** — invece di dire solo se una risposta sullo stato della rete è giusta o sbagliata, la valutano su una scala da 0 a 5 per quanto è coerente e completa.
 
 **Fonte teorica/formale (se vuoi approfondire il lato matematico):**
@@ -125,17 +137,19 @@ Promemoria rapido per sapere dove riprendere ciascun concetto in caso di domande
 
 ---
 
-## 4. Blockchain / audit nel tempo (quarta frase di P4)
+## ⚠️ NON PIÙ NELLA LETTERA — 4. Blockchain / audit nel tempo
+
+**Tagliata da P3 durante la riscrittura per il feedback di Anisetti** — non compare più nel testo attuale. La lascio qui solo come possibile materiale da discutere se emerge in un colloquio più aperto sulla letteratura, in particolare se si parla di RQ7/RQ8 (governance, trust lifecycle).
 
 **Concetto:** la fiducia, una volta stabilita, va mantenuta nel tempo — un registro delle decisioni a prova di manomissione (blockchain) è già usato altrove ma non ancora nel Telco.
 
 **Fonte primaria (il gap):**
 
-- **Mekrache, Ksentini, Verikoukis**, "Machine Reasoning in FCAPS: Towards Enhanced Beyond 5G Network Management", *IEEE Communications Surveys & Tutorials*, 2024 — **è in project knowledge** — nella sezione finale sulle direzioni future, gli autori stessi scrivono esplicitamente che combinare ragionamento automatico e blockchain per la sicurezza delle reti è "un'area di ricerca emergente che merita ulteriore indagine" — cioè lo dicono loro che non è ancora stato fatto, non lo sto dicendo io.
+- **Mekrache, Ksentini, Verikoukis**, "Machine Reasoning in FCAPS: Towards Enhanced Beyond 5G Network Management", *IEEE Communications Surveys & Tutorials*, 2024 — **è in project knowledge** — nella sezione finale sulle direzioni future, gli autori stessi scrivono esplicitamente che combinare ragionamento automatico e blockchain per la sicurezza delle reti è "un'area di ricerca emergente che merita ulteriore indagine".
 
 **Prova che il meccanismo esiste già altrove (verificato via web, non in project knowledge):**
 
-- **"A Blockchain-Monitored Agentic AI Architecture for Trusted Perception–Reasoning–Action Pipelines"** — presentato a IEEE ICCA 2025 (Bahrain) — un sistema reale (non solo un'idea) dove ogni decisione di un agente AI viene registrata su una blockchain, così nessuno può modificare la cronologia delle decisioni dopo il fatto. Testato su gestione di magazzino, controllo di semafori, monitoraggio sanitario — **non nel Telco**, ma dimostra che il meccanismo funziona davvero, non è solo teoria.
+- **"A Blockchain-Monitored Agentic AI Architecture for Trusted Perception–Reasoning–Action Pipelines"** — presentato a IEEE ICCA 2025 (Bahrain) — un sistema reale dove ogni decisione di un agente AI viene registrata su una blockchain. Testato su gestione di magazzino, controllo di semafori, monitoraggio sanitario — non nel Telco, ma dimostra che il meccanismo funziona davvero.
 
 ---
 

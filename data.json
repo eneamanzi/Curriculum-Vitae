@@ -139,10 +139,10 @@
       },
       "highlights": {
         "en": [
-          "Designed and implemented \\textbf{APIGuard Assurance}, an \\textbf{API-agnostic}, \\textbf{contract-driven} tool for automated REST API \\textbf{security assurance} based on a taxonomy of eight domains and \\textit{specified oracles}, validated against a real-world target."
+          "Designed and implemented \\textbf{APIGuard Assurance}, an \\textbf{API-agnostic}, \\textbf{contract-driven} tool for automated REST API \\textbf{security assurance} based on a taxonomy of eight domains and \\textit{specified oracles} to establish \\textbf{trust} in automated verdicts, validated against a real-world target."
         ],
         "it": [
-          "Progettato e implementato \\textbf{APIGuard Assurance}, un tool \\textbf{API-agnostico} e \\textbf{contract-driven} per la \\textbf{security assurance} automatizzata di API REST basato su una tassonomia di otto domini e su \\textit{specified oracles}, validato contro un target reale."
+          "Progettato e implementato \\textbf{APIGuard Assurance}, un tool \\textbf{API-agnostico} e \\textbf{contract-driven} per la \\textbf{security assurance} automatizzata di API REST basato su una tassonomia di otto domini e su \\textit{specified oracles} per stabilire \\textbf{fiducia} nei verdetti automatizzati, validato contro un target reale."
         ]
       }
     },
@@ -167,10 +167,10 @@
       },
       "highlights": {
         "en": [
-          "Contributed to the design and implementation of an \\textbf{Assurance Engine} for the verification of \\textbf{non-functional properties (NFP)} in distributed systems, built in \\textbf{Rust} and deployed on \\textbf{Kubernetes}, developing a new connector to integrate \\textbf{Elasticsearch} as a monitoring backend."
+          "Contributed to the design and implementation of an \\textbf{Assurance Engine} for the verification of \\textbf{non-functional properties (NFP)} in distributed systems, built in \\textbf{Rust} and deployed on \\textbf{Kubernetes}, developing a new connector to integrate \\textbf{Elasticsearch} as an \\textbf{observability} backend."
         ],
         "it": [
-          "Contribuito alla progettazione e implementazione di un \\textbf{Assurance Engine} per la verifica di \\textbf{proprietà non funzionali (PNF)} in sistemi distribuiti, sviluppato in \\textbf{Rust} e deployato su \\textbf{Kubernetes}, sviluppando un nuovo connector per l'integrazione di \\textbf{Elasticsearch} come backend di monitoring."
+          "Contribuito alla progettazione e implementazione di un \\textbf{Assurance Engine} per la verifica di \\textbf{proprietà non funzionali (PNF)} in sistemi distribuiti, sviluppato in \\textbf{Rust} e deployato su \\textbf{Kubernetes}, sviluppando un nuovo connector per l'integrazione di \\textbf{Elasticsearch} come backend di \\textbf{observability}."
         ]
       }
     },
@@ -221,7 +221,7 @@
           "Analyzed existing approaches to REST API testing, observing that most focus on \\textbf{functional} and \\textbf{syntactic} conformance, while \\textbf{security violations} remain comparatively unaddressed.",
           "Defined a taxonomy of \\textbf{eight security domains} to structure systematic assessment coverage.",
           "Proposed an \\textbf{API-agnostic}, \\textbf{contract-driven} methodology, based on \\textit{specified oracles}, that derives target knowledge exclusively from the \\textbf{OpenAPI Specification (OAS)} and a deployment configuration file.",
-          "Addressed the \\textit{oracle problem} in automated security testing by deriving, for each security control, an evaluation criterion from the specific knowledge and expectations of the test being performed, traceable to \\textbf{OWASP} categories and \\textbf{CWE} codes.",
+          "Addressed the \\textit{oracle problem} in automated security testing, central to establishing \\textbf{trust} in an automated verdict, by deriving, for each security control, an evaluation criterion from the specific knowledge and expectations of the test being performed, traceable to \\textbf{OWASP} categories and \\textbf{CWE} codes.",
           "Achieved \\textbf{deterministic}, \\textbf{reproducible} results, a prerequisite for assurance integrated into continuous development, through a \\textbf{DAG}-based scheduling approach exposing \\textbf{semantic exit codes} for \\textbf{CI/CD} integration.",
           "Validated the methodology against a real-world target, \\textbf{Forgejo} exposed through the \\textbf{Kong} API gateway, confirming correct detection of security violations and deterministic, reproducible results."
         ],
@@ -229,7 +229,7 @@
           "Analizzati gli approcci esistenti per il testing di API REST, osservando che la maggior parte si concentra sulla conformità \\textbf{funzionale} e \\textbf{sintattica}, mentre le \\textbf{violazioni di sicurezza} restano comparativamente meno affrontate.",
           "Definita una tassonomia di \\textbf{otto domini di sicurezza} per strutturare una copertura sistematica dell'assessment.",
           "Proposta una metodologia \\textbf{API-agnostica} e \\textbf{contract-driven}, basata su \\textit{specified oracles}, che deriva la conoscenza del target esclusivamente dalla \\textbf{OpenAPI Specification (OAS)} e da un file di configurazione del deployment.",
-          "Affrontato il \\textit{problema dell'oracolo} nel testing automatico di sicurezza, ricavando per ciascun controllo un criterio di valutazione dalla conoscenza specifica e dalle aspettative del test da eseguire, tracciabile a categorie \\textbf{OWASP} e codici \\textbf{CWE}.",
+          "Affrontato il \\textit{problema dell'oracolo} nel testing automatico di sicurezza, centrale per stabilire \\textbf{fiducia} in un verdetto automatizzato, ricavando per ciascun controllo un criterio di valutazione dalla conoscenza specifica e dalle aspettative del test da eseguire, tracciabile a categorie \\textbf{OWASP} e codici \\textbf{CWE}.",
           "Ottenuti risultati \\textbf{deterministici} e \\textbf{riproducibili}, prerequisito per un'assurance integrata nello sviluppo continuativo, tramite un approccio di scheduling basato su \\textbf{DAG} ed \\textbf{exit code semantici} per l'integrazione \\textbf{CI/CD}.",
           "Validata la metodologia contro un target reale, \\textbf{Forgejo} esposto tramite il gateway \\textbf{Kong}, confermando la corretta rilevazione di violazioni di sicurezza e risultati deterministici e riproducibili."
         ]
@@ -252,13 +252,13 @@
       },
       "highlights": {
         "en": [
-          "Investigated existing approaches to verifying and monitoring \\textbf{non-functional properties (NFP)} in distributed systems.",
-          "Contributed to the development of an \\textbf{Assurance Engine} for distributed systems, building a new connector to integrate \\textbf{Elasticsearch} as a monitoring backend.",
+          "Investigated existing approaches to verifying and monitoring \\textbf{non-functional properties (NFP)} in distributed \\textbf{Edge-Cloud Continuum} systems.",
+          "Contributed to the development of an \\textbf{Assurance Engine} for distributed systems, building a new connector to integrate \\textbf{Elasticsearch} as an \\textbf{observability} backend.",
           "Formalized contracts to jointly evaluate multiple non-functional properties (\\textbf{CIA triad}, reliability, scalability, performance), validated experimentally on a \\textbf{Kubernetes} testbed with minimal computational overhead."
         ],
         "it": [
-          "Analizzati gli approcci esistenti per la verifica e il monitoraggio di \\textbf{proprietà non funzionali (PNF)} in sistemi distribuiti.",
-          "Contribuito allo sviluppo di un \\textbf{Assurance Engine} per sistemi distribuiti, realizzando un nuovo connector per l'integrazione di \\textbf{Elasticsearch} come backend di monitoring.",
+          "Analizzati gli approcci esistenti per la verifica e il monitoraggio di \\textbf{proprietà non funzionali (PNF)} in sistemi distribuiti \\textbf{Edge-Cloud Continuum}.",
+          "Contribuito allo sviluppo di un \\textbf{Assurance Engine} per sistemi distribuiti, realizzando un nuovo connector per l'integrazione di \\textbf{Elasticsearch} come backend di \\textbf{observability}.",
           "Formalizzati contratti per valutare congiuntamente molteplici proprietà non funzionali (\\textbf{triade CIA}, affidabilità, scalabilità, performance), validati sperimentalmente su un testbed \\textbf{Kubernetes} con overhead computazionale minimo."
         ]
       }
@@ -493,7 +493,9 @@
         "Git",
         "Kafka",
         "Kong API Gateway",
-        "CI/CD"
+        "CI/CD",
+        "Observability",
+        "Edge-Cloud Continuum"
       ]
     },
     {
