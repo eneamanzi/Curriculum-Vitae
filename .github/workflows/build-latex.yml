@@ -36,12 +36,14 @@ jobs:
       uses: xu-cheng/latex-action@v3
       with:
         root_file: cv.tex
+        docker_image: ghcr.io/xu-cheng/texlive-full:20260401
         args: -lualatex -interaction=nonstopmode -file-line-error -jobname=cv_english
 
     - name: Compile Cover Letter English
       uses: xu-cheng/latex-action@v3
       with:
         root_file: cover_letter.tex
+        docker_image: ghcr.io/xu-cheng/texlive-full:20260401
         args: -lualatex -interaction=nonstopmode -file-line-error -jobname=cover_letter_english
 
     # --- 2. PREPARAZIONE ITALIANO ---
@@ -55,12 +57,14 @@ jobs:
       uses: xu-cheng/latex-action@v3
       with:
         root_file: cv.tex
+        docker_image: ghcr.io/xu-cheng/texlive-full:20260401
         args: -lualatex -interaction=nonstopmode -file-line-error -jobname=cv_italian
 
     - name: Compile Cover Letter Italian
       uses: xu-cheng/latex-action@v3
       with:
         root_file: cover_letter.tex
+        docker_image: ghcr.io/xu-cheng/texlive-full:20260401
         args: -lualatex -interaction=nonstopmode -file-line-error -jobname=cover_letter_italian
 
     # ========================================================
