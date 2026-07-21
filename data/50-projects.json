@@ -14,18 +14,18 @@
     },
     "highlights": {
       "en": [
-        "Built in \\textbf{Python 3.12}, with a \\textbf{dynamic test-discovery mechanism} allowing new security checks to be added without modifying the core engine.",
-        "Implemented \\textit{specified oracles} directly in each test's code: every check encodes its own evaluation criterion, derived from the domain knowledge of the control under test.",
-        "Enforced \\textbf{strict static typing} (mypy) and \\textbf{runtime validation} (Pydantic), with full documentation coverage across the public API.",
-        "Built \\textbf{reproducible packages} with \\textbf{Hatch}, verifying identical SHA-256 hashes across repeated builds.",
-        "Designed an \\textbf{extensible} connector architecture to integrate external security scanners, decoupling test logic from tool-specific output parsing."
+        "Built in **Python 3.12**, with a **dynamic test-discovery mechanism** allowing new security checks to be added without modifying the core engine.",
+        "Implemented *specified oracles* directly in each test's code: every check encodes its own evaluation criterion, derived from the domain knowledge of the control under test.",
+        "Enforced **strict static typing** (mypy) and **runtime validation** (Pydantic), with full documentation coverage across the public API.",
+        "Built **reproducible packages** with **Hatch**, verifying identical SHA-256 hashes across repeated builds.",
+        "Designed an **extensible** connector architecture to integrate external security scanners, decoupling test logic from tool-specific output parsing."
       ],
       "it": [
-        "Sviluppato in \\textbf{Python 3.12}, con un \\textbf{meccanismo di discovery dinamica dei test} che consente di aggiungere nuove verifiche senza modificare il core dell'engine.",
-        "Implementati gli \\textit{specified oracles} direttamente nel codice di ogni test: ogni verifica codifica il proprio criterio di valutazione, derivato dalla conoscenza di dominio del controllo testato.",
-        "Applicati \\textbf{type-checking statico rigoroso} (mypy) e \\textbf{validazione a runtime} (Pydantic), con copertura completa della documentazione sull'API pubblica.",
-        "Realizzate \\textbf{build riproducibili} con \\textbf{Hatch}, verificando hash SHA-256 identici su esecuzioni ripetute.",
-        "Progettata un'architettura di connector \\textbf{estensibile} per l'integrazione di scanner di sicurezza esterni, disaccoppiando la logica dei test dal parsing specifico di ciascun tool."
+        "Sviluppato in **Python 3.12**, con un **meccanismo di discovery dinamica dei test** che consente di aggiungere nuove verifiche senza modificare il core dell'engine.",
+        "Implementati gli *specified oracles* direttamente nel codice di ogni test: ogni verifica codifica il proprio criterio di valutazione, derivato dalla conoscenza di dominio del controllo testato.",
+        "Applicati **type-checking statico rigoroso** (mypy) e **validazione a runtime** (Pydantic), con copertura completa della documentazione sull'API pubblica.",
+        "Realizzate **build riproducibili** con **Hatch**, verificando hash SHA-256 identici su esecuzioni ripetute.",
+        "Progettata un'architettura di connector **estensibile** per l'integrazione di scanner di sicurezza esterni, disaccoppiando la logica dei test dal parsing specifico di ciascun tool."
       ]
     },
     "keywords": [
@@ -49,21 +49,21 @@
       "en": "Cloud Computing Technologies Course Project (A.Y. 2025/2026)"
     },
     "description": {
-      "it": "Sviluppo di un'infrastruttura a microservizi cloud-native su Kubernetes per l'ingestione e il monitoraggio IoT, con particolare attenzione a \\textbf{proprietà non funzionali} quali scalabilità, tolleranza ai guasti e sicurezza edge-to-core.",
-      "en": "Development of a cloud-native microservices infrastructure on Kubernetes for IoT ingestion and monitoring, with a particular focus on \\textbf{non-functional properties} such as scalability, fault tolerance, and edge-to-core security."
+      "it": "Sviluppo di un'infrastruttura a microservizi cloud-native su Kubernetes per l'ingestione e il monitoraggio IoT, con particolare attenzione a **proprietà non funzionali** quali scalabilità, tolleranza ai guasti e sicurezza edge-to-core.",
+      "en": "Development of a cloud-native microservices infrastructure on Kubernetes for IoT ingestion and monitoring, with a particular focus on **non-functional properties** such as scalability, fault tolerance, and edge-to-core security."
     },
     "highlights": {
       "it": [
-        "Architettura a microservizi basata su \\textbf{Apache Kafka} in modalità KRaft (senza ZooKeeper) per il disaccoppiamento asincrono e la gestione affidabile dei messaggi (\\textit{Zero Data Loss}).",
-        "Integrazione di \\textbf{Kong API Gateway} per implementare il pattern \\textit{Gateway Offloading}, centralizzando all'edge autenticazione (API Key), Rate Limiting e Load Balancing.",
-        "Storage layer ottimizzato su \\textbf{MongoDB} tramite \\textbf{Time Series Collections} e compressione ibrida (LZ4/Zstd) per massimizzare l'efficienza dello storage e le performance analitiche.",
-        "Orchestrazione \\textbf{Kubernetes} completa gestita via \\textbf{Helm}, con scalabilità automatica (HPA) e sicurezza avanzata (Secrets, TLS/SASL) per soddisfare i requisiti non funzionali."
+        "Architettura a microservizi basata su **Apache Kafka** in modalità KRaft (senza ZooKeeper) per il disaccoppiamento asincrono e la gestione affidabile dei messaggi (*Zero Data Loss*).",
+        "Integrazione di **Kong API Gateway** per implementare il pattern *Gateway Offloading*, centralizzando all'edge autenticazione (API Key), Rate Limiting e Load Balancing.",
+        "Storage layer ottimizzato su **MongoDB** tramite **Time Series Collections** e compressione ibrida (LZ4/Zstd) per massimizzare l'efficienza dello storage e le performance analitiche.",
+        "Orchestrazione **Kubernetes** completa gestita via **Helm**, con scalabilità automatica (HPA) e sicurezza avanzata (Secrets, TLS/SASL) per soddisfare i requisiti non funzionali."
       ],
       "en": [
-        "Microservices architecture based on \\textbf{Apache Kafka} in KRaft mode (ZooKeeper-less) for asynchronous decoupling and reliable message handling (\\textit{Zero Data Loss}).",
-        "Integration of \\textbf{Kong API Gateway} to implement the \\textit{Gateway Offloading} pattern, centralizing Authentication (API Key), Rate Limiting, and Load Balancing at the edge.",
-        "Storage layer optimized on \\textbf{MongoDB} using \\textbf{Time Series Collections} and hybrid compression (LZ4/Zstd) to maximize storage efficiency and analytical performance.",
-        "Full \\textbf{Kubernetes} orchestration managed via \\textbf{Helm}, featuring automatic scalability (HPA) and advanced security (Secrets, TLS/SASL) to meet non-functional requirements."
+        "Microservices architecture based on **Apache Kafka** in KRaft mode (ZooKeeper-less) for asynchronous decoupling and reliable message handling (*Zero Data Loss*).",
+        "Integration of **Kong API Gateway** to implement the *Gateway Offloading* pattern, centralizing Authentication (API Key), Rate Limiting, and Load Balancing at the edge.",
+        "Storage layer optimized on **MongoDB** using **Time Series Collections** and hybrid compression (LZ4/Zstd) to maximize storage efficiency and analytical performance.",
+        "Full **Kubernetes** orchestration managed via **Helm**, featuring automatic scalability (HPA) and advanced security (Secrets, TLS/SASL) to meet non-functional requirements."
       ]
     },
     "keywords": [
@@ -86,21 +86,21 @@
       "it": "Progetto del corso di Reti di Calcolatori (A.A. 2022-2023)"
     },
     "description": {
-      "en": "Developed a multi-threaded \\textbf{FTP-compliant} client-server application in \\textbf{C} for file transfer, fully interoperable with \\textbf{FileZilla}.",
-      "it": "Sviluppo di un'applicazione client-server \\textbf{FTP-compliant} multi-thread in \\textbf{C} per il trasferimento di file, completamente interoperabile con \\textbf{FileZilla}."
+      "en": "Developed a multi-threaded **FTP-compliant** client-server application in **C** for file transfer, fully interoperable with **FileZilla**.",
+      "it": "Sviluppo di un'applicazione client-server **FTP-compliant** multi-thread in **C** per il trasferimento di file, completamente interoperabile con **FileZilla**."
     },
     "highlights": {
       "en": [
-        "Architecture: Multi-threaded server based on \\textbf{Socket Programming} for concurrent session management.",
+        "Architecture: Multi-threaded server based on **Socket Programming** for concurrent session management.",
         "Data Modes: Native support for both Active (PORT) and Passive (PASV) data transfer modes.",
-        "Protocol Management: Implemented essential \\textit{FTP commands} (e.g., USER, PASS, LIST, RETR, STOR, CWD...)",
-        "\\textbf{Key skills:} \\textbf{C}, \\textbf{socket programming}, \\textbf{multithreading}, \\textbf{network protocols}, \\textbf{FTP}, \\textbf{Git}."
+        "Protocol Management: Implemented essential *FTP commands* (e.g., USER, PASS, LIST, RETR, STOR, CWD...)",
+        "**Key skills:** **C**, **socket programming**, **multithreading**, **network protocols**, **FTP**, **Git**."
       ],
       "it": [
-        "Architettura: Server multi-threaded basato su \\textbf{Socket Programming} per la gestione concorrente delle sessioni.",
+        "Architettura: Server multi-threaded basato su **Socket Programming** per la gestione concorrente delle sessioni.",
         "Modalità di Trasferimento: Supporto nativo per entrambe le modalità di trasferimento dati Attiva (PORT) e Passiva (PASV).",
-        "Gestione del Protocollo: Implementazione dei comandi \\textit{FTP} essenziali (es. USER, PASS, LIST, RETR, STOR, CWD...).",
-        "\\textbf{Competenze chiave:} \\textbf{C}, \\textbf{socket programming}, \\textbf{multithreading}, \\textbf{protocolli di rete}, \\textbf{FTP}, \\textbf{Git}."
+        "Gestione del Protocollo: Implementazione dei comandi *FTP* essenziali (es. USER, PASS, LIST, RETR, STOR, CWD...).",
+        "**Competenze chiave:** **C**, **socket programming**, **multithreading**, **protocolli di rete**, **FTP**, **Git**."
       ]
     }
   },
@@ -119,16 +119,16 @@
     },
     "highlights": {
       "en": [
-        "Developed the backend with \\textit{Node.js/Express} and the frontend with \\textit{HTML5}, \\textit{CSS3}, \\textit{JavaScript/jQuery}.",
-        "Integrated \\textit{MongoDB} for document-oriented storage and \\textit{AJAX} for asynchronous client-server communication (GET, POST, DELETE).",
-        "Managed source code and collaboration using \\textbf{Git} and \\textbf{GitHub}.",
-        "\\textbf{Key skills:} \\textit{Node.js}, \\textit{Express}, \\textit{MongoDB}, \\textit{AJAX}, \\textit{REST APIs}, \\textit{jQuery}, \\textbf{Git}."
+        "Developed the backend with *Node.js/Express* and the frontend with *HTML5*, *CSS3*, *JavaScript/jQuery*.",
+        "Integrated *MongoDB* for document-oriented storage and *AJAX* for asynchronous client-server communication (GET, POST, DELETE).",
+        "Managed source code and collaboration using **Git** and **GitHub**.",
+        "**Key skills:** *Node.js*, *Express*, *MongoDB*, *AJAX*, *REST APIs*, *jQuery*, **Git**."
       ],
       "it": [
-        "Sviluppo del backend con \\textit{Node.js/Express} e del frontend con \\textit{HTML5}, \\textit{CSS3}, \\textit{JavaScript/jQuery}.",
-        "Integrazione di \\textit{MongoDB} per l'archiviazione orientata ai documenti e di \\textit{AJAX} per la comunicazione asincrona client-server (GET, POST, DELETE).",
-        "Gestione del codice sorgente e della collaborazione utilizzando \\textbf{Git} e \\textbf{GitHub}.",
-        "\\textbf{Competenze chiave:} \\textit{Node.js}, \\textit{Express}, \\textit{MongoDB}, \\textit{AJAX}, \\textit{REST APIs}, \\textit{jQuery}, \\textbf{Git}."
+        "Sviluppo del backend con *Node.js/Express* e del frontend con *HTML5*, *CSS3*, *JavaScript/jQuery*.",
+        "Integrazione di *MongoDB* per l'archiviazione orientata ai documenti e di *AJAX* per la comunicazione asincrona client-server (GET, POST, DELETE).",
+        "Gestione del codice sorgente e della collaborazione utilizzando **Git** e **GitHub**.",
+        "**Competenze chiave:** *Node.js*, *Express*, *MongoDB*, *AJAX*, *REST APIs*, *jQuery*, **Git**."
       ]
     }
   }

@@ -5,11 +5,11 @@
       "it": "Linguaggi di Programmazione"
     },
     "keywords": [
-      "\\textsl{C}",
-      "\\textsl{Java}",
-      "\\textsl{Python}",
-      "\\textsl{SQL}",
-      "Web (\\textsl{HTML}, \\textsl{JavaScript/Node.js})",
+      "*C*",
+      "*Java*",
+      "*Python*",
+      "*SQL*",
+      "Web (*HTML*, *JavaScript/Node.js*)",
       "OOP Concepts",
       "low-level programming"
     ]
@@ -20,7 +20,7 @@
       "it": "Database"
     },
     "keywords": [
-      "\\textsl{MySQL}",
+      "*MySQL*",
       {
         "en": "Database Design, Implementation and Adminsitration",
         "it": "Progettazione, Implementazione e Amministrazione di Database"
@@ -29,12 +29,12 @@
   },
   {
     "name": {
-      "en": "Architectures \\& Software",
+      "en": "Architectures & Software",
       "it": "Architetture e Software"
     },
     "keywords": [
-      "\\textsl{Docker}",
-      "\\textsl{Kubernetes}",
+      "*Docker*",
+      "*Kubernetes*",
       {
         "en": "microservices architectures",
         "it": "architetture a microservizi"
@@ -67,7 +67,7 @@
   },
   {
     "name": {
-      "en": "Networking \\& Security",
+      "en": "Networking & Security",
       "it": "Networking e Sicurezza"
     },
     "keywords": [
@@ -110,20 +110,20 @@
     },
     "keywords": [
       {
-        "en": "\\textbf{Thinking}: analytically, critically, proactively",
-        "it": "\\textbf{Pensiero}: analitico, critico, proattivo"
+        "en": "**Thinking**: analytically, critically, proactively",
+        "it": "**Pensiero**: analitico, critico, proattivo"
       },
       {
-        "en": "\\textbf{Problems}: address problems critically, solve problems/create solutions",
-        "it": "\\textbf{Problemi}: affrontare i problemi in modo critico, risolvere problemi/creare soluzioni"
+        "en": "**Problems**: address problems critically, solve problems/create solutions",
+        "it": "**Problemi**: affrontare i problemi in modo critico, risolvere problemi/creare soluzioni"
       },
       {
-        "en": "\\textbf{Communication}: cooperate with colleagues, work in teams, manage teamwork",
-        "it": "\\textbf{Comunicazione}: collaborare con i colleghi, lavorare in team, gestire il lavoro di squadra"
+        "en": "**Communication**: cooperate with colleagues, work in teams, manage teamwork",
+        "it": "**Comunicazione**: collaborare con i colleghi, lavorare in team, gestire il lavoro di squadra"
       },
       {
-        "en": "\\textbf{Others}: demonstrate curiosity, cope with stress, prioritise tasks",
-        "it": "\\textbf{Altro}: dimostrare curiosità, affrontare lo stress, dare priorità ai compiti"
+        "en": "**Others**: demonstrate curiosity, cope with stress, prioritise tasks",
+        "it": "**Altro**: dimostrare curiosità, affrontare lo stress, dare priorità ai compiti"
       }
     ]
   }

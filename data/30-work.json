@@ -20,10 +20,10 @@
     },
     "highlights": {
       "en": [
-        "Designed and implemented \\textbf{APIGuard Assurance}, an \\textbf{API-agnostic}, \\textbf{contract-driven} tool for automated REST API \\textbf{security assurance} based on a taxonomy of eight domains and \\textit{specified oracles} to establish \\textbf{trust} in automated verdicts, validated against a real-world target."
+        "Designed and implemented **APIGuard Assurance**, an **API-agnostic**, **contract-driven** tool for automated REST API **security assurance** based on a taxonomy of eight domains and *specified oracles* to establish **trust** in automated verdicts, validated against a real-world target."
       ],
       "it": [
-        "Progettato e implementato \\textbf{APIGuard Assurance}, un tool \\textbf{API-agnostico} e \\textbf{contract-driven} per la \\textbf{security assurance} automatizzata di API REST basato su una tassonomia di otto domini e su \\textit{specified oracles} per stabilire \\textbf{fiducia} nei verdetti automatizzati, validato contro un target reale."
+        "Progettato e implementato **APIGuard Assurance**, un tool **API-agnostico** e **contract-driven** per la **security assurance** automatizzata di API REST basato su una tassonomia di otto domini e su *specified oracles* per stabilire **fiducia** nei verdetti automatizzati, validato contro un target reale."
       ]
     }
   },
@@ -48,10 +48,10 @@
     },
     "highlights": {
       "en": [
-        "Contributed to the design and implementation of an \\textbf{Assurance Engine} for the verification of \\textbf{non-functional properties (NFP)} in distributed systems, built in \\textbf{Rust} and deployed on \\textbf{Kubernetes}, developing a new connector to integrate \\textbf{Elasticsearch} as an \\textbf{observability} backend."
+        "Contributed to the design and implementation of an **Assurance Engine** for the verification of **non-functional properties (NFP)** in distributed systems, built in **Rust** and deployed on **Kubernetes**, developing a new connector to integrate **Elasticsearch** as an **observability** backend."
       ],
       "it": [
-        "Contribuito alla progettazione e implementazione di un \\textbf{Assurance Engine} per la verifica di \\textbf{proprietà non funzionali (PNF)} in sistemi distribuiti, sviluppato in \\textbf{Rust} e deployato su \\textbf{Kubernetes}, sviluppando un nuovo connector per l'integrazione di \\textbf{Elasticsearch} come backend di \\textbf{observability}."
+        "Contribuito alla progettazione e implementazione di un **Assurance Engine** per la verifica di **proprietà non funzionali (PNF)** in sistemi distribuiti, sviluppato in **Rust** e deployato su **Kubernetes**, sviluppando un nuovo connector per l'integrazione di **Elasticsearch** come backend di **observability**."
       ]
     }
   },

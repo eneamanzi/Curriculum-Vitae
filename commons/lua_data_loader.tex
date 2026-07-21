@@ -29,18 +29,48 @@
     data[key] = read_json("data/" .. filename .. ".json")
     end
 
+    -- 1.1 Markdown -> LaTeX: i dati sorgente restano "innocenti" (Markdown neutro),
+    -- ogni consumer (qui il loader Lua) traduce l'enfasi nel proprio linguaggio.
+    local function escape_latex(s)
+    s = s:gsub("\\", "\\textbackslash{}")
+    s = s:gsub("%%", "\\%%")
+    s = s:gsub("%$", "\\$")
+    s = s:gsub("#", "\\#")
+    s = s:gsub("_", "\\_")
+    s = s:gsub("{", "\\{")
+    s = s:gsub("}", "\\}")
+    s = s:gsub("&", "\\&")
+    s = s:gsub("~", "\\textasciitilde{}")
+    s = s:gsub("%^", "\\textasciicircum{}")
+    return s
+    end
+
+    local function md_to_latex(text)
+    text = escape_latex(text)
+    text = text:gsub("%*%*(.-)%*%*", "\\textbf{%1}")
+    text = text:gsub("%*(.-)%*", "\\textit{%1}")
+    return text
+    end
+
     -- 2. Helper per la lingua
     function get_text(node)
     if not node then return "" end
-    if type(node) == "string" then return node end
+    if type(node) == "string" then return md_to_latex(node) end
 
     -- Controlla se la macro \makeitalian è definita
     local is_italian = token.get_macro("makeitalian") ~= nil
 
+    local value
     if is_italian and node.it then
-    return node.it
+    value = node.it
     else
-    return node.en or ""
+    value = node.en or ""
+    end
+
+    if type(value) == "string" then
+    return md_to_latex(value)
+    else
+    return value
     end
     end
 
