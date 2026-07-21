@@ -46,36 +46,64 @@ jobs:
         # different repo) so the pushed file already passes its `prettier --check`.
         npx --yes prettier@3 --print-width 150 --write website_upload_json/resume.json
 
-    # Only push on an actual merge to main/master - a pull_request run just
-    # validates the script still produces a well-formed file, it never touches
-    # the website repository.
-    - name: Push resume.json to Website Repository
-      if: github.event_name == 'push'
-      uses: cpina/github-action-push-to-another-repository@main
-      env:
-        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }} # Richiede il Token Segreto
-      with:
-        source-directory: 'website_upload_json'
-        destination-github-username: 'eneamanzi'
-        destination-repository-name: 'eneamanzi.github.io'
-        user-email: 'enea.manzi@gmail.com'
-        target-branch: 'main'          # Il branch principale del tuo sito
-        target-directory: 'assets/json'
-
     - name: Generate socials.yml
       run: |
         mkdir -p website_upload_data
         python3 scripts-website-data/generate_socials_yml.py website_upload_data/socials.yml
 
-    - name: Push socials.yml to Website Repository
+    # NOTA: non usiamo più cpina/github-action-push-to-another-repository.
+    # Quell'action fa `rm -rf` sull'intera target-directory prima di copiarci
+    # dentro i file nuovi - è quello che ha cancellato per errore 6 file non
+    # correlati dentro _data/ (citations.yml, coauthors.yml, ecc.) quando il
+    # push era scoped a target-directory: '_data'. Checkout diretto + git add
+    # mirato non cancella mai nulla che non tocchiamo esplicitamente.
+    #
+    # Solo su un push reale a main/master - una pull_request valida soltanto
+    # che gli script producano un file ben formato, non tocca mai il sito.
+    - name: Checkout Website Repository
       if: github.event_name == 'push'
-      uses: cpina/github-action-push-to-another-repository@main
-      env:
-        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }} # Richiede il Token Segreto
+      uses: actions/checkout@v4
       with:
-        source-directory: 'website_upload_data'
-        destination-github-username: 'eneamanzi'
-        destination-repository-name: 'eneamanzi.github.io'
-        user-email: 'enea.manzi@gmail.com'
-        target-branch: 'main'          # Il branch principale del tuo sito
-        target-directory: '_data'
+        repository: eneamanzi/eneamanzi.github.io
+        token: ${{ secrets.API_TOKEN_GITHUB }}
+        path: website-repo
+
+    - name: Copy Generated Files into Website Checkout
+      if: github.event_name == 'push'
+      run: |
+        cp website_upload_json/resume.json website-repo/assets/json/resume.json
+        cp website_upload_data/socials.yml website-repo/_data/socials.yml
+
+    # Runs the website repo's own scaffolder here, against the resume.json we
+    # just copied in, so any new project page is created and committed together
+    # with resume.json below - the website's scaffold-projects.yml (which reacts
+    # to a resume.json push by doing the same thing) then has nothing left to do
+    # and never needs to make its own separate follow-up push. pydantic is
+    # already installed from scripts-website-data/requirements.txt above.
+    - name: Scaffold new project pages on the website (if any)
+      if: github.event_name == 'push'
+      working-directory: website-repo
+      run: python3 scripts/scaffold_project_pages.py
+
+    - name: Format any newly scaffolded pages with Prettier
+      if: github.event_name == 'push'
+      working-directory: website-repo
+      run: |
+        npm install --no-save --save-exact prettier @shopify/prettier-plugin-liquid
+        npx prettier --write "_projects/*.md"
+
+    - name: Commit and Push Generated Files
+      if: github.event_name == 'push'
+      working-directory: website-repo
+      run: |
+        git config user.email "enea.manzi@gmail.com"
+        git config user.name "GitHub Actions"
+        git add assets/json/resume.json _data/socials.yml _projects/
+        git diff --staged --quiet || (
+          git commit -m "Update from ${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}"
+          # rebase before pushing: build-latex.yml also triggers on data/** and
+          # pushes to the same website repo, so the branch may have moved since
+          # checkout - this avoids a rejected non-fast-forward push.
+          git pull --rebase
+          git push
+        )

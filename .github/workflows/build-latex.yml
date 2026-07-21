@@ -86,22 +86,37 @@ jobs:
     # ========================================================
     # AZIONE 2: INVIA AL SITO WEB (SOLO I CV)
     # ========================================================
-    - name: Prepare CVs for Website
-      run: |
-        mkdir -p website_upload
-        # Copia SOLO i CV (Niente Cover Letters)
-        cp cv_english.pdf cv_italian.pdf website_upload/
-
-    - name: Push CVs to Website Repository
-      uses: cpina/github-action-push-to-another-repository@main
-      env:
-        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }} # Richiede il Token Segreto
+    # NOTA: non usiamo più cpina/github-action-push-to-another-repository qui.
+    # Quell'action fa `rm -rf` sull'intera target-directory prima di copiarci
+    # dentro i file nuovi - va bene per una cartella che possediamo al 100%,
+    # ma è un rischio se in futuro qualcuno mette altri file in assets/pdf/.
+    # Checkout diretto + git add mirato non cancella mai nulla che non tocchiamo.
+    - name: Checkout Website Repository
+      if: github.event_name == 'push'
+      uses: actions/checkout@v4
       with:
-        source-directory: 'website_upload'
-        destination-github-username: 'eneamanzi'
-        destination-repository-name: 'eneamanzi.github.io'
-        user-email: 'enea.manzi@gmail.com'
-        target-branch: 'main'          # Il branch principale del tuo sito
-        target-directory: 'assets/pdf'
-    # Nota: la generazione/push di resume.json vive in un workflow separato
-    # (generate-website-data.yml), indipendente da questa pipeline LaTeX.
+        repository: eneamanzi/eneamanzi.github.io
+        token: ${{ secrets.API_TOKEN_GITHUB }}
+        path: website-repo
+
+    - name: Copy CVs into Website Checkout
+      if: github.event_name == 'push'
+      run: cp cv_english.pdf cv_italian.pdf website-repo/assets/pdf/
+
+    - name: Commit and Push CVs
+      if: github.event_name == 'push'
+      working-directory: website-repo
+      run: |
+        git config user.email "enea.manzi@gmail.com"
+        git config user.name "GitHub Actions"
+        git add assets/pdf/cv_english.pdf assets/pdf/cv_italian.pdf
+        git diff --staged --quiet || (
+          git commit -m "Update from ${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}"
+          # rebase before pushing: generate-website-data.yml also triggers on
+          # data/** and pushes to the same website repo, so the branch may have
+          # moved since checkout - this avoids a rejected non-fast-forward push.
+          git pull --rebase
+          git push
+        )
+    # Nota: la generazione/push di resume.json e socials.yml vive in un workflow
+    # separato (generate-website-data.yml), indipendente da questa pipeline LaTeX.
