@@ -1,18 +1,20 @@
-name: Generate Website Resume JSON
+name: Generate Website Data
 
 on:
   push:
     branches: [ main, master ]
     paths:
       - 'data/**'
-      - 'scripts/generate_resume_json.py'
-      - '.github/workflows/generate-resume.yml'
+      - 'scripts-website-data/generate_resume_json.py'
+      - 'scripts-website-data/generate_socials_yml.py'
+      - '.github/workflows/generate-website-data.yml'
   pull_request:
     branches: [ main, master ]
     paths:
       - 'data/**'
-      - 'scripts/generate_resume_json.py'
-      - '.github/workflows/generate-resume.yml'
+      - 'scripts-website-data/generate_resume_json.py'
+      - 'scripts-website-data/generate_socials_yml.py'
+      - '.github/workflows/generate-website-data.yml'
   workflow_dispatch:
 
 concurrency:
@@ -27,10 +29,13 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
+    - name: Install Python dependencies
+      run: pip install -r scripts-website-data/requirements.txt
+
     - name: Generate resume.json
       run: |
         mkdir -p website_upload_json
-        python3 scripts/generate_resume_json.py website_upload_json/resume.json
+        python3 scripts-website-data/generate_resume_json.py website_upload_json/resume.json
 
     - name: Setup Node.js
       uses: actions/setup-node@v4
@@ -56,3 +61,21 @@ jobs:
         user-email: 'enea.manzi@gmail.com'
         target-branch: 'main'          # Il branch principale del tuo sito
         target-directory: 'assets/json'
+
+    - name: Generate socials.yml
+      run: |
+        mkdir -p website_upload_data
+        python3 scripts-website-data/generate_socials_yml.py website_upload_data/socials.yml
+
+    - name: Push socials.yml to Website Repository
+      if: github.event_name == 'push'
+      uses: cpina/github-action-push-to-another-repository@main
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }} # Richiede il Token Segreto
+      with:
+        source-directory: 'website_upload_data'
+        destination-github-username: 'eneamanzi'
+        destination-repository-name: 'eneamanzi.github.io'
+        user-email: 'enea.manzi@gmail.com'
+        target-branch: 'main'          # Il branch principale del tuo sito
+        target-directory: '_data'

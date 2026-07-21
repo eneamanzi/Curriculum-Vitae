@@ -1,16 +1,14 @@
 **English version** | [Versione italiana](README.it.md)
 
-# [IT / EN] Curriculum Vitae - Enea Manzi
+# Curriculum Vitae - Enea Manzi
 
-This repository contains the source code for my Curriculum Vitae and Cover Letter.
-The project is based on the **`moderncv`** LaTeX class, but refactored to be **Data-Driven**: content is separated from presentation.
+This repository is the **single source of truth** for my Curriculum Vitae, Cover Letter, and personal website content. Everything - work experience, education, skills, projects, publications - lives once, under `data/`, and three different outputs are generated from it automatically:
 
-**Key Features:**
-* **Single Source of Truth:** All personal data, experiences, and skills are stored as JSON, one file per domain under `data/`, with lightweight Markdown (`**bold**`/`*italic*`) for emphasis instead of raw LaTeX.
-* **Lua Powered:** A Lua script reads the JSON, converts the Markdown emphasis to LaTeX, and dynamically generates LaTeX commands during compilation.
-* **Bilingual:** Generates both Italian and English versions from the same JSON source.
-* **Automated:** GitHub Actions automatically compiles PDFs and deploys them to a separate branch (`pdf-release`).
-* **Website Integration:** Automatically pushes the generated CVs, and a `resume.json` (JSON Resume format, generated from the same `data/` source by `scripts/generate_resume_json.py`), to my personal website repository (`eneamanzi.github.io`) to keep the online version always up-to-date.
+1. **4 PDFs** (CV + Cover Letter, Italian + English) via LaTeX/LuaLaTeX.
+2. **`resume.json`**, a JSON Resume-format file that feeds the `/cv/` page on [eneamanzi.github.io](https://github.com/eneamanzi/eneamanzi.github.io).
+3. **New project pages** on the website, auto-scaffolded from the same data whenever a project doesn't have one yet.
+
+No content is ever typed twice.
 
 ## View the Compiled Documents (PDF)
 
@@ -23,47 +21,152 @@ The PDFs are automatically generated and hosted on the `pdf-release` branch.
 | **Cover Letter** | **Italian** | [**cover_letter_italian.pdf**](https://github.com/eneamanzi/curriculum-vitae/blob/pdf-release/cover_letter_italian.pdf) |
 | **Cover Letter** | **English** | [**cover_letter_english.pdf**](https://github.com/eneamanzi/curriculum-vitae/blob/pdf-release/cover_letter_english.pdf) |
 
-## How it Works
+## Architecture
 
-Instead of editing scattered `.tex` files, you simply update the JSON files under **`data/`**.
-The file `commons/lua_data_loader.tex` uses the Lua engine built into **LuaLaTeX** to parse the JSON and populate the CV sections (Education, Work, Skills, etc.) respecting the selected language.
+```
+data/*.json  (single source of truth, bilingual, Markdown emphasis)
+     │
+     ├──► commons/lua_data_loader.tex ──► LuaLaTeX ──► 4 PDFs
+     │                                                          │
+     ├──► scripts-website-data/generate_resume_json.py           │
+     │       (validated: resume_pydantic_schema.py)               │
+     │       └──► resume.json ────────────────────────────────────┼──► pushed to
+     │                                                              │   eneamanzi.github.io
+     └──► scripts-website-data/generate_socials_yml.py              │   (assets/pdf/, assets/json/,
+             └──► socials.yml ────────────────────────────────────────►   _data/socials.yml)
+                                                                              │
+                                    (in the website repo's own CI)           │
+                                    scripts/scaffold_project_pages.py ◄──────┘
+                                       reads resume.json, creates
+                                       _projects/<id>.md for any
+                                       project that doesn't have
+                                       a page yet
+```
 
-### Project Structure
-* `data/`: **The Database.** One JSON file per domain, numbered to reflect render order (step of 10, to leave room for future insertions): `10-personal.json`, `20-education.json`, `30-work.json`, `40-research.json`, `50-projects.json`, `60-publications.json`, `70-languages.json`, `80-skills.json`, `90-meta.json`.
-* `cv.tex`: The main LaTeX template for the CV. It calls the Lua loader.
-* `cover_letter.tex`: The main LaTeX template for the Cover Letter.
-* `commons/lua_data_loader.tex`: The logic layer (Lua script) that bridges JSON and LaTeX, including Markdown-to-LaTeX conversion.
-* `scripts/generate_resume_json.py`: Converts `data/` into a JSON Resume-compliant `resume.json` for the website's `/cv/` page.
-* `img/`: Contains static assets (profile picture, signature).
+Two independent GitHub Actions workflows drive the CV-repo side (see [CI/CD](#cicd)); a third one, living in the website repo, reacts to the `resume.json` push and is described briefly [below](#website-integration).
+
+## Project Structure
+
+* `data/`: **the database.** One JSON file per domain, numbered to reflect render order (step of 10, leaving room for future insertions):
+  * `10-personal.json` - name, contact info, location, social profiles, the website bio/tagline
+  * `20-education.json` - degrees, thesis, grades
+  * `30-work.json` - work experience
+  * `40-research.json` - research activities (has no PDF/JSON-Resume standard equivalent - see `commons/lua_data_loader.tex` and `resume_pydantic_schema.py` for how it's handled)
+  * `50-projects.json` - personal/academic projects (each needs a stable `id`, `category`, and `importance` - see [Common Tasks](#common-tasks))
+  * `60-publications.json` - papers
+  * `70-languages.json` - spoken languages
+  * `80-skills.json` - skills, including the "Soft Skills" category (rendered as its own section everywhere)
+  * `90-meta.json` - GDPR/legal boilerplate (PDF-only, never reaches the website)
+* `cv.tex` / `cover_letter.tex`: the LaTeX templates. They call the Lua loader.
+* `commons/lua_data_loader.tex`: the Lua script that reads `data/*.json`, converts Markdown emphasis (`**bold**`/`*italic*`) to LaTeX, and populates the document sections in the selected language.
+* `scripts-website-data/generate_resume_json.py`: builds `resume.json` from `data/`, validated against `scripts-website-data/resume_pydantic_schema.py` before being written.
+* `scripts-website-data/generate_socials_yml.py`: builds the website's `_data/socials.yml` (email, LinkedIn/GitHub usernames, CV PDF link) from `data/10-personal.json` - only the fields that are genuine CV facts; site-only settings (Google Scholar ID, WeChat QR, etc.) stay manually maintained on the website side.
+* `img/`: static assets (profile picture, signature).
+
+## Common Tasks
+
+Where to make each kind of change - every one of these is just editing a JSON file and pushing; the PDFs and the website update themselves.
+
+**Update your bio, contact info, or social links**
+Edit `data/10-personal.json`: `email`, `phone`, `location`, `profiles` (LinkedIn/GitHub/WhatsApp), `summary` (the website's "Professional Summary" bio), `websiteLabel` (the tagline shown on the website, distinct from `label` which is the PDF's document title).
+
+**Add a job or internship**
+Add an entry to the array in `data/30-work.json`: `name`, `position`, `location`, `startDate`/`endDate` (`MM/YYYY`), `summary`, `highlights` (bullet list, Markdown allowed).
+
+**Add a research activity**
+Same shape as work, in `data/40-research.json`. Renders as its own "Research" section in both the PDF and the website (a website-only template override - see [Website Integration](#website-integration)).
+
+**Add a degree**
+Add an entry to `data/20-education.json`: `institution`, `location`, `area`, `studyType`, `startDate`/`endDate`, `score` (e.g. `"Final Grade: 110/110 cum laude"` - the "Final Grade:"/"Voto:" prefix is stripped automatically for the website's dedicated `score` field). Add a `thesis: { title, supervisors }` object if there is one - it becomes two extra highlight lines ("Thesis: ...", "Supervisors: ...") automatically.
+
+**Add a project**
+Add an entry to `data/50-projects.json`:
+
+```json
+{
+  "id": "some-stable-slug",       // assigned once, never changed - even if "name" changes later
+  "importance": 50,                // website display order (step of 10) - independent of this array's own order
+  "category": "Academic",
+  "name": { "en": "...", "it": "..." },
+  "course": { "en": "...", "it": "..." },
+  "description": { "en": "...", "it": "..." },
+  "highlights": { "en": ["..."], "it": ["..."] },
+  "keywords": ["..."]
+}
+```
+
+Push it, and a new `_projects/<id>.md` is auto-created on the website with no further action - see [Website Integration](#website-integration) for how the matching works and what to do if you want to expand that page with a full write-up afterward.
+
+**Add a publication**
+Add an entry to `data/60-publications.json`: `type`, `status` (`{"en": "submitted", "it": "sottomesso"}` or similar), `venue`, `year`, `date`, `authors` (plain string, e.g. `"Enea Manzi, Marco Anisetti"`), `title`, `abstract`.
+
+**Add or update a skill category / language**
+`data/80-skills.json` (keywords support Markdown emphasis, stripped automatically for the website since that template doesn't render it) / `data/70-languages.json`. The `"Soft Skills"` category name is special-cased everywhere (own section, per-item bold label rendering) - don't rename it.
+
+**Emphasize text anywhere above**
+Use `**bold**` / `*italic*` in any free-text field - never raw LaTeX or HTML (see [Data Conventions](#data-conventions)).
+
+**Check your changes before pushing**
+See [Run Locally](#run-locally) - compile the PDF, and/or run the two `generate_*.py` scripts locally to see the exact `resume.json`/`socials.yml` that would be pushed (both fail loudly, listing every problem, if something in `data/` is malformed).
+
+## Data Conventions
+
+* **Bilingual fields** are `{"en": "...", "it": "..."}` objects; a plain string means "same in both languages" (e.g. a person's name, "APIGuard Assurance").
+* **Emphasis** inside free text uses Markdown - `**bold**`, `*italic*` - never raw LaTeX or HTML. Each consumer converts it to whatever it needs (LaTeX via the Lua loader, HTML via Jekyll's `markdownify`, or stripped to plain text where a template doesn't support it - see `scripts-website-data/generate_resume_json.py`'s `strip_md`).
+* **Numbering** (`10-`, `20-`, ...): reflects render order, not creation order. The step of 10 leaves room to insert a new domain later (e.g. `45-awards.json`) without renumbering everything.
+
+## CI/CD
+
+Two independent GitHub Actions workflows watch `data/**` - independent so that a failure in one never blocks the other:
+
+* **`build-latex.yml`** - compiles all 4 PDFs, publishes them to the `pdf-release` branch, and pushes the two CVs (not the cover letters) to the website's `assets/pdf/`.
+* **`generate-website-data.yml`** - runs `generate_resume_json.py` and `generate_socials_yml.py`, validates both outputs (Pydantic), formats them with Prettier (matching the website's own `.prettierrc` via `--print-width 150`, since that config file lives in the other repo), and pushes them to the website's `assets/json/` and `_data/` respectively. On a pull request it only validates, it never pushes.
+
+Both need the `API_TOKEN_GITHUB` repository secret (a PAT with write access to `eneamanzi.github.io`) to push cross-repo.
+
+## Website Integration
+
+`eneamanzi.github.io` is a separate repository; this one only pushes files into it, it never contains its logic. Two things worth knowing if you're debugging the website side:
+
+* `_includes/cv/render.liquid`, `skills.liquid`, and `languages.liquid` are **local overrides** of the `al_folio_cv` gem's templates (Jekyll's `includes_load_paths` mechanism lets a site-local file take precedence). They add a "Research" section (no standard JSON Resume equivalent) and fix a couple of upstream cosmetic bugs (empty `()`/icons when a field is blank). If the gem updates upstream, these need a manual diff/re-sync.
+* `scripts/scaffold_project_pages.py` (in the website repo's own `scripts/` folder, unrelated to this repo's `scripts-website-data/`) reacts to a `resume.json` push: for any project with no matching page yet, it creates one under `_projects/<id>.md`, seeded with the CV's summary and highlights under a "Summary (from CV)" heading. It matches by the project's stable `cv_id` frontmatter field, not by title, so renaming a project's display name or a page's title later never causes a duplicate page.
 
 ## Run Locally
 
-To compile this project locally, you need a TeX distribution (TeX Live, MiKTeX, or MacTeX) that includes **LuaLaTeX**.
+### Compiling the PDFs
 
-1.  **Clone the project**
-    ```bash
-    git clone [https://github.com/eneamanzi/curriculum-vitae.git](https://github.com/eneamanzi/curriculum-vitae.git)
-    cd curriculum-vitae
-    ```
+Requires a TeX distribution (TeX Live, MiKTeX, or MacTeX) that includes **LuaLaTeX**.
 
-2.  **Edit your Data**
-    Modify the JSON files under `data/` with your personal information (start with `data/10-personal.json`). Use `**bold**`/`*italic*` for emphasis inside free text — it's converted to LaTeX (and, for the website, to HTML) automatically.
+```bash
+git clone https://github.com/eneamanzi/curriculum-vitae.git
+cd curriculum-vitae
+```
 
-3.  **Compile**
-    You must use `lualatex`. The easiest way is via `latexmk`.
+Edit the JSON files under `data/` with your own information (start with `data/10-personal.json`).
 
-    **Compile English Version (Default):**
-    ```bash
-    latexmk -lualatex -jobname=cv_english cv.tex
-    latexmk -lualatex -jobname=cover_letter_english cover_letter.tex
-    ```
+**English (default):**
+```bash
+latexmk -lualatex -jobname=cv_english cv.tex
+latexmk -lualatex -jobname=cover_letter_english cover_letter.tex
+```
 
-    **Compile Italian Version:**
-    To trigger the Italian translation, we inject the command `\def\makeitalian{1}` before inputting the file.
-    ```bash
-    latexmk -lualatex -jobname=cv_italian -e '$lualatex="lualatex %O \def\makeitalian{1} \input{%S}"' cv.tex
-    latexmk -lualatex -jobname=cover_letter_italian -e '$lualatex="lualatex %O \def\makeitalian{1} \input{%S}"' cover_letter.tex
-    ```
+**Italian:** the Italian translation is triggered by injecting `\def\makeitalian{1}` before the file is read.
+```bash
+latexmk -lualatex -jobname=cv_italian -e '$lualatex="lualatex %O \def\makeitalian{1} \input{%S}"' cv.tex
+latexmk -lualatex -jobname=cover_letter_italian -e '$lualatex="lualatex %O \def\makeitalian{1} \input{%S}"' cover_letter.tex
+```
+
+### Testing the Website Data Generators
+
+Requires Python 3 and the packages in `scripts-website-data/requirements.txt` (just `pydantic`):
+
+```bash
+pip install -r scripts-website-data/requirements.txt
+python3 scripts-website-data/generate_resume_json.py /tmp/resume.json
+python3 scripts-website-data/generate_socials_yml.py /tmp/socials.yml
+```
+
+Both exit with a non-zero status and a full list of validation errors if `data/` produces something malformed - nothing is ever written half-broken.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)

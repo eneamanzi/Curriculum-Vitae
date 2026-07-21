@@ -104,4 +104,4 @@ jobs:
         target-branch: 'main'          # Il branch principale del tuo sito
         target-directory: 'assets/pdf'
     # Nota: la generazione/push di resume.json vive in un workflow separato
-    # (generate-resume.yml), indipendente da questa pipeline LaTeX.
+    # (generate-website-data.yml), indipendente da questa pipeline LaTeX.
