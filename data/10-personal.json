@@ -2,6 +2,14 @@
   "name": "Enea",
   "surname": "Manzi",
   "label": "Curriculum Vitae",
+  "websiteLabel": {
+    "en": "Cyber Security Researcher",
+    "it": "Ricercatore in Cyber Security"
+  },
+  "summary": {
+    "en": "Cyber Security graduate (M.Sc., University of Milan, 110/110 cum laude), currently applying for an intersectoral Ph.D. programme at the University of Milan. Research focus on API and cloud-native security, with hands-on experience in Kubernetes, Docker and REST APIs.",
+    "it": "Laureato in Cyber Security (Laurea Magistrale, Università degli Studi di Milano, 110/110 cum laude), attualmente candidato per un dottorato intersettoriale presso l'Università degli Studi di Milano. Ricerca focalizzata su sicurezza delle API e cloud-native, con esperienza pratica in Kubernetes, Docker e REST API."
+  },
   "email": "enea.manzi@gmail.com",
   "phone": "(+39) 333 132 6901",
   "url": "eneamanzi.github.io",

@@ -6,11 +6,11 @@ This repository contains the source code for my Curriculum Vitae and Cover Lette
 The project is based on the **`moderncv`** LaTeX class, but refactored to be **Data-Driven**: content is separated from presentation.
 
 **Key Features:**
-* **Single Source of Truth:** All personal data, experiences, and skills are stored as JSON, one file per domain under `data/`.
-* **Lua Powered:** A Lua script reads the JSON and dynamically generates LaTeX commands during compilation.
+* **Single Source of Truth:** All personal data, experiences, and skills are stored as JSON, one file per domain under `data/`, with lightweight Markdown (`**bold**`/`*italic*`) for emphasis instead of raw LaTeX.
+* **Lua Powered:** A Lua script reads the JSON, converts the Markdown emphasis to LaTeX, and dynamically generates LaTeX commands during compilation.
 * **Bilingual:** Generates both Italian and English versions from the same JSON source.
 * **Automated:** GitHub Actions automatically compiles PDFs and deploys them to a separate branch (`pdf-release`).
-* **Website Integration:** Automatically pushes the generated CVs to my personal website repository (`eneamanzi.github.io`) to keep the online version always up-to-date.
+* **Website Integration:** Automatically pushes the generated CVs, and a `resume.json` (JSON Resume format, generated from the same `data/` source by `scripts/generate_resume_json.py`), to my personal website repository (`eneamanzi.github.io`) to keep the online version always up-to-date.
 
 ## View the Compiled Documents (PDF)
 
@@ -29,10 +29,11 @@ Instead of editing scattered `.tex` files, you simply update the JSON files unde
 The file `commons/lua_data_loader.tex` uses the Lua engine built into **LuaLaTeX** to parse the JSON and populate the CV sections (Education, Work, Skills, etc.) respecting the selected language.
 
 ### Project Structure
-* `data/`: **The Database.** One JSON file per domain: `personal.json`, `education.json`, `work.json`, `research.json`, `publications.json`, `skills.json`, `languages.json`, `projects.json`, `meta.json`.
+* `data/`: **The Database.** One JSON file per domain, numbered to reflect render order (step of 10, to leave room for future insertions): `10-personal.json`, `20-education.json`, `30-work.json`, `40-research.json`, `50-projects.json`, `60-publications.json`, `70-languages.json`, `80-skills.json`, `90-meta.json`.
 * `cv.tex`: The main LaTeX template for the CV. It calls the Lua loader.
 * `cover_letter.tex`: The main LaTeX template for the Cover Letter.
-* `commons/lua_data_loader.tex`: The logic layer (Lua script) that bridges JSON and LaTeX.
+* `commons/lua_data_loader.tex`: The logic layer (Lua script) that bridges JSON and LaTeX, including Markdown-to-LaTeX conversion.
+* `scripts/generate_resume_json.py`: Converts `data/` into a JSON Resume-compliant `resume.json` for the website's `/cv/` page.
 * `img/`: Contains static assets (profile picture, signature).
 
 ## Run Locally
@@ -46,7 +47,7 @@ To compile this project locally, you need a TeX distribution (TeX Live, MiKTeX, 
     ```
 
 2.  **Edit your Data**
-    Modify the JSON files under `data/` with your personal information (start with `data/10-personal.json`).
+    Modify the JSON files under `data/` with your personal information (start with `data/10-personal.json`). Use `**bold**`/`*italic*` for emphasis inside free text — it's converted to LaTeX (and, for the website, to HTML) automatically.
 
 3.  **Compile**
     You must use `lualatex`. The easiest way is via `latexmk`.

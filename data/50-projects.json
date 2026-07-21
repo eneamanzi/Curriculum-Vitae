@@ -1,9 +1,12 @@
 [
   {
+    "id": "apiguard-assurance",
+    "importance": 10,
     "name": {
       "en": "APIGuard Assurance",
       "it": "APIGuard Assurance"
     },
+    "category": "Academic",
     "course": {
       "en": "Master's Thesis Project (A.Y. 2025/2026)",
       "it": "Progetto della Tesi Magistrale (A.A. 2025/2026)"
@@ -40,10 +43,13 @@
     ]
   },
   {
+    "id": "event-driven-iot-kafka-kong",
+    "importance": 20,
     "name": {
       "it": "Architettura IoT Event-Driven (Kafka + Kong)",
       "en": "Event-Driven IoT Architecture (Kafka + Kong)"
     },
+    "category": "Academic",
     "course": {
       "it": "Progetto del corso di Cloud Computing Technologies (A.A. 2025/2026)",
       "en": "Cloud Computing Technologies Course Project (A.Y. 2025/2026)"
@@ -77,10 +83,13 @@
     ]
   },
   {
+    "id": "ftp-client-server",
+    "importance": 30,
     "name": {
       "en": "FTP Client and Server",
       "it": "Client e Server FTP"
     },
+    "category": "Academic",
     "course": {
       "en": "Computer Networks Course Project (A.Y. 2022-2023)",
       "it": "Progetto del corso di Reti di Calcolatori (A.A. 2022-2023)"
@@ -105,10 +114,13 @@
     }
   },
   {
+    "id": "exhibition-web-app",
+    "importance": 40,
     "name": {
       "en": "Exhibition Web App",
       "it": "Web App per Esposizioni"
     },
+    "category": "Academic",
     "course": {
       "en": "Web and Mobile Programming Course Project (A.Y. 2021-2022)",
       "it": "Progetto del corso di Programmazione Web e Mobile (A.A. 2021-2022)"
