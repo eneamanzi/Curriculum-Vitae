@@ -1,0 +1,58 @@
+name: Generate Website Resume JSON
+
+on:
+  push:
+    branches: [ main, master ]
+    paths:
+      - 'data/**'
+      - 'scripts/generate_resume_json.py'
+      - '.github/workflows/generate-resume.yml'
+  pull_request:
+    branches: [ main, master ]
+    paths:
+      - 'data/**'
+      - 'scripts/generate_resume_json.py'
+      - '.github/workflows/generate-resume.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Generate resume.json
+      run: |
+        mkdir -p website_upload_json
+        python3 scripts/generate_resume_json.py website_upload_json/resume.json
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+
+    - name: Format resume.json with Prettier
+      run: |
+        # print-width matches the website repo's .prettierrc (not available here,
+        # different repo) so the pushed file already passes its `prettier --check`.
+        npx --yes prettier@3 --print-width 150 --write website_upload_json/resume.json
+
+    # Only push on an actual merge to main/master - a pull_request run just
+    # validates the script still produces a well-formed file, it never touches
+    # the website repository.
+    - name: Push resume.json to Website Repository
+      if: github.event_name == 'push'
+      uses: cpina/github-action-push-to-another-repository@main
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }} # Richiede il Token Segreto
+      with:
+        source-directory: 'website_upload_json'
+        destination-github-username: 'eneamanzi'
+        destination-repository-name: 'eneamanzi.github.io'
+        user-email: 'enea.manzi@gmail.com'
+        target-branch: 'main'          # Il branch principale del tuo sito
+        target-directory: 'assets/json'
