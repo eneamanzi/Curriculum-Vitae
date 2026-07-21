@@ -1,0 +1,130 @@
+[
+  {
+    "name": {
+      "en": "Programming Languages",
+      "it": "Linguaggi di Programmazione"
+    },
+    "keywords": [
+      "\\textsl{C}",
+      "\\textsl{Java}",
+      "\\textsl{Python}",
+      "\\textsl{SQL}",
+      "Web (\\textsl{HTML}, \\textsl{JavaScript/Node.js})",
+      "OOP Concepts",
+      "low-level programming"
+    ]
+  },
+  {
+    "name": {
+      "en": "Database",
+      "it": "Database"
+    },
+    "keywords": [
+      "\\textsl{MySQL}",
+      {
+        "en": "Database Design, Implementation and Adminsitration",
+        "it": "Progettazione, Implementazione e Amministrazione di Database"
+      }
+    ]
+  },
+  {
+    "name": {
+      "en": "Architectures \\& Software",
+      "it": "Architetture e Software"
+    },
+    "keywords": [
+      "\\textsl{Docker}",
+      "\\textsl{Kubernetes}",
+      {
+        "en": "microservices architectures",
+        "it": "architetture a microservizi"
+      },
+      "REST API",
+      "Git",
+      "Kafka",
+      "Kong API Gateway",
+      "CI/CD",
+      "Observability",
+      "Edge-Cloud Continuum"
+    ]
+  },
+  {
+    "name": {
+      "en": "Operating Systems",
+      "it": "Sistemi Operativi"
+    },
+    "keywords": [
+      {
+        "en": "Fresh OS installation",
+        "it": "Installazione OS (nuova)"
+      },
+      {
+        "en": "Linux Administration and Shell",
+        "it": "Amministrazione Linux e Shell"
+      },
+      "Windows"
+    ]
+  },
+  {
+    "name": {
+      "en": "Networking \\& Security",
+      "it": "Networking e Sicurezza"
+    },
+    "keywords": [
+      {
+        "en": "Network Protocols",
+        "it": "Protocolli di Rete"
+      },
+      {
+        "en": "ICT Network Security Risk",
+        "it": "Rischio di Sicurezza delle Reti ICT"
+      },
+      {
+        "en": "Secure Coding Practices",
+        "it": "Pratiche di Codifica Sicura"
+      },
+      {
+        "en": "API Security",
+        "it": "Sicurezza delle API"
+      },
+      {
+        "en": "Continuous Security Assurance",
+        "it": "Continuous Security Assurance"
+      }
+    ]
+  },
+  {
+    "name": {
+      "en": "Tools",
+      "it": "Strumenti"
+    },
+    "keywords": [
+      "Visual Studio Code",
+      "GitHub"
+    ]
+  },
+  {
+    "name": {
+      "en": "Soft Skills",
+      "it": "Competenze Trasversali"
+    },
+    "keywords": [
+      {
+        "en": "\\textbf{Thinking}: analytically, critically, proactively",
+        "it": "\\textbf{Pensiero}: analitico, critico, proattivo"
+      },
+      {
+        "en": "\\textbf{Problems}: address problems critically, solve problems/create solutions",
+        "it": "\\textbf{Problemi}: affrontare i problemi in modo critico, risolvere problemi/creare soluzioni"
+      },
+      {
+        "en": "\\textbf{Communication}: cooperate with colleagues, work in teams, manage teamwork",
+        "it": "\\textbf{Comunicazione}: collaborare con i colleghi, lavorare in team, gestire il lavoro di squadra"
+      },
+      {
+        "en": "\\textbf{Others}: demonstrate curiosity, cope with stress, prioritise tasks",
+        "it": "\\textbf{Altro}: dimostrare curiosità, affrontare lo stress, dare priorità ai compiti"
+      }
+    ]
+  }
+]

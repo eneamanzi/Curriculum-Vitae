@@ -1,0 +1,85 @@
+[
+  {
+    "institution": {
+      "en": "University of Milan",
+      "it": "Università degli Studi di Milano"
+    },
+    "location": {
+      "en": "Milan, IT",
+      "it": "Milano, IT"
+    },
+    "startDate": "09/2024",
+    "endDate": "07/2026",
+    "studyType": {
+      "en": "Master's Degree",
+      "it": "Laurea Magistrale"
+    },
+    "area": {
+      "en": "Cyber Security",
+      "it": "Sicurezza Informatica"
+    },
+    "thesis": {
+      "title": {
+        "en": "Design and Implementation of an API-Agnostic Tool for REST API Security Assurance",
+        "it": "Progettazione e Implementazione di un Tool API-Agnostico per la Security Assurance di API REST"
+      },
+      "supervisors": "Marco Anisetti, Claudio Agostino Ardagna"
+    },
+    "score": {
+      "en": "Final Grade: 110/110 cum laude",
+      "it": "Voto: 110/110 cum laude"
+    }
+  },
+  {
+    "institution": {
+      "en": "University of Milan",
+      "it": "Università degli Studi di Milano"
+    },
+    "location": {
+      "en": "Milan, IT",
+      "it": "Milano, IT"
+    },
+    "startDate": "09/2021",
+    "endDate": "10/2024",
+    "studyType": {
+      "en": "Bachelor's Degree",
+      "it": "Laurea Triennale"
+    },
+    "area": {
+      "en": "System and Network Security",
+      "it": "Sicurezza dei Sistemi e delle Reti"
+    },
+    "thesis": {
+      "title": {
+        "en": "Design and Implementation of a Framework for Evaluating Distributed Systems",
+        "it": "Design e sviluppo di una soluzione per la valutazione di sistemi distribuiti"
+      },
+      "supervisors": "Marco Anisetti, Filippo Berto"
+    },
+    "score": {
+      "en": "Final Grade: 110/110 cum laude",
+      "it": "Voto: 110/110 cum laude"
+    }
+  },
+  {
+    "institution": "IIS Badoni",
+    "location": {
+      "en": "Lecco, IT",
+      "it": "Lecco, LC"
+    },
+    "startDate": "09/2016",
+    "endDate": "06/2021",
+    "studyType": {
+      "en": "High School Diploma",
+      "it": "Diploma Superiore"
+    },
+    "area": {
+      "en": "Computer Science",
+      "it": "Informatica e Telecomunicazioni"
+    },
+    "score": {
+      "en": "Final Grade: 93/100",
+      "it": "Voto: 93/100"
+    }
+  }
+]

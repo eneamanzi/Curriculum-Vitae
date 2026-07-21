@@ -6,7 +6,7 @@ This repository contains the source code for my Curriculum Vitae and Cover Lette
 The project is based on the **`moderncv`** LaTeX class, but refactored to be **Data-Driven**: content is separated from presentation.
 
 **Key Features:**
-* **Single Source of Truth:** All personal data, experiences, and skills are stored in a single `data.json` file.
+* **Single Source of Truth:** All personal data, experiences, and skills are stored as JSON, one file per domain under `data/`.
 * **Lua Powered:** A Lua script reads the JSON and dynamically generates LaTeX commands during compilation.
 * **Bilingual:** Generates both Italian and English versions from the same JSON source.
 * **Automated:** GitHub Actions automatically compiles PDFs and deploys them to a separate branch (`pdf-release`).
@@ -25,11 +25,11 @@ The PDFs are automatically generated and hosted on the `pdf-release` branch.
 
 ## How it Works
 
-Instead of editing scattered `.tex` files, you simply update **`data.json`**.
+Instead of editing scattered `.tex` files, you simply update the JSON files under **`data/`**.
 The file `commons/lua_data_loader.tex` uses the Lua engine built into **LuaLaTeX** to parse the JSON and populate the CV sections (Education, Work, Skills, etc.) respecting the selected language.
 
 ### Project Structure
-* `data.json`: **The Database.** Contains all your info (Bio, Work, Edu, Skills, Projects).
+* `data/`: **The Database.** One JSON file per domain: `personal.json`, `education.json`, `work.json`, `research.json`, `publications.json`, `skills.json`, `languages.json`, `projects.json`, `meta.json`.
 * `cv.tex`: The main LaTeX template for the CV. It calls the Lua loader.
 * `cover_letter.tex`: The main LaTeX template for the Cover Letter.
 * `commons/lua_data_loader.tex`: The logic layer (Lua script) that bridges JSON and LaTeX.
@@ -46,7 +46,7 @@ To compile this project locally, you need a TeX distribution (TeX Live, MiKTeX, 
     ```
 
 2.  **Edit your Data**
-    Modify `data.json` with your personal information.
+    Modify the JSON files under `data/` with your personal information (start with `data/10-personal.json`).
 
 3.  **Compile**
     You must use `lualatex`. The easiest way is via `latexmk`.

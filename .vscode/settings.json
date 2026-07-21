@@ -25,6 +25,7 @@
             "name": "build_english",
             "command": "latexmk",
             "args": [
+                "-cd",
                 "-synctex=1",
                 "-interaction=nonstopmode",
                 "-file-line-error",
@@ -39,6 +40,7 @@
             "name": "build_italian",
             "command": "latexmk",
             "args": [
+                "-cd",
                 "-synctex=1",
                 "-interaction=nonstopmode",
                 "-file-line-error",

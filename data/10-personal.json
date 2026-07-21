@@ -1,0 +1,33 @@
+{
+  "name": "Enea",
+  "surname": "Manzi",
+  "label": "Curriculum Vitae",
+  "email": "enea.manzi@gmail.com",
+  "phone": "(+39) 333 132 6901",
+  "url": "eneamanzi.github.io",
+  "born": "07/07/2002",
+  "location": {
+    "address": "Bellano, 23822, Italy",
+    "city": "Bellano",
+    "region": "LC",
+    "countryCode": "IT"
+  },
+  "profiles": [
+    {
+      "network": "LinkedIn",
+      "username": "eneamanzi",
+      "url": "https://linkedin.com/in/eneamanzi"
+    },
+    {
+      "network": "GitHub",
+      "username": "eneamanzi",
+      "url": "https://github.com/eneamanzi"
+    },
+    {
+      "network": "WhatsApp",
+      "username": "3331326901",
+      "url": ""
+    }
+  ],
+  "image": "img/cv_pic_resized"
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "language": {
+      "en": "Italian",
+      "it": "Italiano"
+    },
+    "fluency": {
+      "en": "Mother tongue",
+      "it": "Lingua madre"
+    }
+  },
+  {
+    "language": {
+      "en": "English",
+      "it": "Inglese"
+    },
+    "fluency": {
+      "en": "Intermediate",
+      "it": "Intermedio"
+    },
+    "details": {
+      "en": "Listening B2 - Reading B2 - Writing B2 - Spoken Production B2 - Spoken Interaction B2",
+      "it": "Ascolto B2 - Lettura B2 - Scrittura B2 - Produzione orale B2 - Interazione orale B2"
+    }
+  }
+]

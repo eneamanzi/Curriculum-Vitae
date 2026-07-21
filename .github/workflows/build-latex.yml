@@ -6,7 +6,7 @@ on:
     paths:
       - 'cv.tex'
       - 'cover_letter.tex'
-      - 'data.json'
+      - 'data/**'
       - 'sections/**'
       - '.github/**'
   pull_request:
@@ -14,7 +14,7 @@ on:
     paths:
       - 'cv.tex'
       - 'cover_letter.tex'
-      - 'data.json'
+      - 'data/**'
       - 'sections/**'
       - '.github/**'
   workflow_dispatch:
