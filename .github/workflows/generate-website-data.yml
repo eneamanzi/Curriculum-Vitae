@@ -7,6 +7,7 @@ on:
       - 'data/**'
       - 'scripts-website-data/generate_resume_json.py'
       - 'scripts-website-data/generate_socials_yml.py'
+      - 'scripts-website-data/generate_papers_bib.py'
       - '.github/workflows/generate-website-data.yml'
   pull_request:
     branches: [ main, master ]
@@ -14,6 +15,7 @@ on:
       - 'data/**'
       - 'scripts-website-data/generate_resume_json.py'
       - 'scripts-website-data/generate_socials_yml.py'
+      - 'scripts-website-data/generate_papers_bib.py'
       - '.github/workflows/generate-website-data.yml'
   workflow_dispatch:
 
@@ -51,6 +53,11 @@ jobs:
         mkdir -p website_upload_data
         python3 scripts-website-data/generate_socials_yml.py website_upload_data/socials.yml
 
+    - name: Generate papers.bib
+      run: |
+        mkdir -p website_upload_bib
+        python3 scripts-website-data/generate_papers_bib.py website_upload_bib/papers.bib
+
     # NOTA: non usiamo più cpina/github-action-push-to-another-repository.
     # Quell'action fa `rm -rf` sull'intera target-directory prima di copiarci
     # dentro i file nuovi - è quello che ha cancellato per errore 6 file non
@@ -73,6 +80,7 @@ jobs:
       run: |
         cp website_upload_json/resume.json website-repo/assets/json/resume.json
         cp website_upload_data/socials.yml website-repo/_data/socials.yml
+        cp website_upload_bib/papers.bib website-repo/_bibliography/papers.bib
 
     # Runs the website repo's own scaffolder here, against the resume.json we
     # just copied in, so any new project page is created and committed together
@@ -98,7 +106,7 @@ jobs:
       run: |
         git config user.email "enea.manzi@gmail.com"
         git config user.name "GitHub Actions"
-        git add assets/json/resume.json _data/socials.yml _projects/
+        git add assets/json/resume.json _data/socials.yml _bibliography/papers.bib _projects/
         git diff --staged --quiet || (
           git commit -m "Update from ${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}"
           # rebase before pushing: build-latex.yml also triggers on data/** and
