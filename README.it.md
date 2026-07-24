@@ -66,6 +66,7 @@ Due workflow GitHub Actions indipendenti guidano il lato repo-CV (vedi [CI/CD](#
 * `scripts-website-data/generate_resume_json.py`: costruisce `resume.json` da `data/`, validato contro `scripts-website-data/resume_pydantic_schema.py` prima di essere scritto.
 * `scripts-website-data/generate_socials_yml.py`: costruisce `_data/socials.yml` del sito (email, username LinkedIn/GitHub, link al PDF del CV) da `data/10-personal.json` - solo i campi che sono fatti reali del CV; le impostazioni solo-sito (ID Google Scholar, QR WeChat, ecc.) restano mantenute a mano lato sito.
 * `scripts-website-data/generate_papers_bib.py`: costruisce `_bibliography/papers.bib` del sito da `data/60-publications.json`, concatenando il campo `bibtex` di ogni voce così com'è e iniettando `abstract` (dal campo strutturato `abstract`, così non si scrive mai due volte) e `abbr` (da `venueAbbr`, se presente).
+* `scripts-website-data/dump_data_markdown.py`: **non fa parte della pipeline automatica** - si esegue a mano in locale (vedi [Esecuzione Locale](#esecuzione-locale)) quando serve un unico documento di riferimento leggibile (es. per compilare a mano un profilo LinkedIn/Indeed). Scarica ogni file `data/*.json`, nell'ordine dei nomi, prima tutto in inglese poi tutto in italiano - generico e completo (nessun campo scelto a mano né riscritto), così un campo aggiunto in futuro a qualsiasi file compare qui automaticamente.
 * `img/`: asset statici (foto profilo, firma).
 
 ## Attività Comuni
@@ -180,6 +181,16 @@ python3 scripts-website-data/generate_papers_bib.py /tmp/papers.bib
 ```
 
 I primi due terminano con stato diverso da zero ed elencano tutti gli errori di validazione se `data/` produce qualcosa di malformato - non viene mai scritto nulla di parzialmente rotto. `generate_papers_bib.py` non ha uno schema contro cui validare (ogni campo `bibtex` è testo libero) - ispeziona `/tmp/papers.bib` a occhio, oppure passalo per un vero parser BibTeX (es. `bibtexparser` in Python) se vuoi ricontrollarlo.
+
+### Generare un documento di riferimento in chiaro (LinkedIn, Indeed, ...)
+
+Non esiste un modo pulito e conforme ai Termini di Servizio per pubblicare automaticamente su LinkedIn/Indeed (le loro API richiedono un'approvazione formale come partner per scrivere sul profilo, e automatizzare login/scraping viola i loro Termini - rischio reale di sospensione account). L'alternativa pragmatica: generare un riferimento in chiaro, poi incollare a mano.
+
+```bash
+python3 scripts-website-data/dump_data_markdown.py
+```
+
+Scrive `cv_dump_linkedin.md` alla radice del repo (ignorato da git, si rigenera a comando - mai committato) - ogni file `data/*.json`, in ordine, prima tutto in inglese poi tutto in italiano, senza nulla scelto a mano o riscritto. Aprilo in un qualsiasi visualizzatore Markdown e copia la sezione che ti serve dentro il form del sito terzo, a mano.
 
 ## Licenza
 [MIT](https://choosealicense.com/licenses/mit/)

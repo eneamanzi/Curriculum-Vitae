@@ -66,6 +66,7 @@ Two independent GitHub Actions workflows drive the CV-repo side (see [CI/CD](#ci
 * `scripts-website-data/generate_resume_json.py`: builds `resume.json` from `data/`, validated against `scripts-website-data/resume_pydantic_schema.py` before being written.
 * `scripts-website-data/generate_socials_yml.py`: builds the website's `_data/socials.yml` (email, LinkedIn/GitHub usernames, CV PDF link) from `data/10-personal.json` - only the fields that are genuine CV facts; site-only settings (Google Scholar ID, WeChat QR, etc.) stay manually maintained on the website side.
 * `scripts-website-data/generate_papers_bib.py`: builds the website's `_bibliography/papers.bib` from `data/60-publications.json`, concatenating each entry's `bibtex` field as-is and injecting `abstract` (from the structured `abstract` field, so it's never typed twice) and `abbr` (from `venueAbbr`, if set).
+* `scripts-website-data/dump_data_markdown.py`: **not part of the automated pipeline** - run by hand locally (see [Run Locally](#run-locally)) whenever you need a single readable reference document (e.g. to fill out a LinkedIn/Indeed profile by hand). Dumps every `data/*.json` file, in filename order, fully in English then fully in Italian - generic and complete (nothing hand-picked or stripped), so a field added to any data file later shows up automatically.
 * `img/`: static assets (profile picture, signature).
 
 ## Common Tasks
@@ -180,6 +181,16 @@ python3 scripts-website-data/generate_papers_bib.py /tmp/papers.bib
 ```
 
 The first two exit with a non-zero status and a full list of validation errors if `data/` produces something malformed - nothing is ever written half-broken. `generate_papers_bib.py` has no schema to validate against (each `bibtex` field is free text) - inspect `/tmp/papers.bib` by eye, or run it through a real BibTeX parser (e.g. Python's `bibtexparser`) if you want to double-check it.
+
+### Generating a plain reference document (LinkedIn, Indeed, ...)
+
+There's no clean, ToS-compliant way to auto-publish to LinkedIn/Indeed (their APIs require formal partner approval for profile writes, and automating logins/scraping breaks their Terms of Service - real risk of account suspension). The pragmatic alternative: generate a plain-text reference, then paste by hand.
+
+```bash
+python3 scripts-website-data/dump_data_markdown.py
+```
+
+Writes `cv_dump_linkedin.md` at the repo root (gitignored, regenerate on demand - never committed) - every `data/*.json` file, in order, fully in English then fully in Italian, with nothing hand-picked or reworded. Open it in any Markdown viewer and copy whichever section you need into a third-party site's form by hand.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
